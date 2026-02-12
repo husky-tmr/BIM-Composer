@@ -1,0 +1,23 @@
+/* css/sidebar.css */
+.sidebar {
+  width: 25%;
+  background: #2d2d2d;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.sidebar-resizer {
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: ew-resize;
+  background: transparent;
+  z-index: 10;
+}

@@ -1,0 +1,34 @@
+/* css/panel-controls.css */
+.file-controls,
+.hierarchy-controls,
+.scene-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.file-controls button,
+.hierarchy-controls button,
+.scene-controls button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.scene-controls button.active {
+  background: #007aff;
+}
+
+.file-controls button:hover,
+.hierarchy-controls button:hover,
+.scene-controls button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

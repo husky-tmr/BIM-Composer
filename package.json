@@ -1,0 +1,49 @@
+{
+  "name": "usda-composer",
+  "version": "1.0.0",
+  "description": "USDA Composer is a web-based, client-side tool for viewing, editing, and composing Universal Scene Description (`.usda`) files. It provides an interactive 3D viewport powered by **three.js** alongside a code editor, allowing for both visual inspection and direct manipulation of scene layers through a sophisticated, non-destructive workflow.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:e2e": "playwright test",
+    "test:coverage": "vitest run --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "validate": "npm run type-check && npm run lint && npm test",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@playwright/test": "^1.58.2",
+    "@testing-library/dom": "^10.4.1",
+    "@types/three": "^0.182.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.3.0",
+    "happy-dom": "^20.6.1",
+    "husky": "^9.1.7",
+    "jsdom": "^28.0.0",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "terser": "^5.46.0",
+    "typescript": "^5.7.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "js-sha256": "^0.11.1",
+    "three": "^0.165.0"
+  }
+}

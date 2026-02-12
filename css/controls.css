@@ -1,0 +1,219 @@
+/* css/controls.css */
+.view-controls {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.view-controls button {
+  padding: 6px 12px;
+  background: #2e2e2e;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.view-controls button:hover {
+  background: #3e3e3e;
+}
+
+.view-controls button.active {
+  background: #007aff;
+  color: #ffffff;
+}
+
+.file-controls,
+.hierarchy-controls,
+.scene-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.file-controls button,
+.hierarchy-controls button,
+.scene-controls button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.scene-controls button.active {
+  background: #007aff;
+}
+
+.file-controls button:hover,
+.hierarchy-controls button:hover,
+.scene-controls button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.button-group {
+  padding: 8px;
+  background: #2e2e2e;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.button-group button {
+  padding: 6px 12px;
+  background: #555;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button-group button.primary-button {
+  background: #007aff;
+}
+
+.button-group button:hover {
+  background: #2994ff;
+}
+
+.button-group button.active {
+  background: #2994ff;
+  box-shadow: 0 0 0 2px rgba(41, 148, 255, 0.5);
+}
+
+.button-group button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#rename-object-button,
+#send-to-stage-button,
+#entity-scene-button {
+  position: absolute;
+  z-index: 100;
+  width: 32px;
+  height: 32px;
+  background: #007aff;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#rename-object-button:hover,
+#send-to-stage-button:hover,
+#entity-scene-button:hover {
+  background: #2994ff;
+}
+
+/* --- APPLE-STYLE SLIDER --- */
+
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Increased gap */
+  flex-grow: 1;
+}
+
+.timeline-controls button {
+  flex-shrink: 0;
+}
+
+.timeline-slider-container {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 20px; /* Give container height for alignment */
+}
+
+/* Base styling for the slider track */
+.timeline-controls input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px; /* Thicker track */
+  background: #555;
+  border-radius: 3px;
+  outline: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Styling for the slider thumb (the draggable handle) */
+.timeline-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px; /* Bigger thumb */
+  height: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  margin-top: -6px; /* Vertically center the thumb on the track */
+}
+
+.timeline-controls input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the Ticks container */
+#timeline-ticks {
+  /* THIS IS THE CHANGE - HIDING THE TICKS */
+  display: none;
+}
+
+/* Styling for each individual tick ("ball") - Kept for reference if you want to turn them back on */
+.timeline-tick {
+  width: 8px;
+  height: 8px;
+  background-color: #888;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-controls span {
+  font-size: 13px; /* Slightly larger text */
+  color: #e0e0e0;
+  min-width: 60px;
+  text-align: center;
+  font-weight: 500;
+}

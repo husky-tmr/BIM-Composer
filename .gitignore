@@ -1,0 +1,26 @@
+node_modules/
+dist/
+.vite/
+coverage/
+test-results/
+playwright-report/
+.env
+.env.local
+
+# Claude AI assistant settings (local only)
+.claude/
+
+# LLM session/progress files (not part of project docs)
+INTEGRATION_PROGRESS.md
+SESSION_COMPLETE.md
+ARCHITECTURE_SPRINT_COMPLETE.md
+FOUNDATIONS_COMPLETE.md
+PHASE_1_COMPLETE.md
+INTEGRATION_STARTED.md
+CODE_EXPLORATION_GUIDE.md
+INTEGRATION_GUIDE.md
+ARCHITECTURE_REFACTOR_PLAN.md
+
+# Test results
+test-results.txt
+test-results.json

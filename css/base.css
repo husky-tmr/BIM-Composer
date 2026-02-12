@@ -1,0 +1,27 @@
+/* css/base.css */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1c1c1c 100%);
+  font-family: -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#usdaEditor {
+  width: 100%;
+  height: 100%;
+  background: #2e2e2e;
+  border: none;
+  color: #e0e0e0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  padding: 16px;
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+  display: none;
+}

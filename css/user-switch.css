@@ -1,0 +1,114 @@
+/* css/user-switch.css */
+.user-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-label {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-switch {
+  position: relative;
+  display: inline-block;
+}
+
+.user-switch-button {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  min-width: 200px;
+  justify-content: flex-start;
+}
+
+.user-switch-button:hover {
+  background: linear-gradient(135deg, #5a9ff2, #4585c7);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.user-switch-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.user-icon {
+  font-size: 14px;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #2c2c2c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  min-width: 140px;
+  z-index: 1000;
+  overflow: hidden;
+  display: none;
+}
+
+.user-dropdown.active {
+  display: block;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-option {
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #e0e0e0;
+  font-size: 13px;
+  transition: background 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-option:hover {
+  background: #3a3a3a;
+}
+
+.user-option.selected {
+  background: #4a90e2;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.user-option .check-icon {
+  margin-left: auto;
+  font-size: 12px;
+  opacity: 0;
+}
+
+.user-option.selected .check-icon {
+  opacity: 1;
+}

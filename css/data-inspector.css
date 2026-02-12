@@ -1,0 +1,87 @@
+/* css/data-inspector.css */
+.data-inspector-panel {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 300px;
+  max-height: 500px;
+  background: #2e2e2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  font-family: -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif;
+}
+
+.data-inspector-header {
+  padding: 10px 12px;
+  background: #3a3a3a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.data-inspector-header h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.close-inspector-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+}
+
+.close-inspector-btn:hover {
+  color: #fff;
+}
+
+.data-inspector-body {
+  padding: 12px;
+  overflow-y: auto;
+  color: #e0e0e0;
+  font-size: 13px;
+}
+
+.json-key {
+  color: #5bc0de;
+  font-weight: 500;
+}
+.json-string {
+  color: #5cb85c;
+}
+.json-number {
+  color: #f0ad4e;
+}
+.data-inspector-placeholder {
+  color: #777;
+  text-align: center;
+  padding: 20px;
+}
+
+.data-link-btn {
+  background: #007aff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 4px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.data-link-btn:hover {
+  background: #2994ff;
+}

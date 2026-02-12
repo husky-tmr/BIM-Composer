@@ -1,0 +1,25 @@
+/* css/filters.css */
+.panel-controls {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 4px;
+}
+.filter-btn {
+  flex: 1;
+  padding: 4px;
+  font-size: 11px;
+  background: #444;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.filter-btn:hover {
+  background: #555;
+}
+.filter-btn.active {
+  background: #007aff;
+  color: #fff;
+  border-color: #007aff;
+}

@@ -1,0 +1,121 @@
+/* css/panel.css */
+.panel {
+  display: flex;
+  flex-direction: column;
+  /* Don't grow (0), Allow shrinking (1), Auto basis */
+  flex: 0 1 auto;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: flex-grow 0.3s ease;
+  overflow: hidden;
+  background: #2d2d2d;
+  /* REMOVED GAP & RADIUS per request */
+  margin-bottom: 0;
+  border-radius: 0;
+  max-height: 50vh; /* Prevent any single panel from taking over more than half the view */
+}
+
+/* Clear specific ID overrides */
+#scenePanel,
+#layersPanel,
+#propertiesPanel {
+  flex: 0 1 auto;
+  /* Ensure headers stay visible even when compressed (approx header height) */
+  min-height: 38px;
+}
+
+.panel.expanded {
+  /* Keep same flex rules when expanded. 
+     The content inside determines the size. 
+     If it's huge, flex-shrink handles it. */
+  flex: 0 1 auto;
+  min-height: 150px;
+}
+
+/* THE MAGIC SPACER: This pushes everything up */
+.sidebar-spacer {
+  flex-grow: 1; /* Takes up all remaining empty space */
+  min-height: 0;
+}
+
+.panel-header {
+  position: relative;
+  padding: 8px 12px;
+  background: #333;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.panel-header:hover {
+  background: #3a3a3a;
+}
+
+.panel h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-grow: 1;
+}
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto; /* Allow content to shrink properly */
+  overflow: hidden;
+  padding: 8px 0;
+  min-height: 0;
+}
+
+/* Pin Button Styling */
+.pin-button {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 8px;
+  margin-right: 8px;
+  transition: color 0.2s;
+  z-index: 2;
+}
+
+.pin-button:hover {
+  color: #aaa;
+}
+
+.pin-button.active {
+  color: #007aff;
+}
+
+/* Ensure inner lists scroll properly */
+.panel-content ul {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+}
+
+.properties-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 0 12px;
+}
+
+/* Controls positioning */
+.scene-controls,
+.file-controls,
+.hierarchy-controls {
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

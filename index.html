@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USDA Composer</title>
+    <link rel="icon" type="image/jpeg" href="images/favicon.jpg" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+    <link rel="stylesheet" href="css/outliner.css" />
+    <link rel="stylesheet" href="css/properties.css" />
+    <link rel="stylesheet" href="css/filters.css" />
+    <link rel="stylesheet" href="css/lists.css" />
+    <link rel="stylesheet" href="css/view-controls.css" />
+    <link rel="stylesheet" href="css/panel-controls.css" />
+    <link rel="stylesheet" href="css/button-group.css" />
+    <link rel="stylesheet" href="css/action-buttons.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/data-inspector.css" />
+    <link rel="stylesheet" href="css/user-switch.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="title">USDA Composer</div>
+      <div class="tab" id="currentFileTab">scene.usda</div>
+      <div class="view-controls">
+        <button id="view3d" class="active">3D</button>
+        <button id="viewCode">&lt;&gt;</button>
+      </div>
+      <div class="user-switch-container">
+        <span class="user-label">User:</span>
+        <div class="user-switch" data-testid="user-select">
+          <button class="user-switch-button" id="userSwitchButton">
+            <span class="user-icon">👤</span>
+            <span id="currentUserName">Architect</span>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <div class="user-option selected" data-user="Architect">
+              <span>Architect</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="user-option" data-user="Structural Engineer">
+              <span>Structural Engineer</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="user-option" data-user="Project Manager">
+              <span>Project Manager</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="user-option" data-user="Field Person">
+              <span>Field Person</span>
+              <span class="check-icon">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <div class="panel" id="scenePanel">
+          <div class="panel-header">
+            <h3>Scene</h3>
+            <div class="scene-controls">
+              <button id="rename-scene-button">✏️</button>
+              <button
+                id="toggle-status-color-button"
+                title="Toggle Status Color"
+              >
+                🎨
+              </button>
+            </div>
+          </div>
+          <div class="panel-content">
+            <ul id="projectsList">
+              <li id="sampleSceneItem">Sample Scene</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel" id="layersPanel">
+          <div class="panel-header">
+            <h3>Layer Stack</h3>
+            <div class="file-controls">
+              <button id="add-file-button" title="Add Layer">+</button>
+              <button id="delete-file-button" title="Remove Layer">-</button>
+              <button id="set-stage-button" title="Select Prims">S</button>
+              <button id="entity-stage-button" title="Entity Placeholder">
+                E
+              </button>
+              <button id="promote-layer-button" title="Promote Layer">▲</button>
+            </div>
+          </div>
+          <div class="panel-content">
+            <div class="panel-controls" id="layer-filter-controls">
+              <button class="filter-btn active" data-filter="All">All</button>
+              <button class="filter-btn" data-filter="WIP">WIP</button>
+              <button class="filter-btn" data-filter="Shared">Shared</button>
+              <button class="filter-btn" data-filter="Published">
+                Published
+              </button>
+              <button class="filter-btn" data-filter="Archived">
+                Archived
+              </button>
+            </div>
+            <ul id="layerStackList"></ul>
+            <input
+              type="file"
+              id="usdaFileInput"
+              accept=".usda,.usd"
+              style="display: none"
+            />
+          </div>
+        </div>
+
+        <div class="panel" id="hierarchyPanel">
+          <div class="panel-header">
+            <h3>Hierarchy</h3>
+            <div class="hierarchy-controls">
+              <button id="add-prim-button" title="Add Prim to Stage">+</button>
+              <button id="remove-prim-button" title="Remove Prim from Stage">
+                -
+              </button>
+              <button id="expand-all-button" title="Expand All">⊞</button>
+              <button id="collapse-all-button" title="Collapse All">⊟</button>
+            </div>
+          </div>
+          <div class="panel-content">
+            <ul id="usdaOutliner"></ul>
+          </div>
+        </div>
+
+        <div class="panel" id="propertiesPanel">
+          <div class="panel-header">
+            <h3>Properties</h3>
+          </div>
+          <div class="panel-content">
+            <div id="properties-content" class="properties-content">
+              <p class="placeholder-text">
+                Select a prim to view its properties.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-resizer"></div>
+      </div>
+
+      <div class="main-view">
+        <div class="viewport-container">
+          <button id="rename-object-button" style="display: none">✏️</button>
+          <button id="send-to-stage-button" style="display: none">S</button>
+          <button id="entity-scene-button" style="display: none">E</button>
+          <canvas id="webglCanvas"></canvas>
+          <canvas id="stageCanvas" style="display: none"></canvas>
+          <canvas id="historyCanvas" style="display: none"></canvas>
+          <textarea id="usdaEditor"></textarea>
+        </div>
+        <div class="button-group">
+          <div class="main-actions">
+            <button id="commitButton" disabled>Commit</button>
+            <button id="saveButton">Save Stage File</button>
+            <button id="history-toggle-button">History</button>
+          </div>
+          <div
+            id="timeline-controls-container"
+            class="timeline-controls"
+            style="visibility: hidden"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="prim-selection-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Select Prims for Stage</h2>
+        </div>
+        <div class="modal-body">
+          <div class="prim-list-container outliner-clone">
+            <ul id="available-prims-list" class="blender-outliner"></ul>
+          </div>
+          <div class="prim-transfer-buttons">
+            <button id="add-all-prims-to-stage" title="Add All">
+              &gt;&gt;
+            </button>
+            <button id="add-prim-to-stage" title="Add Selected">&gt;</button>
+            <button id="remove-prim-from-stage" title="Remove Selected">
+              &lt;
+            </button>
+            <button id="remove-all-prims-from-stage" title="Remove All">
+              &lt;&lt;
+            </button>
+          </div>
+          <div class="prim-list-container outliner-clone">
+            <ul id="stage-prims-list" class="blender-outliner"></ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="save-hierarchy-button">Save Hierarchy</button>
+          <button id="close-modal-button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="reference-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content reference-modal-content">
+        <h2>Reference Manager</h2>
+        <div class="modal-body reference-modal-body">
+          <div class="reference-details-inputs">
+            <div class="input-group">
+              <label for="prim-name-input">Prim Name</label>
+              <input type="text" id="prim-name-input" />
+            </div>
+            <div class="input-group" id="prim-type-group" style="display: none">
+              <label for="prim-type-select">Prim Type</label>
+              <select id="prim-type-select">
+                <option value="Xform">Xform</option>
+                <option value="Cube">Cube</option>
+                <option value="Sphere">Sphere</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="reference-select">Reference Path</label>
+              <select
+                id="reference-select"
+                style="width: 100%; padding: 5px"
+              ></select>
+            </div>
+          </div>
+          <div class="reference-file-lists">
+            <div class="prim-list-container">
+              <div class="prim-list-header">
+                <h3>List of Files</h3>
+              </div>
+              <ul id="reference-files-list"></ul>
+            </div>
+            <div class="prim-list-container">
+              <div class="prim-list-header">
+                <h3>Hierarchy of Prims</h3>
+              </div>
+              <ul id="reference-prims-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer reference-footer">
+          <button id="cancel-reference-button">Cancel</button>
+          <button id="update-reference-button">Update</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promotion Modal -->
+    <div id="promotion-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Batch Promote Layers</h2>
+        </div>
+        <div class="modal-body">
+          <div class="prim-list-container">
+            <h3>Eligible Layers</h3>
+            <ul id="eligible-layers-list" class="blender-outliner"></ul>
+          </div>
+          <div class="prim-transfer-buttons">
+            <button id="add-layer-to-promote" title="Add Selected">&gt;</button>
+            <button id="remove-layer-from-promote" title="Remove Selected">
+              &lt;
+            </button>
+            <button id="add-all-layers-to-promote" title="Add All">
+              &gt;&gt;
+            </button>
+            <button id="remove-all-layers-from-promote" title="Remove All">
+              &lt;&lt;
+            </button>
+          </div>
+          <div class="prim-list-container">
+            <h3>To Promote</h3>
+            <ul id="promote-layers-list" class="blender-outliner"></ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span
+            id="promotion-target-status"
+            style="margin-right: auto; font-weight: bold"
+          ></span>
+          <button id="confirm-promotion-button">Promote</button>
+          <button id="close-promotion-modal-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conflict Resolution Modal -->
+    <div id="conflict-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Property Conflict Detected</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            The property '<strong id="conflict-property-name"></strong>' has
+            conflicting values:
+          </p>
+
+          <div class="conflict-options">
+            <div class="conflict-option">
+              <input
+                type="radio"
+                name="conflict-resolution"
+                id="conflict-keep-current"
+                value="keep-current"
+                checked
+              />
+              <label for="conflict-keep-current">
+                <strong>Keep current value:</strong>
+                <span id="conflict-current-value"></span> <br /><small
+                  >Source: <span id="conflict-current-source"></span
+                ></small>
+              </label>
+            </div>
+
+            <div class="conflict-option">
+              <input
+                type="radio"
+                name="conflict-resolution"
+                id="conflict-use-new"
+                value="use-new"
+              />
+              <label for="conflict-use-new">
+                <strong>Use new value:</strong>
+                <span id="conflict-new-value"></span> <br /><small
+                  >Modified by: <span id="conflict-new-owner"></span
+                ></small>
+              </label>
+            </div>
+          </div>
+
+          <div
+            id="conflict-warning"
+            class="conflict-warning"
+            style="display: none"
+          >
+            <p>⚠️ <span id="conflict-warning-text"></span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="conflict-cancel-button">Cancel</button>
+          <button id="conflict-apply-button" class="primary">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

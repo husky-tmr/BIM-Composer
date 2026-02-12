@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    // Target modern browsers
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    // Module resolution
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    // Interop with JavaScript
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Type checking - Start lenient, tighten gradually
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+
+    // Additional checks (enable these gradually)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+
+    // Emit
+    "noEmit": true,
+    "sourceMap": true,
+
+    // Skip lib check for faster compilation
+    "skipLibCheck": true,
+
+    // Paths for better imports (optional, add as needed)
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@viewer/*": ["src/viewer/*"],
+      "@state/*": ["src/state/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "include": ["src/**/*", "*.js"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "playwright-report",
+    "test-results"
+  ]
+}

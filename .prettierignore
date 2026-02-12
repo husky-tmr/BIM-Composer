@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Test artifacts
+test-results.json
+*.log
+
+# Cache directories
+.cache/
+.vite/
+.vitest/
+
+# OS files
+.DS_Store
+Thumbs.db

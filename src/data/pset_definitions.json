@@ -1,0 +1,3350 @@
+{
+  "Pset_ActionRequest": {
+    "RequestSourceLabel": null,
+    "RequestSourceName": null,
+    "RequestComments": null
+  },
+  "Pset_ActorCommon": {
+    "NumberOfActors": null,
+    "Category": null,
+    "SkillLevel": null
+  },
+  "Pset_ActuatorPHistory": {
+    "Position": null,
+    "Quality": null,
+    "Status": null
+  },
+  "Pset_ActuatorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "FailPosition": null
+  },
+  "Pset_ActuatorTypeElectricActuator": {
+    "ActuatorInputPower": null,
+    "ElectricActuatorType": null
+  },
+  "Pset_ActuatorTypeHydraulicActuator": {
+    "InputPressure": null,
+    "InputFlowrate": null
+  },
+  "Pset_ActuatorTypeLinearActuation": {
+    "Force": null,
+    "Stroke": null
+  },
+  "Pset_ActuatorTypePneumaticActuator": {
+    "InputPressure": null,
+    "InputFlowrate": null
+  },
+  "Pset_ActuatorTypeRotationalActuation": {
+    "Torque": null,
+    "RangeAngle": null
+  },
+  "Pset_AirSideSystemInformation": {
+    "Name": null,
+    "Description": null,
+    "AirSideSystemType": null,
+    "AirSideSystemDistributionType": null,
+    "TotalAirflow": null,
+    "EnergyGainTotal": null,
+    "AirflowSensible": null,
+    "EnergyGainSensible": null,
+    "EnergyLoss": null,
+    "LightingDiversity": null,
+    "InfiltrationDiversitySummer": null,
+    "InfiltrationDiversityWinter": null,
+    "ApplianceDiversity": null,
+    "LoadSafetyFactor": null,
+    "HeatingTemperatureDelta": null,
+    "CoolingTemperatureDelta": null,
+    "Ventilation": null,
+    "FanPower": null
+  },
+  "Pset_AirTerminalBoxPHistory": {
+    "DamperPosition": null,
+    "AtmosphericPressure": null,
+    "Sound": null,
+    "AirflowCurve": null
+  },
+  "Pset_AirTerminalBoxTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "AirflowRateRange": null,
+    "AirPressureRange": null,
+    "NominalAirFlowRate": null,
+    "ArrangementType": null,
+    "ReheatType": null,
+    "HasSoundAttenuator": null,
+    "HasReturnAir": null,
+    "HasFan": null,
+    "NominalInletAirPressure": null,
+    "NominalDamperDiameter": null,
+    "HousingThickness": null,
+    "OperationTemperatureRange": null,
+    "ReturnAirFractionRange": null
+  },
+  "Pset_AirTerminalOccurrence": {
+    "AirflowType": null,
+    "AirFlowRate": null,
+    "Location": null
+  },
+  "Pset_AirTerminalPHistory": {
+    "AirFlowRate": null,
+    "NeckAirVelocity": null,
+    "SupplyAirTemperatureHeating": null,
+    "SupplyAirTemperatureCooling": null,
+    "PressureDrop": null,
+    "InductionRatio": null,
+    "CenterlineAirVelocity": null
+  },
+  "Pset_AirTerminalTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "Shape": null,
+    "FaceType": null,
+    "SlotWidth": null,
+    "SlotLength": null,
+    "NumberOfSlots": null,
+    "FlowPattern": null,
+    "AirFlowrateRange": null,
+    "TemperatureRange": null,
+    "DischargeDirection": null,
+    "ThrowLength": null,
+    "AirDiffusionPerformanceIndex": null,
+    "FinishType": null,
+    "FinishColor": null,
+    "MountingType": null,
+    "CoreType": null,
+    "CoreSetHorizontal": null,
+    "CoreSetVertical": null,
+    "HasIntegralControl": null,
+    "FlowControlType": null,
+    "HasSoundAttenuator": null,
+    "HasThermalInsulation": null,
+    "NeckArea": null,
+    "EffectiveArea": null,
+    "AirFlowrateVersusFlowControlElement": null
+  },
+  "Pset_AirToAirHeatRecoveryPHistory": {
+    "SensibleEffectiveness": null,
+    "TotalEffectiveness": null,
+    "TemperatureEffectiveness": null,
+    "DefrostTemperatureEffectiveness": null,
+    "HumidityEffectiveness": null,
+    "SensibleHeatTransferRate": null,
+    "LatentHeatTransferRate": null,
+    "TotalHeatTransferRate": null,
+    "SensibleEffectivenessTable": null,
+    "TotalEffectivenessTable": null,
+    "AirPressureDropCurves": null
+  },
+  "Pset_AirToAirHeatRecoveryTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "HeatTransferType": null,
+    "HasDefrost": null,
+    "OperationalTemperatureRange": null,
+    "PrimaryAirflowRateRange": null,
+    "SecondaryAirflowRateRange": null
+  },
+  "Pset_AlarmPHistory": {
+    "Enabled": null,
+    "Condition": null,
+    "Severity": null,
+    "Acknowledge": null,
+    "User": null
+  },
+  "Pset_AlarmTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "Condition": null
+  },
+  "Pset_AnnotationContourLine": {
+    "ContourValue": null
+  },
+  "Pset_AnnotationLineOfSight": {
+    "SetbackDistance": null,
+    "VisibleAngleLeft": null,
+    "VisibleAngleRight": null,
+    "RoadVisibleDistanceLeft": null,
+    "RoadVisibleDistanceRight": null
+  },
+  "Pset_AnnotationSurveyArea": {
+    "AcquisitionMethod": null,
+    "AccuracyQualityObtained": null,
+    "AccuracyQualityExpected": null
+  },
+  "Pset_Asset": {
+    "AssetAccountingType": null,
+    "AssetTaxType": null,
+    "AssetInsuranceType": null
+  },
+  "Pset_AudioVisualAppliancePHistory": {
+    "PowerState": null,
+    "MediaSource": null,
+    "MediaContent": null,
+    "AudioVolume": null
+  },
+  "Pset_AudioVisualApplianceTypeAmplifier": {
+    "AmplifierType": null,
+    "AudioAmplification": null,
+    "AudioMode": null
+  },
+  "Pset_AudioVisualApplianceTypeCamera": {
+    "CameraType": null,
+    "IsOutdoors": null,
+    "VideoResolutionWidth": null,
+    "VideoResolutionHeight": null,
+    "VideoResolutionMode": null,
+    "VideoCaptureInterval": null,
+    "PanTiltZoomPreset": null,
+    "PanHorizontal": null,
+    "PanVertical": null,
+    "TiltHorizontal": null,
+    "TiltVertical": null,
+    "Zoom": null
+  },
+  "Pset_AudioVisualApplianceTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "MediaSource": null,
+    "AudioVolume": null
+  },
+  "Pset_AudioVisualApplianceTypeDisplay": {
+    "DisplayType": null,
+    "NominalSize": null,
+    "DisplayWidth": null,
+    "DisplayHeight": null,
+    "Brightness": null,
+    "RefreshRate": null,
+    "TouchScreen": null,
+    "VideoResolutionWidth": null,
+    "VideoResolutionHeight": null,
+    "VideoResolutionMode": null,
+    "VideoScaleMode": null,
+    "VideoCaptionMode": null,
+    "AudioMode": null
+  },
+  "Pset_AudioVisualApplianceTypePlayer": {
+    "PlayerType": null,
+    "PlayerMediaEject": null,
+    "PlayerMediaFormat": null
+  },
+  "Pset_AudioVisualApplianceTypeProjector": {
+    "ProjectorType": null,
+    "VideoResolutionWidth": null,
+    "VideoResolutionHeight": null,
+    "VideoResolutionMode": null,
+    "VideoScaleMode": null,
+    "VideoCaptionMode": null
+  },
+  "Pset_AudioVisualApplianceTypeReceiver": {
+    "ReceiverType": null,
+    "AudioAmplification": null,
+    "AudioMode": null
+  },
+  "Pset_AudioVisualApplianceTypeSpeaker": {
+    "SpeakerType": null,
+    "SpeakerMounting": null,
+    "SpeakerDriverSize": null,
+    "FrequencyResponse": null,
+    "Impedence": null
+  },
+  "Pset_AudioVisualApplianceTypeTuner": {
+    "TunerType": null,
+    "TunerMode": null,
+    "TunerChannel": null,
+    "TunerFrequency": null
+  },
+  "Pset_BeamCommon": {
+    "Reference": null,
+    "Status": null,
+    "Span": null,
+    "Slope": null,
+    "Roll": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_BearingCommon": {
+    "DisplacementAccomodated": null,
+    "RotationAccomodated": null
+  },
+  "Pset_BoilerPHistory": {
+    "EnergySourceConsumption": null,
+    "OperationalEfficiency": null,
+    "CombustionEfficiency": null,
+    "WorkingPressure": null,
+    "CombustionTemperature": null,
+    "PartLoadRatio": null,
+    "Load": null,
+    "PrimaryEnergyConsumption": null,
+    "AuxiliaryEnergyConsumption": null
+  },
+  "Pset_BoilerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "PressureRating": null,
+    "OperatingMode": null,
+    "HeatTransferSurfaceArea": null,
+    "NominalPartLoadRatio": null,
+    "WaterInletTemperatureRange": null,
+    "WaterStorageCapacity": null,
+    "IsWaterStorageHeater": null,
+    "PartialLoadEfficiencyCurves": null,
+    "OutletTemperatureRange": null,
+    "NominalEnergyConsumption": null,
+    "EnergySource": null
+  },
+  "Pset_BoilerTypeSteam": {
+    "MaximumOutletPressure": null,
+    "NominalEfficiency": null,
+    "HeatOutput": null
+  },
+  "Pset_BoilerTypeWater": {
+    "NominalEfficiency": null,
+    "HeatOutput": null
+  },
+  "Pset_BridgeCommon": {
+    "StructureIndicator": null
+  },
+  "Pset_BuildingCommon": {
+    "Reference": null,
+    "BuildingID": null,
+    "IsPermanentID": null,
+    "ConstructionMethod": null,
+    "FireProtectionClass": null,
+    "SprinklerProtection": null,
+    "SprinklerProtectionAutomatic": null,
+    "OccupancyType": null,
+    "GrossPlannedArea": null,
+    "NetPlannedArea": null,
+    "NumberOfStoreys": null,
+    "YearOfConstruction": null,
+    "YearOfLastRefurbishment": null,
+    "IsLandmarked": null
+  },
+  "Pset_BuildingElementProxyCommon": {
+    "Reference": null,
+    "Status": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_BuildingElementProxyProvisionForVoid": {
+    "Shape": null,
+    "Width": null,
+    "Height": null,
+    "Diameter": null,
+    "Depth": null,
+    "System": null
+  },
+  "Pset_BuildingStoreyCommon": {
+    "Reference": null,
+    "EntranceLevel": null,
+    "AboveGround": null,
+    "SprinklerProtection": null,
+    "SprinklerProtectionAutomatic": null,
+    "LoadBearingCapacity": null,
+    "GrossPlannedArea": null,
+    "NetPlannedArea": null
+  },
+  "Pset_BuildingSystemCommon": {
+    "Reference": null
+  },
+  "Pset_BuildingUse": {
+    "MarketCategory": null,
+    "MarketSubCategory": null,
+    "PlanningControlStatus": null,
+    "NarrativeText": null,
+    "VacancyRateInCategoryNow": null,
+    "TenureModesAvailableNow": null,
+    "MarketSubCategoriesAvailableNow": null,
+    "RentalRatesInCategoryNow": null,
+    "VacancyRateInCategoryFuture": null,
+    "TenureModesAvailableFuture": null,
+    "MarketSubCategoriesAvailableFuture": null,
+    "RentalRatesInCategoryFuture": null
+  },
+  "Pset_BuildingUseAdjacent": {
+    "MarketCategory": null,
+    "MarketSubCategory": null,
+    "PlanningControlStatus": null,
+    "NarrativeText": null
+  },
+  "Pset_BurnerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "EnergySource": null
+  },
+  "Pset_CableCarrierFittingTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_CableCarrierSegmentTypeCableLadderSegment": {
+    "NominalWidth": null,
+    "NominalHeight": null,
+    "LadderConfiguration": null
+  },
+  "Pset_CableCarrierSegmentTypeCableTraySegment": {
+    "NominalWidth": null,
+    "NominalHeight": null,
+    "HasCover": null
+  },
+  "Pset_CableCarrierSegmentTypeCableTrunkingSegment": {
+    "NominalWidth": null,
+    "NominalHeight": null,
+    "NumberOfCompartments": null
+  },
+  "Pset_CableCarrierSegmentTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_CableCarrierSegmentTypeConduitSegment": {
+    "NominalWidth": null,
+    "NominalHeight": null,
+    "ConduitShapeType": null,
+    "IsRigid": null
+  },
+  "Pset_CableFittingTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_CableSegmentOccurrence": {
+    "DesignAmbientTemperature": null,
+    "UserCorrectionFactor": null,
+    "NumberOfParallelCircuits": null,
+    "InstallationMethod": null,
+    "InstallationMethodFlagEnum": null,
+    "DistanceBetweenParallelCircuits": null,
+    "SoilConductivity": null,
+    "CarrierStackNumber": null,
+    "MountingMethod": null,
+    "IsHorizontalCable": null,
+    "IsMountedFlatCable": null,
+    "CurrentCarryingCapasity": null,
+    "MaximumCableLength": null,
+    "PowerLoss": null
+  },
+  "Pset_CableSegmentTypeBusBarSegment": {
+    "IsHorizontalBusbar": null
+  },
+  "Pset_CableSegmentTypeCableSegment": {
+    "Standard": null,
+    "NumberOfCores": null,
+    "OverallDiameter": null,
+    "RatedVoltage": null,
+    "RatedTemperature": null,
+    "ScreenDiameter": null,
+    "HasProtectiveEarth": null,
+    "MaximumOperatingTemperature": null,
+    "MaximumShortCircuitTemperature": null,
+    "SpecialConstruction": null,
+    "Weight": null,
+    "SelfExtinguishing60332_1": null,
+    "SelfExtinguishing60332_3": null,
+    "HalogenProof": null,
+    "FunctionReliable": null
+  },
+  "Pset_CableSegmentTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_CableSegmentTypeConductorSegment": {
+    "CrossSectionalArea": null,
+    "Function": null,
+    "Material": null,
+    "Construction": null,
+    "Shape": null
+  },
+  "Pset_CableSegmentTypeCoreSegment": {
+    "OverallDiameter": null,
+    "RatedVoltage": null,
+    "RatedTemperature": null,
+    "ScreenDiameter": null,
+    "CoreIdentifier": null,
+    "SheathColors": null,
+    "Weight": null,
+    "SelfExtinguishing60332_1": null,
+    "SelfExtinguishing60332_3": null,
+    "HalogenProof": null,
+    "FunctionReliable": null,
+    "Standard": null
+  },
+  "Pset_ChillerPHistory": {
+    "Capacity": null,
+    "EnergyEfficiencyRatio": null,
+    "CoefficientOfPerformance": null
+  },
+  "Pset_ChillerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NominalCapacity": null,
+    "NominalEfficiency": null,
+    "NominalCondensingTemperature": null,
+    "NominalEvaporatingTemperature": null,
+    "NominalHeatRejectionRate": null,
+    "NominalPowerConsumption": null,
+    "CapacityCurve": null,
+    "CoefficientOfPerformanceCurve": null,
+    "FullLoadRatioCurve": null
+  },
+  "Pset_ChimneyCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfDrafts": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_CivilElementCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_CoilOccurrence": {
+    "HasSoundAttenuation": null
+  },
+  "Pset_CoilPHistory": {
+    "AtmosphericPressure": null,
+    "AirPressureDropCurve": null,
+    "SoundCurve": null,
+    "FaceVelocity": null
+  },
+  "Pset_CoilTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "OperationalTemperatureRange": null,
+    "AirflowRateRange": null,
+    "NominalSensibleCapacity": null,
+    "NominalLatentCapacity": null,
+    "NominalUA": null,
+    "PlacementType": null
+  },
+  "Pset_CoilTypeHydronic": {
+    "FluidPressureRange": null,
+    "CoilCoolant": null,
+    "CoilConnectionDirection": null,
+    "CoilFluidArrangement": null,
+    "CoilFaceArea": null,
+    "HeatExchangeSurfaceArea": null,
+    "PrimarySurfaceArea": null,
+    "SecondarySurfaceArea": null,
+    "TotalUACurves": null,
+    "WaterPressureDropCurve": null,
+    "BypassFactor": null,
+    "SensibleHeatRatio": null,
+    "WetCoilFraction": null
+  },
+  "Pset_ColumnCommon": {
+    "Reference": null,
+    "Status": null,
+    "Slope": null,
+    "Roll": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_CommunicationsAppliancePHistory": {
+    "PowerState": null
+  },
+  "Pset_CommunicationsApplianceTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_CompressorPHistory": {
+    "CompressorCapacity": null,
+    "EnergyEfficiencyRatio": null,
+    "CoefficientOfPerformance": null,
+    "VolumetricEfficiency": null,
+    "CompressionEfficiency": null,
+    "MechanicalEfficiency": null,
+    "IsentropicEfficiency": null,
+    "CompressorTotalEfficiency": null,
+    "ShaftPower": null,
+    "InputPower": null,
+    "LubricantPumpHeatGain": null,
+    "FrictionHeatGain": null,
+    "CompressorTotalHeatGain": null,
+    "FullLoadRatio": null
+  },
+  "Pset_CompressorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "PowerSource": null,
+    "RefrigerantClass": null,
+    "MinimumPartLoadRatio": null,
+    "MaximumPartLoadRatio": null,
+    "CompressorSpeed": null,
+    "NominalCapacity": null,
+    "IdealCapacity": null,
+    "IdealShaftPower": null,
+    "HasHotGasBypass": null,
+    "ImpellerDiameter": null
+  },
+  "Pset_ConcreteElementGeneral": {
+    "ConstructionMethod": null,
+    "StructuralClass": null,
+    "StrengthClass": null,
+    "ExposureClass": null,
+    "ReinforcementVolumeRatio": null,
+    "ReinforcementAreaRatio": null,
+    "DimensionalAccuracyClass": null,
+    "ConstructionToleranceClass": null,
+    "ConcreteCover": null,
+    "ConcreteCoverAtMainBars": null,
+    "ConcreteCoverAtLinks": null,
+    "ReinforcementStrengthClass": null
+  },
+  "Pset_ConstructionAdministration": {
+    "ProcurementMethod": null,
+    "SpecificationSectionNumber": null,
+    "SubmittalIdentifer": null
+  },
+  "Pset_ConstructionOccurence": {
+    "Origin": null,
+    "Invoice": null,
+    "Company": null,
+    "Type": null,
+    "Date": null,
+    "Unit": null,
+    "Quantity": null,
+    "Fiscal": null,
+    "Value": null,
+    "Hash": null
+  },
+  "Pset_CondenserPHistory": {
+    "HeatRejectionRate": null,
+    "ExteriorHeatTransferCoefficient": null,
+    "InteriorHeatTransferCoefficient": null,
+    "RefrigerantFoulingResistance": null,
+    "CondensingTemperature": null,
+    "LogarithmicMeanTemperatureDifference": null,
+    "UAcurves": null,
+    "CompressorCondenserHeatGain": null,
+    "CompressorCondenserPressureDrop": null,
+    "CondenserMeanVoidFraction": null,
+    "WaterFoulingResistance": null
+  },
+  "Pset_CondenserTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "RefrigerantClass": null,
+    "ExternalSurfaceArea": null,
+    "InternalSurfaceArea": null,
+    "InternalRefrigerantVolume": null,
+    "InternalWaterVolume": null,
+    "NominalHeatTransferArea": null,
+    "NominalHeatTransferCoefficient": null
+  },
+  "Pset_Condition": {
+    "AssessmentDate": null,
+    "AssessmentCondition": null,
+    "AssessmentDescription": null,
+    "AssessmentType": null,
+    "AssessmentMethod": null,
+    "LastAssessmentReport": null,
+    "NextAssessmentDate": null,
+    "AssessmentFrequency": null
+  },
+  "Pset_ConstructionResource": {
+    "ScheduleWork": null,
+    "ActualWork": null,
+    "RemainingWork": null,
+    "ScheduleCost": null,
+    "ActualCost": null,
+    "RemainingCost": null,
+    "ScheduleCompletion": null,
+    "ActualCompletion": null
+  },
+  "Pset_ControllerPHistory": {
+    "Value": null,
+    "Quality": null,
+    "Status": null
+  },
+  "Pset_ControllerTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_ControllerTypeFloating": {
+    "ControlType": null,
+    "Labels": null,
+    "Range": null,
+    "Value": null,
+    "SignalOffset": null,
+    "SignalFactor": null,
+    "SignalTime": null
+  },
+  "Pset_ControllerTypeMultiPosition": {
+    "ControlType": null,
+    "Labels": null,
+    "Range": null,
+    "Value": null
+  },
+  "Pset_ControllerTypeProgrammable": {
+    "ControlType": null,
+    "FirmwareVersion": null,
+    "SoftwareVersion": null,
+    "Application": null
+  },
+  "Pset_ControllerTypeProportional": {
+    "ControlType": null,
+    "Labels": null,
+    "Range": null,
+    "Value": null,
+    "ProportionalConstant": null,
+    "IntegralConstant": null,
+    "DerivativeConstant": null,
+    "SignalTimeIncrease": null,
+    "SignalTimeDecrease": null
+  },
+  "Pset_ControllerTypeTwoPosition": {
+    "ControlType": null,
+    "Labels": null,
+    "Polarity": null,
+    "Value": null
+  },
+  "Pset_CooledBeamPHistory": {
+    "AirFlowRate": null,
+    "Throw": null,
+    "AirPressureDropCurves": null
+  },
+  "Pset_CooledBeamPHistoryActive": {
+    "AirFlowRate": null,
+    "Throw": null,
+    "AirPressureDropCurves": null
+  },
+  "Pset_CooledBeamTypeActive": {
+    "AirFlowConfiguration": null,
+    "AirflowRateRange": null,
+    "SupplyAirConnectionType": null,
+    "ConnectionSize": null
+  },
+  "Pset_CooledBeamTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "IsFreeHanging": null,
+    "PipeConnection": null,
+    "WaterFlowControlSystemType": null,
+    "WaterPressureRange": null,
+    "NominalCoolingCapacity": null,
+    "NominalSurroundingTemperatureCooling": null,
+    "NominalSurroundingHumidityCooling": null,
+    "NominalSupplyWaterTemperatureCooling": null,
+    "NominalReturnWaterTemperatureCooling": null,
+    "NominalWaterFlowCooling": null,
+    "NominalHeatingCapacity": null,
+    "NominalSurroundingTemperatureHeating": null,
+    "NominalSupplyWaterTemperatureHeating": null,
+    "NominalReturnWaterTemperatureHeating": null,
+    "NominalWaterFlowHeating": null,
+    "IntegratedLightingType": null,
+    "FinishColor": null,
+    "CoilLength": null,
+    "CoilWidth": null
+  },
+  "Pset_CoolingTowerPHistory": {
+    "Capacity": null,
+    "HeatTransferCoefficient": null,
+    "SumpHeaterPower": null,
+    "UACurve": null,
+    "Performance": null
+  },
+  "Pset_CoolingTowerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NominalCapacity": null,
+    "CircuitType": null,
+    "FlowArrangement": null,
+    "SprayType": null,
+    "CapacityControl": null,
+    "ControlStrategy": null,
+    "NumberOfCells": null,
+    "BasinReserveVolume": null,
+    "LiftElevationDifference": null,
+    "WaterRequirement": null,
+    "OperationTemperatureRange": null,
+    "AmbientDesignDryBulbTemperature": null,
+    "AmbientDesignWetBulbTemperature": null
+  },
+  "Pset_CoveringCeiling": {
+    "Permeability": null,
+    "TileLength": null,
+    "TileWidth": null
+  },
+  "Pset_CoveringCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "FlammabilityRating": null,
+    "FragilityRating": null,
+    "Combustible": null,
+    "SurfaceSpreadOfFlame": null,
+    "Finish": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "FireRating": null
+  },
+  "Pset_CoveringFlooring": {
+    "HasNonSkidSurface": null,
+    "HasAntiStaticSurface": null
+  },
+  "Pset_CurtainWallCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "FireRating": null,
+    "Combustible": null,
+    "SurfaceSpreadOfFlame": null,
+    "ThermalTransmittance": null,
+    "IsExternal": null
+  },
+  "Pset_DamperOccurrence": {
+    "SizingMethod": null
+  },
+  "Pset_DamperPHistory": {
+    "AirFlowRate": null,
+    "Leakage": null,
+    "PressureDrop": null,
+    "BladePositionAngle": null,
+    "DamperPosition": null,
+    "PressureLossCoefficient": null
+  },
+  "Pset_DamperTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "Operation": null,
+    "Orientation": null,
+    "BladeThickness": null,
+    "BladeAction": null,
+    "BladeShape": null,
+    "BladeEdge": null,
+    "NumberofBlades": null,
+    "FaceArea": null,
+    "MaximumAirFlowRate": null,
+    "TemperatureRange": null,
+    "MaximumWorkingPressure": null,
+    "TemperatureRating": null,
+    "NominalAirFlowRate": null,
+    "OpenPressureDrop": null,
+    "LeakageFullyClosed": null,
+    "LossCoefficentCurve": null,
+    "LeakageCurve": null,
+    "RegeneratedSoundCurve": null,
+    "FrameType": null,
+    "FrameDepth": null,
+    "FrameThickness": null,
+    "CloseOffRating": null
+  },
+  "Pset_DamperTypeControlDamper": {
+    "TorqueRange": null,
+    "ControlDamperOperation": null
+  },
+  "Pset_DamperTypeFireDamper": {
+    "ActuationType": null,
+    "ClosureRatingEnum": null,
+    "FireResistanceRating": null,
+    "FusibleLinkTemperature": null
+  },
+  "Pset_DamperTypeFireSmokeDamper": {
+    "ControlType": null,
+    "ActuationType": null,
+    "ClosureRatingEnum": null,
+    "FireResistanceRating": null,
+    "FusibleLinkTemperature": null
+  },
+  "Pset_DamperTypeSmokeDamper": {
+    "ControlType": null
+  },
+  "Pset_DiscreteAccessoryColumnShoe": {
+    "ColumnShoeBasePlateThickness": null,
+    "ColumnShoeBasePlateWidth": null,
+    "ColumnShoeBasePlateDepth": null,
+    "ColumnShoeCasingHeight": null,
+    "ColumnShoeCasingWidth": null,
+    "ColumnShoeCasingDepth": null
+  },
+  "Pset_DiscreteAccessoryCornerFixingPlate": {
+    "CornerFixingPlateLength": null,
+    "CornerFixingPlateThickness": null,
+    "CornerFixingPlateFlangeWidthInPlaneZ": null,
+    "CornerFixingPlateFlangeWidthInPlaneX": null
+  },
+  "Pset_DiscreteAccessoryDiagonalTrussConnector": {
+    "DiagonalTrussHeight": null,
+    "DiagonalTrussLength": null,
+    "DiagonalTrussCrossBarSpacing": null,
+    "DiagonalTrussBaseBarDiameter": null,
+    "DiagonalTrussSecondaryBarDiameter": null,
+    "DiagonalTrussCrossBarDiameter": null
+  },
+  "Pset_DiscreteAccessoryEdgeFixingPlate": {
+    "EdgeFixingPlateLength": null,
+    "EdgeFixingPlateThickness": null,
+    "EdgeFixingPlateFlangeWidthInPlaneZ": null,
+    "EdgeFixingPlateFlangeWidthInPlaneX": null
+  },
+  "Pset_DiscreteAccessoryFixingSocket": {
+    "FixingSocketTypeReference": null,
+    "FixingSocketHeight": null,
+    "FixingSocketThreadDiameter": null,
+    "FixingSocketThreadLength": null
+  },
+  "Pset_DiscreteAccessoryLadderTrussConnector": {
+    "LadderTrussHeight": null,
+    "LadderTrussLength": null,
+    "LadderTrussCrossBarSpacing": null,
+    "LadderTrussBaseBarDiameter": null,
+    "LadderTrussSecondaryBarDiameter": null,
+    "LadderTrussCrossBarDiameter": null
+  },
+  "Pset_DiscreteAccessoryStandardFixingPlate": {
+    "StandardFixingPlateWidth": null,
+    "StandardFixingPlateDepth": null,
+    "StandardFixingPlateThickness": null
+  },
+  "Pset_DiscreteAccessoryWireLoop": {
+    "WireLoopBasePlateThickness": null,
+    "WireLoopBasePlateWidth": null,
+    "WireLoopBasePlateLength": null,
+    "WireDiameter": null,
+    "WireEmbeddingLength": null,
+    "WireLoopLength": null
+  },
+  "Pset_DistributionChamberElementCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_DistributionChamberElementTypeFormedDuct": {
+    "ClearWidth": null,
+    "ClearDepth": null,
+    "WallThickness": null,
+    "BaseThickness": null,
+    "AccessCoverLoadRating": null
+  },
+  "Pset_DistributionChamberElementTypeInspectionChamber": {
+    "ChamberLengthOrRadius": null,
+    "ChamberWidth": null,
+    "InvertLevel": null,
+    "SoffitLevel": null,
+    "WallMaterial": null,
+    "WallThickness": null,
+    "BaseMaterial": null,
+    "BaseThickness": null,
+    "WithBackdrop": null,
+    "AccessCoverMaterial": null,
+    "AccessLengthOrRadius": null,
+    "AccessWidth": null,
+    "AccessCoverLoadRating": null
+  },
+  "Pset_DistributionChamberElementTypeInspectionPit": {
+    "Length": null,
+    "Width": null,
+    "Depth": null
+  },
+  "Pset_DistributionChamberElementTypeManhole": {
+    "InvertLevel": null,
+    "SoffitLevel": null,
+    "WallMaterial": null,
+    "WallThickness": null,
+    "BaseMaterial": null,
+    "BaseThickness": null,
+    "IsShallow": null,
+    "HasSteps": null,
+    "WithBackdrop": null,
+    "AccessCoverMaterial": null,
+    "AccessLengthOrRadius": null,
+    "AccessWidth": null,
+    "AccessCoverLoadRating": null
+  },
+  "Pset_DistributionChamberElementTypeMeterChamber": {
+    "ChamberLengthOrRadius": null,
+    "ChamberWidth": null,
+    "WallMaterial": null,
+    "WallThickness": null,
+    "BaseMaterial": null,
+    "BaseThickness": null,
+    "AccessCoverMaterial": null
+  },
+  "Pset_DistributionChamberElementTypeSump": {
+    "Length": null,
+    "Width": null,
+    "InvertLevel": null
+  },
+  "Pset_DistributionChamberElementTypeTrench": {
+    "Width": null,
+    "Depth": null,
+    "InvertLevel": null
+  },
+  "Pset_DistributionChamberElementTypeValveChamber": {
+    "ChamberLengthOrRadius": null,
+    "ChamberWidth": null,
+    "WallMaterial": null,
+    "WallThickness": null,
+    "BaseMaterial": null,
+    "BaseThickness": null,
+    "AccessCoverMaterial": null
+  },
+  "Pset_DistributionPortCommon": {
+    "PortNumber": null,
+    "ColorCode": null
+  },
+  "Pset_DistributionPortPHistoryCable": {
+    "Current": null,
+    "Voltage": null,
+    "RealPower": null,
+    "ReactivePower": null,
+    "ApparentPower": null,
+    "PowerFactor": null,
+    "DataTransmitted": null,
+    "DataReceived": null
+  },
+  "Pset_DistributionPortPHistoryDuct": {
+    "Temperature": null,
+    "WetBulbTemperature": null,
+    "VolumetricFlowRate": null,
+    "MassFlowRate": null,
+    "FlowCondition": null,
+    "Velocity": null,
+    "Pressure": null
+  },
+  "Pset_DistributionPortPHistoryPipe": {
+    "Temperature": null,
+    "Pressure": null,
+    "Flowrate": null
+  },
+  "Pset_DistributionPortTypeCable": {
+    "ConnectionType": null,
+    "ConnectionSubtype": null,
+    "ConnectionGender": null,
+    "ConductorFunction": null,
+    "CurrentContent3rdHarmonic": null,
+    "Current": null,
+    "Voltage": null,
+    "Power": null,
+    "Protocols": null
+  },
+  "Pset_DistributionPortTypeDuct": {
+    "ConnectionType": null,
+    "ConnectionSubType": null,
+    "NominalWidth": null,
+    "NominalHeight": null,
+    "NominalThickness": null,
+    "DryBulbTemperature": null,
+    "WetBulbTemperature": null,
+    "VolumetricFlowRate": null,
+    "Velocity": null,
+    "Pressure": null
+  },
+  "Pset_DistributionPortTypePipe": {
+    "ConnectionType": null,
+    "ConnectionSubType": null,
+    "NominalDiameter": null,
+    "InnerDiameter": null,
+    "OuterDiameter": null,
+    "Temperature": null,
+    "VolumetricFlowRate": null,
+    "MassFlowRate": null,
+    "FlowCondition": null,
+    "Velocity": null,
+    "Pressure": null
+  },
+  "Pset_DistributionSystemCommon": {
+    "Reference": null
+  },
+  "Pset_DistributionSystemTypeElectrical": {
+    "ElectricalSystemType": null,
+    "ElectricalSystemCategory": null,
+    "Diversity": null,
+    "NumberOfLiveConductors": null,
+    "MaximumAllowedVoltageDrop": null,
+    "NetImpedance": null
+  },
+  "Pset_DistributionSystemTypeVentilation": {
+    "DesignName": null,
+    "DuctSizingMethod": null,
+    "PressureClass": null,
+    "LeakageClass": null,
+    "FrictionLoss": null,
+    "ScrapFactor": null,
+    "DuctSealant": null,
+    "MaximumVelocity": null,
+    "AspectRatio": null,
+    "MinimumHeight": null,
+    "MinimumWidth": null
+  },
+  "Pset_DoorCommon": {
+    "Reference": null,
+    "Status": null,
+    "FireRating": null,
+    "AcousticRating": null,
+    "SecurityRating": null,
+    "DurabilityRating": null,
+    "HygrothermalRating": null,
+    "WaterTightnessRating": null,
+    "MechanicalLoadRating": null,
+    "WindLoadRating": null,
+    "Infiltration": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "GlazingAreaFraction": null,
+    "HandicapAccessible": null,
+    "FireExit": null,
+    "HasDrive": null,
+    "SelfClosing": null,
+    "SmokeStop": null
+  },
+  "Pset_DoorWindowGlazingType": {
+    "GlassLayers": null,
+    "GlassThickness1": null,
+    "GlassThickness2": null,
+    "GlassThickness3": null,
+    "FillGas": null,
+    "GlassColor": null,
+    "IsTempered": null,
+    "IsLaminated": null,
+    "IsCoated": null,
+    "IsWired": null,
+    "VisibleLightReflectance": null,
+    "VisibleLightTransmittance": null,
+    "SolarAbsorption": null,
+    "SolarReflectance": null,
+    "SolarTransmittance": null,
+    "SolarHeatGainTransmittance": null,
+    "ShadingCoefficient": null,
+    "ThermalTransmittanceSummer": null,
+    "ThermalTransmittanceWinter": null
+  },
+  "Pset_DuctFittingOccurrence": {
+    "InteriorRoughnessCoefficient": null,
+    "HasLiner": null,
+    "Color": null
+  },
+  "Pset_DuctFittingPHistory": {
+    "LossCoefficient": null,
+    "AtmosphericPressure": null,
+    "AirFlowLeakage": null
+  },
+  "Pset_DuctFittingTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "PressureClass": null,
+    "PressureRange": null,
+    "TemperatureRange": null
+  },
+  "Pset_DuctSegmentOccurrence": {
+    "InteriorRoughnessCoefficient": null,
+    "HasLiner": null,
+    "Color": null
+  },
+  "Pset_DuctSegmentPHistory": {
+    "LossCoefficient": null,
+    "AtmosphericPressure": null,
+    "LeakageCurve": null,
+    "FluidFlowLeakage": null
+  },
+  "Pset_DuctSegmentTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "Shape": null,
+    "WorkingPressure": null,
+    "PressureRange": null,
+    "TemperatureRange": null,
+    "LongitudinalSeam": null,
+    "NominalDiameterOrWidth": null,
+    "NominalHeight": null,
+    "Reinforcement": null,
+    "ReinforcementSpacing": null
+  },
+  "Pset_DuctSilencerPHistory": {
+    "AirFlowRate": null,
+    "AirPressureDropCurve": null
+  },
+  "Pset_DuctSilencerTypeCommon": {
+    "RatedCurrent": null,
+    "RatedVoltage": null,
+    "NominalFrequencyRange": null,
+    "PowerFactor": null,
+    "ConductorFunction": null,
+    "NumberOfPoles": null,
+    "HasProtectiveEarth": null,
+    "InsulationStandardClass": null,
+    "IP_Code": null,
+    "IK_Code": null
+  },
+  "Pset_ElectricalDeviceCommon": {
+    "RatedCurrent": null,
+    "RatedVoltage": null,
+    "NominalFrequencyRange": null,
+    "PowerFactor": null,
+    "ConductorFunction": null,
+    "NumberOfPoles": null,
+    "HasProtectiveEarth": null,
+    "InsulationStandardClass": null,
+    "IP_Code": null,
+    "IK_Code": null
+  },
+  "Pset_ElectricAppliancePHistory": {
+    "PowerState": null
+  },
+  "Pset_ElectricApplianceTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_ElectricApplianceTypeDishwasher": {
+    "DishwasherType": null
+  },
+  "Pset_ElectricApplianceTypeElectricCooker": {
+    "ElectricCookerType": null
+  },
+  "Pset_ElectricDistributionBoardOccurrence": {
+    "IsMain": null,
+    "IsSkilledOperator": null
+  },
+  "Pset_ElectricDistributionBoardTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_ElectricFlowStorageDeviceTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NominalSupplyVoltage": null,
+    "NominalSupplyVoltageOffset": null,
+    "NominalFrequency": null,
+    "ConnectedConductorFunction": null,
+    "ShortCircuit3PoleMaximumState": null,
+    "ShortCircuit3PolePowerFactorMaximumState": null,
+    "ShortCircuit2PoleMinimumState": null,
+    "ShortCircuit2PolePowerFactorMinimumState": null,
+    "ShortCircuit1PoleMaximumState": null,
+    "ShortCircuit1PolePowerFactorMaximumState": null,
+    "ShortCircuit1PoleMinimumState": null,
+    "ShortCircuit1PolePowerFactorMinimumState": null,
+    "EarthFault1PoleMaximumState": null,
+    "EarthFault1PolePowerFactorMaximumState": null,
+    "EarthFault1PoleMinimumState": null,
+    "EarthFault1PolePowerFactorMinimumState": null,
+    "MaximumInsulatedVoltage": null,
+    "RatedCapacitance": null,
+    "PowerCapacity": null
+  },
+  "Pset_ElectricGeneratorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "ElectricGeneratorEfficiency": null,
+    "StartCurrentFactor": null,
+    "MaximumPowerOutput": null
+  },
+  "Pset_ElectricMotorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "MaximumPowerOutput": null,
+    "ElectricMotorEfficiency": null,
+    "StartCurrentFactor": null,
+    "StartingTime": null,
+    "TeTime": null,
+    "LockedRotorCurrent": null,
+    "MotorEnclosureType": null,
+    "FrameSize": null,
+    "IsGuarded": null,
+    "HasPartWinding": null
+  },
+  "Pset_ElectricTimeControlTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_ElementAssemblyCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_ElementComponentCommon": {
+    "Reference": null,
+    "Status": null,
+    "DeliveryType": null,
+    "CorrosionTreatment": null
+  },
+  "Pset_EngineTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "EnergySource": null
+  },
+  "Pset_EnvironmentalImpactIndicators": {
+    "Reference": null,
+    "FunctionalUnitReference": null,
+    "IndicatorsUnit": null,
+    "LifeCyclePhase": null,
+    "ExpectedServiceLife": null,
+    "TotalPrimaryEnergyConsumptionPerUnit": null,
+    "WaterConsumptionPerUnit": null,
+    "HazardousWastePerUnit": null,
+    "NonHazardousWastePerUnit": null,
+    "ClimateChangePerUnit": null,
+    "AtmosphericAcidificationPerUnit": null,
+    "RenewableEnergyConsumptionPerUnit": null,
+    "NonRenewableEnergyConsumptionPerUnit": null,
+    "ResourceDepletionPerUnit": null,
+    "InertWastePerUnit": null,
+    "RadioactiveWastePerUnit": null,
+    "StratosphericOzoneLayerDestructionPerUnit": null,
+    "PhotochemicalOzoneFormationPerUnit": null,
+    "EutrophicationPerUnit": null
+  },
+  "Pset_EnvironmentalImpactValues": {
+    "TotalPrimaryEnergyConsumption": null,
+    "WaterConsumption": null,
+    "HazardousWaste": null,
+    "NonHazardousWaste": null,
+    "ClimateChange": null,
+    "AtmosphericAcidification": null,
+    "RenewableEnergyConsumption": null,
+    "NonRenewableEnergyConsumption": null,
+    "ResourceDepletion": null,
+    "InertWaste": null,
+    "RadioactiveWaste": null,
+    "StratosphericOzoneLayerDestruction": null,
+    "PhotochemicalOzoneFormation": null,
+    "Eutrophication": null,
+    "LeadInTime": null,
+    "Duration": null,
+    "LeadOutTime": null
+  },
+  "Pset_EvaporativeCoolerPHistory": {
+    "WaterSumpTemperature": null,
+    "Effectiveness": null,
+    "SensibleHeatTransferRate": null,
+    "LatentHeatTransferRate": null,
+    "TotalHeatTransferRate": null
+  },
+  "Pset_EvaporativeCoolerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "FlowArrangement": null,
+    "HeatExchangeArea": null,
+    "OperationTemperatureRange": null,
+    "WaterRequirement": null,
+    "EffectivenessTable": null,
+    "AirPressureDropCurve": null,
+    "WaterPressDropCurve": null
+  },
+  "Pset_EvaporatorPHistory": {
+    "HeatRejectionRate": null,
+    "ExteriorHeatTransferCoefficient": null,
+    "InteriorHeatTransferCoefficient": null,
+    "RefrigerantFoulingResistance": null,
+    "EvaporatingTemperature": null,
+    "LogarithmicMeanTemperatureDifference": null,
+    "UAcurves": null,
+    "CompressorEvaporatorHeatGain": null,
+    "CompressorEvaporatorPressureDrop": null,
+    "EvaporatorMeanVoidFraction": null,
+    "WaterFoulingResistance": null
+  },
+  "Pset_EvaporatorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "EvaporatorMediumType": null,
+    "EvaporatorCoolant": null,
+    "RefrigerantClass": null,
+    "ExternalSurfaceArea": null,
+    "InternalSurfaceArea": null,
+    "InternalRefrigerantVolume": null,
+    "InternalWaterVolume": null,
+    "NominalHeatTransferArea": null,
+    "NominalHeatTransferCoefficient": null
+  },
+  "Pset_FanCentrifugal": {
+    "DischargePosition": null,
+    "DirectionOfRotation": null,
+    "Arrangement": null
+  },
+  "Pset_FanOccurrence": {
+    "DischargeType": null,
+    "ApplicationOfFan": null,
+    "CoilPosition": null,
+    "MotorPosition": null,
+    "FanMountingType": null,
+    "FractionOfMotorHeatToAirStream": null,
+    "ImpellerDiameter": null
+  },
+  "Pset_FanPHistory": {
+    "FanRotationSpeed": null,
+    "WheelTipSpeed": null,
+    "FanEfficiency": null,
+    "OverallEfficiency": null,
+    "FanPowerRate": null,
+    "ShaftPowerRate": null,
+    "DischargeVelocity": null,
+    "DischargePressureLoss": null,
+    "DrivePowerLoss": null
+  },
+  "Pset_FanTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "MotorDriveType": null,
+    "CapacityControlType": null,
+    "OperationTemperatureRange": null,
+    "NominalAirFlowRate": null,
+    "NominalTotalPressure": null,
+    "NominalStaticPressure": null,
+    "NominalRotationSpeed": null,
+    "NominalPowerRate": null,
+    "OperationalCriteria": null,
+    "PressureCurve": null,
+    "EfficiencyCurve": null
+  },
+  "Pset_FastenerWeld": {
+    "Type1": null,
+    "Type2": null,
+    "Surface1": null,
+    "Surface2": null,
+    "Process": null,
+    "ProcessName": null,
+    "a": null,
+    "c": null,
+    "d": null,
+    "e": null,
+    "l": null,
+    "n": null,
+    "s": null,
+    "z": null,
+    "Intermittent": null,
+    "Staggered": null
+  },
+  "Pset_FilterPHistory": {
+    "CountedEfficiency": null,
+    "WeightedEfficiency": null,
+    "ParticleMassHolding": null
+  },
+  "Pset_FilterTypeAirParticleFilter": {
+    "AirParticleFilterType": null,
+    "FrameMaterial": null,
+    "SeparationType": null,
+    "DustHoldingCapacity": null,
+    "FaceSurfaceArea": null,
+    "MediaExtendedArea": null,
+    "NominalCountedEfficiency": null,
+    "NominalWeightedEfficiency": null,
+    "PressureDropCurve": null,
+    "CountedEfficiencyCurve": null,
+    "WeightedEfficiencyCurve": null
+  },
+  "Pset_FilterTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "Weight": null,
+    "InitialResistance": null,
+    "FinalResistance": null,
+    "OperationTemperatureRange": null,
+    "FlowRateRange": null,
+    "NominalFilterFaceVelocity": null,
+    "NominalMediaSurfaceVelocity": null,
+    "NominalPressureDrop": null,
+    "NominalFlowrate": null,
+    "NominalParticleGeometricMeanDiameter": null,
+    "NominalParticleGeometricStandardDeviation": null
+  },
+  "Pset_FilterTypeCompressedAirFilter": {
+    "CompressedAirFilterType": null,
+    "OperationPressureMax": null,
+    "ParticleAbsorptionCurve": null,
+    "AutomaticCondensateDischarge": null,
+    "CloggingIndicator": null
+  },
+  "Pset_FilterTypeWaterFilter": {
+    "WaterFilterType": null
+  },
+  "Pset_FireSuppressionTerminalTypeBreechingInlet": {
+    "BreechingInletType": null,
+    "InletDiameter": null,
+    "OutletDiameter": null,
+    "CouplingType": null,
+    "HasCaps": null
+  },
+  "Pset_FireSuppressionTerminalTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_FireSuppressionTerminalTypeFireHydrant": {
+    "FireHydrantType": null,
+    "PumperConnectionSize": null,
+    "NumberOfHoseConnections": null,
+    "HoseConnectionSize": null,
+    "DischargeFlowRate": null,
+    "FlowClass": null,
+    "WaterIsPotable": null,
+    "PressureRating": null,
+    "BodyColour": null,
+    "CapColour": null
+  },
+  "Pset_FireSuppressionTerminalTypeHoseReel": {
+    "HoseReelType": null,
+    "HoseReelMountingType": null,
+    "InletConnectionSize": null,
+    "HoseDiameter": null,
+    "HoseLength": null,
+    "HoseNozzleType": null,
+    "ClassOfService": null,
+    "ClassificationAuthority": null
+  },
+  "Pset_FireSuppressionTerminalTypeSprinkler": {
+    "SprinklerType": null,
+    "Activation": null,
+    "Response": null,
+    "ActivationTemperature": null,
+    "CoverageArea": null,
+    "HasDeflector": null,
+    "BulbLiquidColor": null,
+    "DischargeFlowRate": null,
+    "ResidualFlowingPressure": null,
+    "DischargeCoefficient": null,
+    "MaximumWorkingPressure": null,
+    "ConnectionSize": null
+  },
+  "Pset_FlowInstrumentPHistory": {
+    "Value": null,
+    "Quality": null,
+    "Status": null
+  },
+  "Pset_FlowInstrumentTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_FlowInstrumentTypePressureGauge": {
+    "PressureGaugeType": null,
+    "DisplaySize": null
+  },
+  "Pset_FlowInstrumentTypeThermometer": {
+    "ThermometerType": null,
+    "DisplaySize": null
+  },
+  "Pset_FlowMeterOccurrence": {
+    "Purpose": null
+  },
+  "Pset_FlowMeterTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "ReadOutType": null,
+    "RemoteReading": null
+  },
+  "Pset_FlowMeterTypeEnergyMeter": {
+    "NominalCurrent": null,
+    "MaximumCurrent": null,
+    "MultipleTarriff": null
+  },
+  "Pset_FlowMeterTypeGasMeter": {
+    "GasType": null,
+    "ConnectionSize": null,
+    "MaximumFlowRate": null,
+    "MaximumPressureLoss": null
+  },
+  "Pset_FlowMeterTypeOilMeter": {
+    "ConnectionSize": null,
+    "MaximumFlowRate": null
+  },
+  "Pset_FlowMeterTypeWaterMeter": {
+    "Type": null,
+    "ConnectionSize": null,
+    "MaximumFlowRate": null,
+    "MaximumPressureLoss": null,
+    "BackflowPreventerType": null
+  },
+  "Pset_FootingCommon": {
+    "Reference": null,
+    "Status": null,
+    "LoadBearing": null
+  },
+  "Pset_FurnitureTypeChair": {
+    "SeatingHeight": null,
+    "HighestSeatingHeight": null,
+    "LowestSeatingHeight": null
+  },
+  "Pset_FurnitureTypeCommon": {
+    "Description": null,
+    "Style": null,
+    "NominalHeight": null,
+    "NominalLength": null,
+    "NominalDepth": null,
+    "MainColor": null,
+    "IsBuiltIn": null
+  },
+  "Pset_FurnitureTypeDesk": {
+    "WorksurfaceArea": null
+  },
+  "Pset_FurnitureTypeFileCabinet": {
+    "WithLock": null
+  },
+  "Pset_FurnitureTypeTable": {
+    "WorksurfaceArea": null,
+    "NumberOfChairs": null
+  },
+  "Pset_HeatExchangerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "FlowArrangement": null
+  },
+  "Pset_HeatExchangerTypePlate": {
+    "NumberOfPlates": null
+  },
+  "Pset_HumidifierPHistory": {
+    "AtmosphericPressure": null,
+    "SaturationEfficiency": null
+  },
+  "Pset_HumidifierTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "HumidifierApplication": null,
+    "Weight": null,
+    "NominalMoistureGain": null,
+    "NominalAirFlowRate": null,
+    "InternalControl": null,
+    "WaterRequirement": null,
+    "SaturationEfficiencyCurve": null,
+    "AirPressureDropCurve": null
+  },
+  "Pset_InterceptorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NominalBodyLength": null,
+    "NominalBodyWidth": null,
+    "NominalBodyDepth": null,
+    "InletConnectionSize": null,
+    "OutletConnectionSize": null,
+    "CoverLength": null,
+    "CoverWidth": null,
+    "VentilatingPipeSize": null
+  },
+  "Pset_JunctionBoxTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfGangs": null,
+    "ClearDepth": null,
+    "ShapeType": null,
+    "PlacingType": null,
+    "MountingType": null,
+    "IsExternal": null,
+    "IP_Code": null
+  },
+  "Pset_LampTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "ContributedLuminousFlux": null,
+    "LightEmitterNominalPower": null,
+    "LampMaintenanceFactor": null,
+    "LampBallastType": null,
+    "LampCompensationType": null,
+    "ColourAppearance": null,
+    "Spectrum": null,
+    "ColourTemperature": null,
+    "ColourRenderingIndex": null
+  },
+  "Pset_LandRegistration": {
+    "LandID": null,
+    "IsPermanentID": null,
+    "LandTitleID": null
+  },
+  "Pset_LightFixtureTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfSources": null,
+    "TotalWattage": null,
+    "LightFixtureMountingType": null,
+    "LightFixturePlacingType": null,
+    "MaintenanceFactor": null,
+    "MaximumPlenumSensibleLoad": null,
+    "MaximumSpaceSensibleLoad": null,
+    "SensibleLoadToRadiant": null
+  },
+  "Pset_LightFixtureTypeSecurityLighting": {
+    "SecurityLightingType": null,
+    "FixtureHeight": null,
+    "SelfTestFunction": null,
+    "BackupSupplySystem": null,
+    "PictogramEscapeDirection": null,
+    "Addressablility": null
+  },
+  "Pset_ManufacturerOccurrence": {
+    "AcquisitionDate": null,
+    "BarCode": null,
+    "SerialNumber": null,
+    "BatchReference": null,
+    "AssemblyPlace": null
+  },
+  "Pset_ManufacturerTypeInformation": {
+    "GlobalTradeItemNumber": null,
+    "ArticleNumber": null,
+    "ModelReference": null,
+    "ModelLabel": null,
+    "Manufacturer": null,
+    "ProductionYear": null,
+    "AssemblyPlace": null
+  },
+  "Pset_MaterialCombustion": {
+    "SpecificHeatCapacity": null,
+    "N20Content": null,
+    "COContent": null,
+    "CO2Content": null
+  },
+  "Pset_MaterialCommon": {
+    "MolecularWeight": null,
+    "Porosity": null,
+    "MassDensity": null
+  },
+  "Pset_MaterialConcrete": {
+    "MolecularWeight": null,
+    "Porosity": null,
+    "MassDensity": null,
+    "CompressiveStrength": null,
+    "MaxAggregateSize": null,
+    "AdmixturesDescription": null,
+    "Workability": null,
+    "WaterImpermeability": null,
+    "ProtectivePoreRatio": null
+  },
+  "Pset_MaterialEnergy": {
+    "ViscosityTemperatureDerivative": null,
+    "MoistureCapacityThermalGradient": null,
+    "ThermalConductivityTemperatureDerivative": null,
+    "SpecificHeatTemperatureDerivative": null,
+    "VisibleRefractionIndex": null,
+    "SolarRefractionIndex": null,
+    "GasPressure": null
+  },
+  "Pset_MaterialFuel": {
+    "ViscosityTemperatureDerivative": null,
+    "MoistureCapacityThermalGradient": null,
+    "ThermalConductivityTemperatureDerivative": null,
+    "SpecificHeatTemperatureDerivative": null,
+    "VisibleRefractionIndex": null,
+    "SolarRefractionIndex": null,
+    "GasPressure": null,
+    "CombustionTemperature": null,
+    "CarbonContent": null,
+    "LowerHeatingValue": null,
+    "HigherHeatingValue": null
+  },
+  "Pset_MaterialHygroscopic": {
+    "UpperVaporResistanceFactor": null,
+    "LowerVaporResistanceFactor": null,
+    "IsothermalMoistureCapacity": null,
+    "VaporPermeability": null,
+    "MoistureDiffusivity": null
+  },
+  "Pset_MaterialMechanical": {
+    "DynamicViscosity": null,
+    "YoungModulus": null,
+    "ShearModulus": null,
+    "PoissonRatio": null,
+    "ThermalExpansionCoefficient": null
+  },
+  "Pset_MaterialOptical": {
+    "VisibleTransmittance": null,
+    "SolarTransmittance": null,
+    "ThermalIrTransmittance": null,
+    "ThermalIrEmissivityBack": null,
+    "ThermalIrEmissivityFront": null,
+    "VisibleReflectanceBack": null,
+    "VisibleReflectanceFront": null,
+    "SolarReflectanceBack": null,
+    "SolarReflectanceFront": null
+  },
+  "Pset_MaterialSteel": {
+    "YieldStress": null,
+    "UltimateStress": null,
+    "UltimateStrain": null,
+    "HardeningModule": null,
+    "ProportionalStress": null,
+    "PlasticStrain": null,
+    "Relaxations": null
+  },
+  "Pset_MaterialThermal": {
+    "SpecificHeatCapacity": null,
+    "BoilingPoint": null,
+    "FreezingPoint": null,
+    "ThermalConductivity": null
+  },
+  "Pset_MaterialWater": {
+    "IsPotable": null,
+    "Hardness": null,
+    "AlkalinityConcentration": null,
+    "AcidityConcentration": null,
+    "ImpuritiesContent": null,
+    "DissolvedSolidsContent": null,
+    "PHLevel": null
+  },
+  "Pset_MaterialWood": {
+    "Species": null,
+    "StrengthGrade": null,
+    "AppearanceGrade": null,
+    "Layup": null,
+    "Layers": null,
+    "Plies": null,
+    "MoistureContent": null,
+    "DimensionalChangeCoefficient": null,
+    "ThicknessSwelling": null
+  },
+  "Pset_MaterialWoodBasedPanel": {
+    "ApplicableStructuralDesignMethod": null,
+    "InPlane": null,
+    "OutOfPlane": null,
+    "OutOfPlaneNegative": null
+  },
+  "Pset_MaterialWoodBasedBeam": {
+    "ApplicableStructuralDesignMethod": null,
+    "InPlane": null,
+    "InPlaneNegative": null,
+    "OutOfPlane": null
+  },
+  "Pset_MechanicalFastenerAnchorBolt": {
+    "AnchorBoltLength": null,
+    "AnchorBoltDiameter": null,
+    "AnchorBoltThreadLength": null,
+    "AnchorBoltProtrusionLength": null
+  },
+  "Pset_MechanicalFastenerBolt": {
+    "ThreadDiameter": null,
+    "ThreadLength": null,
+    "NutsCount": null,
+    "WashersCount": null,
+    "HeadShape": null,
+    "KeyShape": null,
+    "NutShape": null,
+    "WasherShape": null
+  },
+  "Pset_MedicalDeviceTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_MemberCommon": {
+    "Reference": null,
+    "Status": null,
+    "Span": null,
+    "Slope": null,
+    "Roll": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_MotorConnectionTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_OpeningElementCommon": {
+    "Reference": null,
+    "Status": null,
+    "Purpose": null,
+    "FireExit": null,
+    "FireRating": null,
+    "AcousticRating": null
+  },
+  "Pset_OutletTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "IsPluggableOutlet": null,
+    "NumberOfSockets": null
+  },
+  "Pset_OutsideDesignCriteria": {
+    "HeatingDryBulb": null,
+    "HeatingWetBulb": null,
+    "HeatingDesignDay": null,
+    "CoolingDryBulb": null,
+    "CoolingWetBulb": null,
+    "CoolingDesignDay": null,
+    "WeatherDataStation": null,
+    "WeatherDataDate": null,
+    "BuildingThermalExposure": null,
+    "PrevailingWindDirection": null,
+    "PrevailingWindVelocity": null
+  },
+  "Pset_PackingInstructions": {
+    "PackingCareType": null,
+    "WrappingMaterial": null,
+    "ContainerMaterial": null,
+    "SpecialInstructions": null
+  },
+  "Pset_Permit": {
+    "EscortRequirement": null,
+    "StartDate": null,
+    "EndDate": null,
+    "SpecialRequirements": null
+  },
+  "Pset_PileCommon": {
+    "Reference": null,
+    "Status": null,
+    "LoadBearing": null
+  },
+  "Pset_PipeConnectionFlanged": {
+    "FlangeTable": null,
+    "FlangeStandard": null,
+    "BoreSize": null,
+    "FlangeDiameter": null,
+    "FlangeThickness": null,
+    "NumberOfBoltholes": null,
+    "BoltSize": null,
+    "BoltholePitch": null
+  },
+  "Pset_PipeFittingOccurrence": {
+    "InteriorRoughnessCoefficient": null,
+    "Colour": null
+  },
+  "Pset_PipeFittingPHistory": {
+    "LossCoefficient": null,
+    "FlowrateLeakage": null
+  },
+  "Pset_PipeFittingTypeBend": {
+    "BendAngle": null,
+    "BendRadius": null
+  },
+  "Pset_PipeFittingTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "PressureClass": null,
+    "PressureRange": null,
+    "TemperatureRange": null,
+    "FittingLossFactor": null
+  },
+  "Pset_PipeFittingTypeJunction": {
+    "JunctionType": null,
+    "JunctionLeftAngle": null,
+    "JunctionLeftRadius": null,
+    "JunctionRightAngle": null,
+    "JunctionRightRadius": null
+  },
+  "Pset_PipeSegmentOccurrence": {
+    "InteriorRoughnessCoefficient": null,
+    "Color": null,
+    "Gradient": null,
+    "InvertElevation": null
+  },
+  "Pset_PipeSegmentPHistory": {
+    "LeakageCurve": null,
+    "FluidFlowLeakage": null
+  },
+  "Pset_PipeSegmentTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "WorkingPressure": null,
+    "PressureRange": null,
+    "TemperatureRange": null,
+    "NominalDiameter": null,
+    "InnerDiameter": null,
+    "OuterDiameter": null,
+    "Length": null
+  },
+  "Pset_PipeSegmentTypeCulvert": {
+    "InternalWidth": null,
+    "ClearDepth": null
+  },
+  "Pset_PipeSegmentTypeGutter": {
+    "Slope": null,
+    "FlowRating": null,
+    "Complementaryfunction": null,
+    "OrthometricHeight": null,
+    "IsCovered": null,
+    "IsMonitored": null
+  },
+  "Pset_PlateCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_PrecastConcreteElementFabrication": {
+    "TypeDesignator": null,
+    "ProductionLotId": null,
+    "SerialNumber": null,
+    "PieceMark": null,
+    "AsBuiltLocationNumber": null,
+    "ActualProductionDate": null,
+    "ActualErectionDate": null
+  },
+  "Pset_PrecastConcreteElementGeneral": {
+    "TypeDesignator": null,
+    "CornerChamfer": null,
+    "ManufacturingToleranceClass": null,
+    "FormStrippingStrength": null,
+    "LiftingStrength": null,
+    "ReleaseStrength": null,
+    "MinimumAllowableSupportLength": null,
+    "InitialTension": null,
+    "TendonRelaxation": null,
+    "TransportationStrength": null,
+    "SupportDuringTransportDescription": null,
+    "SupportDuringTransportDocReference": null,
+    "HollowCorePlugging": null,
+    "CamberAtMidspan": null,
+    "BatterAtStart": null,
+    "BatterAtEnd": null,
+    "Twisting": null,
+    "Shortening": null,
+    "PieceMark": null,
+    "DesignLocationNumber": null
+  },
+  "Pset_PrecastSlab": {
+    "TypeDesignator": null,
+    "ToppingType": null,
+    "EdgeDistanceToFirstAxis": null,
+    "DistanceBetweenComponentAxes": null,
+    "AngleToFirstAxis": null,
+    "AngleBetweenComponentAxes": null,
+    "NominalThickness": null,
+    "NominalToppingThickness": null
+  },
+  "Pset_ProfileArbitraryDoubleT": {
+    "OverallWidth": null,
+    "LeftFlangeWidth": null,
+    "RightFlangeWidth": null,
+    "OverallDepth": null,
+    "FlangeDepth": null,
+    "FlangeDraft": null,
+    "FlangeChamfer": null,
+    "FlangeBaseFillet": null,
+    "FlangeTopFillet": null,
+    "StemBaseWidth": null,
+    "StemTopWidth": null,
+    "StemBaseChamfer": null,
+    "StemTopChamfer": null,
+    "StemBaseFillet": null,
+    "StemTopFillet": null
+  },
+  "Pset_ProfileArbitraryHollowCore": {
+    "OverallWidth": null,
+    "OverallDepth": null,
+    "EdgeDraft": null,
+    "DraftBaseOffset": null,
+    "DraftSideOffset": null,
+    "BaseChamfer": null,
+    "KeyDepth": null,
+    "KeyHeight": null,
+    "KeyOffset": null,
+    "BottomCover": null,
+    "CoreSpacing": null,
+    "CoreBaseHeight": null,
+    "CoreMiddleHeight": null,
+    "CoreTopHeight": null,
+    "CoreBaseWidth": null,
+    "CoreTopWidth": null,
+    "CenterCoreSpacing": null,
+    "CenterCoreBaseHeight": null,
+    "CenterCoreMiddleHeight": null,
+    "CenterCoreTopHeight": null,
+    "CenterCoreBaseWidth": null,
+    "CenterCoreTopWidth": null,
+    "NumberOfCores": null
+  },
+  "Pset_ProfileMechanical": {
+    "MassPerLength": null,
+    "CrossSectionArea": null,
+    "Perimeter": null,
+    "MinimumPlateThickness": null,
+    "MaximumPlateThickness": null,
+    "CentreOfGravityInX": null,
+    "CentreOfGravityInY": null,
+    "ShearCentreZ": null,
+    "ShearCentreY": null,
+    "MomentOfInertiaY": null,
+    "MomentOfInertiaZ": null,
+    "MomentOfInertiaYZ": null,
+    "TorsionalConstantX": null,
+    "WarpingConstant": null,
+    "ShearDeformationAreaZ": null,
+    "ShearDeformationAreaY": null,
+    "MaximumSectionModulusY": null,
+    "MinimumSectionModulusY": null,
+    "MaximumSectionModulusZ": null,
+    "MinimumSectionModulusZ": null,
+    "TorsionalSectionModulus": null,
+    "ShearAreaZ": null,
+    "ShearAreaY": null,
+    "PlasticShapeFactorY": null,
+    "PlasticShapeFactorZ": null
+  },
+  "Pset_ProjectOrderChangeOrder": {
+    "ReasonForChange": null,
+    "BudgetSource": null
+  },
+  "Pset_ProjectOrderMaintenanceWorkOrder": {
+    "ProductDescription": null,
+    "WorkTypeRequested": null,
+    "ContractualType": null,
+    "IfNotAccomplished": null,
+    "MaintenaceType": null,
+    "FaultPriorityType": null,
+    "LocationPriorityType": null,
+    "ScheduledFrequency": null
+  },
+  "Pset_ProjectOrderMoveOrder": {
+    "SpecialInstructions": null
+  },
+  "Pset_ProjectOrderPurchaseOrder": {
+    "IsFOB": null,
+    "ShipMethod": null
+  },
+  "Pset_ProjectOrderWorkOrder": {
+    "ProductDescription": null,
+    "WorkTypeRequested": null,
+    "ContractualType": null,
+    "IfNotAccomplished": null
+  },
+  "Pset_PropertyAgreement": {
+    "AgreementType": null,
+    "Identifier": null,
+    "Version": null,
+    "VersionDate": null,
+    "PropertyName": null,
+    "CommencementDate": null,
+    "TerminationDate": null,
+    "Duration": null,
+    "Options": null,
+    "ConditionCommencement": null,
+    "Restrictions": null,
+    "ConditionTermination": null
+  },
+  "Pset_ProtectiveDeviceBreakerUnitI2TCurve": {
+    "VoltageLevel": null,
+    "NominalCurrent": null,
+    "BreakerUnitFuseBreakingingCurve": null
+  },
+  "Pset_ProtectiveDeviceBreakerUnitI2TFuseCurve": {
+    "VoltageLevel": null,
+    "BreakerUnitFuseMeltingCurve": null,
+    "BreakerUnitCurve": null
+  },
+  "Pset_ProtectiveDeviceBreakerUnitIPICurve": {
+    "VoltageLevel": null,
+    "NominalCurrent": null,
+    "BreakerUnitIPICurve": null
+  },
+  "Pset_ProtectiveDeviceBreakerUnitTypeMCB": {
+    "PowerLoss": null,
+    "VoltageLevel": null,
+    "NominalCurrents": null,
+    "ICU60947": null,
+    "ICS60947": null,
+    "ICN60898": null,
+    "ICS60898": null
+  },
+  "Pset_ProtectiveDeviceBreakerUnitTypeMotorProtection": {
+    "PerformanceClasses": null,
+    "VoltageLevel": null,
+    "ICU60947": null,
+    "ICS60947": null,
+    "ICW60947": null,
+    "ICM60947": null
+  },
+  "Pset_ProtectiveDeviceOccurrence": {
+    "PoleUsage": null,
+    "LongTimeFunction": null,
+    "ShortTimeFunction": null,
+    "ShortTimei2tFunction": null,
+    "GroundFaultFunction": null,
+    "GroundFaulti2tFunction": null,
+    "LongTimeCurrentSetValue": null,
+    "ShortTimeCurrentSetValue": null,
+    "InstantaneousCurrentSetValue": null,
+    "GroundFaultCurrentSetValue": null,
+    "LongTimeDelay": null,
+    "ShortTimeTrippingTime": null,
+    "InstantaneousTrippingTime": null,
+    "GroundFaultTrippingTime": null
+  },
+  "Pset_ProtectiveDeviceTrippingCurve": {
+    "TrippingCurveType": null,
+    "TrippingCurve": null
+  },
+  "Pset_ProtectiveDeviceTrippingFunctionGCurve": {
+    "IsSelectable": null,
+    "NominalCurrentAdjusted": null,
+    "ExternalAdjusted": null,
+    "ReleaseCurrent": null,
+    "ReleaseTime": null,
+    "CurrentTolerance1": null,
+    "CurrentToleranceLimit1": null,
+    "CurrentTolerance2": null,
+    "IsCurrentTolerancePositiveOnly": null,
+    "TimeTolerance1": null,
+    "TimeToleranceLimit1": null,
+    "TimeTolerance2": null,
+    "IsTimeTolerancePositiveOnly": null,
+    "ReleaseCurrentI2tStart": null,
+    "ReleaseTimeI2tStart": null,
+    "ReleaseCurrentI2tEnd": null,
+    "ReleaseTimeI2tEnd": null
+  },
+  "Pset_ProtectiveDeviceTrippingFunctionICurve": {
+    "IsSelectable": null,
+    "NominalCurrentAdjusted": null,
+    "ReleaseCurrent": null,
+    "ReleaseTime": null,
+    "CurrentTolerance1": null,
+    "CurrentToleranceLimit1": null,
+    "CurrentTolerance2": null,
+    "IsCurrentTolerancePositiveOnly": null,
+    "TimeTolerance1": null,
+    "TimeToleranceLimit1": null,
+    "TimeTolerance2": null,
+    "IsTimeTolerancePositiveOnly": null,
+    "MaxAdjustmentX_ICS": null,
+    "IsOffWhenSFunctionOn": null
+  },
+  "Pset_ProtectiveDeviceTrippingFunctionLCurve": {
+    "IsSelectable": null,
+    "UpperCurrent1": null,
+    "UpperCurrent2": null,
+    "UpperTime1": null,
+    "UpperTime2": null,
+    "LowerCurrent1": null,
+    "LowerCurrent2": null,
+    "LowerTime1": null,
+    "LowerTime2": null
+  },
+  "Pset_ProtectiveDeviceTrippingFunctionSCurve": {
+    "IsSelectable": null,
+    "NominalCurrentAdjusted": null,
+    "ReleaseCurrent": null,
+    "ReleaseTime": null,
+    "CurrentTolerance1": null,
+    "CurrentToleranceLimit1": null,
+    "CurrentTolerance2": null,
+    "IsCurrentTolerancePositiveOnly": null,
+    "TimeTolerance1": null,
+    "TimeToleranceLimit1": null,
+    "TimeTolerance2": null,
+    "IsTimeTolerancePositiveOnly": null,
+    "ReleaseCurrentI2tStart": null,
+    "ReleaseTimeI2tStart": null,
+    "ReleaseCurrentI2tEnd": null,
+    "ReleaseTimeI2tEnd": null,
+    "IsOffWhenLfunctionOn": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitCurrentAdjustment": {
+    "AdjustmentValueType": null,
+    "CurrentAdjustmentRange": null,
+    "CurrentAdjustmentRangeStepValue": null,
+    "CurrentAdjustmentValues": null,
+    "AdjustmentDesignation": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitTimeAdjustment": {
+    "AdjustmentValueType": null,
+    "AdjustmentRange": null,
+    "AdjustmentRangeStepValue": null,
+    "AdjustmentValues": null,
+    "AdjustmentDesignation": null,
+    "CurrentForTimeDelay": null,
+    "I2TApplicability": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "Standard": null,
+    "UseInDiscrimination": null,
+    "AtexVerified": null,
+    "OldDevice": null,
+    "LimitingTerminalSize": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitTypeElectroMagnetic": {
+    "ElectroMagneticTrippingUnitType": null,
+    "I1": null,
+    "I2": null,
+    "T2": null,
+    "DefinedTemperature": null,
+    "TemperatureFactor": null,
+    "I4": null,
+    "I5": null,
+    "T5": null,
+    "CurveDesignation": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitTypeElectronic": {
+    "ElectronicTrippingUnitType": null,
+    "NominalCurrents": null,
+    "N_Protection": null,
+    "N_Protection_50": null,
+    "N_Protection_100": null,
+    "N_Protection_Select": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitTypeResidualCurrent": {
+    "TrippingUnitReleaseCurrent": null
+  },
+  "Pset_ProtectiveDeviceTrippingUnitTypeThermal": {
+    "ThermalTrippingUnitType": null,
+    "I1": null,
+    "I2": null,
+    "T2": null,
+    "DefinedTemperature": null,
+    "TemperatureFactor": null,
+    "CurveDesignation": null
+  },
+  "Pset_ProtectiveDeviceTypeCircuitBreaker": {
+    "PerformanceClasses": null,
+    "VoltageLevel": null,
+    "ICU60947": null,
+    "ICS60947": null,
+    "ICW60947": null,
+    "ICM60947": null
+  },
+  "Pset_ProtectiveDeviceTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_ProtectiveDeviceTypeEarthLeakageCircuitBreaker": {
+    "EarthFailureDeviceType": null,
+    "Sensitivity": null
+  },
+  "Pset_ProtectiveDeviceTypeFuseDisconnector": {
+    "FuseDisconnectorType": null,
+    "VoltageLevel": null,
+    "IC60269": null,
+    "PowerLoss": null,
+    "NumberOfPhases": null,
+    "ReferenceEnvironmentTemperature": null,
+    "BreakingCapacity": null,
+    "ArcExtinctionType": null,
+    "NumberOfPoles": null,
+    "TransformationRatio": null,
+    "NominalFrequency": null,
+    "NominalCurrent": null,
+    "RatedVoltage": null
+  },
+  "Pset_ProtectiveDeviceTypeResidualCurrentCircuitBreaker": {
+    "Sensitivity": null
+  },
+  "Pset_ProtectiveDeviceTypeResidualCurrentSwitch": {
+    "Sensitivity": null
+  },
+  "Pset_ProtectiveDeviceTypeVaristor": {
+    "VaristorType": null,
+    "CharacteristicFunction": null
+  },
+  "Pset_PumpOccurrence": {
+    "ImpellerDiameter": null,
+    "BaseType": null,
+    "DriveConnectionType": null
+  },
+  "Pset_PumpPHistory": {
+    "MechanicalEfficiency": null,
+    "OverallEfficiency": null,
+    "PressureRise": null,
+    "RotationSpeed": null,
+    "Flowrate": null,
+    "PowerHistory": null
+  },
+  "Pset_PumpTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "FlowRateRange": null,
+    "FlowResistanceRange": null,
+    "ConnectionSize": null,
+    "TemperatureRange": null,
+    "NetPositiveSuctionHead": null,
+    "NominalRotationSpeed": null
+  },
+  "Pset_RailingCommon": {
+    "Reference": null,
+    "Status": null,
+    "Height": null,
+    "Diameter": null,
+    "IsExternal": null
+  },
+  "Pset_RampCommon": {
+    "Reference": null,
+    "Status": null,
+    "RequiredHeadroom": null,
+    "RequiredSlope": null,
+    "HandicapAccessible": null,
+    "HasNonSkidSurface": null,
+    "FireExit": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_RampFlightCommon": {
+    "Reference": null,
+    "Status": null,
+    "Headroom": null,
+    "ClearWidth": null,
+    "Slope": null,
+    "CounterSlope": null
+  },
+  "Pset_ReinforcementBarCountOfIndependentFooting": {
+    "Description": null,
+    "Reference": null,
+    "XDirectionLowerBarCount": null,
+    "YDirectionLowerBarCount": null,
+    "XDirectionUpperBarCount": null,
+    "YDirectionUpperBarCount": null
+  },
+  "Pset_ReinforcementBarPitchOfBeam": {
+    "Description": null,
+    "Reference": null,
+    "StirrupBarPitch": null,
+    "SpacingBarPitch": null
+  },
+  "Pset_ReinforcementBarPitchOfColumn": {
+    "Description": null,
+    "Reference": null,
+    "ReinforcementBarType": null,
+    "HoopBarPitch": null,
+    "XDirectionTieHoopBarPitch": null,
+    "XDirectionTieHoopCount": null,
+    "YDirectionTieHoopBarPitch": null,
+    "YDirectionTieHoopCount": null
+  },
+  "Pset_ReinforcementBarPitchOfContinuousFooting": {
+    "Description": null,
+    "Reference": null,
+    "CrossingUpperBarPitch": null,
+    "CrossingLowerBarPitch": null
+  },
+  "Pset_ReinforcementBarPitchOfSlab": {
+    "Description": null,
+    "Reference": null,
+    "LongOutsideTopBarPitch": null,
+    "LongInsideCenterTopBarPitch": null,
+    "LongInsideEndTopBarPitch": null,
+    "ShortOutsideTopBarPitch": null,
+    "ShortInsideCenterTopBarPitch": null,
+    "ShortInsideEndTopBarPitch": null,
+    "LongOutsideLowerBarPitch": null,
+    "LongInsideCenterLowerBarPitch": null,
+    "LongInsideEndLowerBarPitch": null,
+    "ShortOutsideLowerBarPitch": null,
+    "ShortInsideCenterLowerBarPitch": null,
+    "ShortInsideEndLowerBarPitch": null
+  },
+  "Pset_ReinforcementBarPitchOfWall": {
+    "Description": null,
+    "Reference": null,
+    "BarAllocationType": null,
+    "VerticalBarPitch": null,
+    "HorizontalBarPitch": null,
+    "SpacingBarPitch": null
+  },
+  "Pset_Risk": {
+    "RiskType": null,
+    "NatureOfRisk": null,
+    "SubNatureOfRisk1": null,
+    "SubNatureOfRisk2": null,
+    "RiskCause": null,
+    "AssessmentOfRisk": null,
+    "RiskConsequence": null,
+    "RiskRating": null,
+    "RiskOwner": null,
+    "AffectsSurroundings": null,
+    "PreventiveMeassures": null
+  },
+  "Pset_RoofCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null
+  },
+  "Pset_SanitaryTerminalTypeBath": {
+    "BathType": null,
+    "DrainSize": null,
+    "HasGrabHandles": null
+  },
+  "Pset_SanitaryTerminalTypeBidet": {
+    "Mounting": null,
+    "SpilloverLevel": null,
+    "DrainSize": null
+  },
+  "Pset_SanitaryTerminalTypeCistern": {
+    "CisternHeight": null,
+    "CisternCapacity": null,
+    "IsSingleFlush": null,
+    "FlushType": null,
+    "FlushRate": null,
+    "IsAutomaticFlush": null
+  },
+  "Pset_SanitaryTerminalTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NominalLength": null,
+    "NominalWidth": null,
+    "NominalDepth": null,
+    "Colour": null
+  },
+  "Pset_SanitaryTerminalTypeSanitaryFountain": {
+    "FountainType": null,
+    "Mounting": null,
+    "DrainSize": null
+  },
+  "Pset_SanitaryTerminalTypeShower": {
+    "ShowerType": null,
+    "HasTray": null,
+    "NominalLength": null,
+    "NominalWidth": null,
+    "NominalDepth": null,
+    "Color": null,
+    "ShowerHeadDescription": null,
+    "DrainSize": null
+  },
+  "Pset_SanitaryTerminalTypeSink": {
+    "SinkType": null,
+    "Mounting": null,
+    "NominalLength": null,
+    "NominalWidth": null,
+    "NominalDepth": null,
+    "Color": null,
+    "DrainSize": null,
+    "MountingOffset": null
+  },
+  "Pset_SanitaryTerminalTypeToiletPan": {
+    "ToiletType": null,
+    "ToiletPanType": null,
+    "PanMounting": null,
+    "SpilloverLevel": null
+  },
+  "Pset_SanitaryTerminalTypeUrinal": {
+    "UrinalType": null,
+    "Mounting": null,
+    "Color": null,
+    "SpilloverLevel": null,
+    "NominalLength": null,
+    "NominalWidth": null,
+    "NominalDepth": null
+  },
+  "Pset_SanitaryTerminalTypeWashHandBasin": {
+    "WashHandBasinType": null,
+    "Mounting": null,
+    "DrainSize": null,
+    "MountingOffset": null
+  },
+  "Pset_SensorPHistory": {
+    "Value": null,
+    "Direction": null,
+    "Quality": null,
+    "Status": null
+  },
+  "Pset_SensorTypeCO2Sensor": {
+    "SetPointConcentration": null
+  },
+  "Pset_SensorTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_SensorTypeConductanceSensor": {
+    "SetPointConductance": null
+  },
+  "Pset_SensorTypeContactSensor": {
+    "SetPointContact": null
+  },
+  "Pset_SensorTypeFireSensor": {
+    "FireSensorSetPoint": null,
+    "AccuracyOfFireSensor": null,
+    "TimeConstant": null
+  },
+  "Pset_SensorTypeFlowSensor": {
+    "SetPointFlow": null
+  },
+  "Pset_SensorTypeFrostSensor": {
+    "SetPointFrost": null
+  },
+  "Pset_SensorTypeGasSensor": {
+    "GasDetected": null,
+    "SetPointConcentration": null,
+    "CoverageArea": null
+  },
+  "Pset_SensorTypeHeatSensor": {
+    "CoverageArea": null,
+    "SetPointTemperature": null,
+    "RateOfTemperatureRise": null
+  },
+  "Pset_SensorTypeHumiditySensor": {
+    "SetPointHumidity": null
+  },
+  "Pset_SensorTypeIdentifierSensor": {
+    "SetPointIdentifier": null
+  },
+  "Pset_SensorTypeIonConcentrationSensor": {
+    "SubstanceDetected": null,
+    "SetPointIonConcentration": null
+  },
+  "Pset_SensorTypeLevelSensor": {
+    "SetPointLevel": null
+  },
+  "Pset_SensorTypeLightSensor": {
+    "SetPointIlluminance": null
+  },
+  "Pset_SensorTypeMoistureSensor": {
+    "SetPointMoisture": null
+  },
+  "Pset_SensorTypeMovementSensor": {
+    "MovementSensingType": null,
+    "SetPointMovement": null
+  },
+  "Pset_SensorTypePHSensor": {
+    "SetPointPH": null
+  },
+  "Pset_SensorTypePressureSensor": {
+    "SetPointPressure": null,
+    "IsSwitch": null
+  },
+  "Pset_SensorTypeRadiationSensor": {
+    "SetPointRadiation": null
+  },
+  "Pset_SensorTypeRadioactivitySensor": {
+    "SetPointRadioactivity": null
+  },
+  "Pset_SensorTypeSmokeSensor": {
+    "CoverageArea": null,
+    "SetPointConcentration": null,
+    "HasBuiltInAlarm": null
+  },
+  "Pset_SensorTypeSoundSensor": {
+    "SetPointSound": null
+  },
+  "Pset_SensorTypeTemperatureSensor": {
+    "TemperatureSensorType": null,
+    "SetPointTemperature": null
+  },
+  "Pset_SensorTypeWindSensor": {
+    "WindSensorType": null,
+    "SetPointSpeed": null,
+    "DampingRatio": null,
+    "SerialInterfaceType": null,
+    "MarginOfError": null,
+    "LinearVelocityResolution": null,
+    "SamplingFrequency": null,
+    "StartingWindSpeed": null,
+    "WorkingState": null,
+    "TimeConstant": null,
+    "DataCollectionType": null,
+    "WindAngleRange": null,
+    "WindSpeedRange": null
+  },
+  "Pset_ServiceLife": {
+    "ServiceLifeDuration": null,
+    "MeanTimeBetweenFailure": null
+  },
+  "Pset_ServiceLifeFactors": {
+    "QualityOfComponents": null,
+    "DesignLevel": null,
+    "WorkExecutionLevel": null,
+    "IndoorEnvironment": null,
+    "OutdoorEnvironment": null,
+    "InUseConditions": null,
+    "MaintenanceLevel": null
+  },
+  "Pset_ShadingDeviceCommon": {
+    "Reference": null,
+    "Status": null,
+    "ShadingDeviceType": null,
+    "MechanicalOperated": null,
+    "SolarTransmittance": null,
+    "SolarReflectance": null,
+    "VisibleLightTransmittance": null,
+    "VisibleLightReflectance": null,
+    "ThermalTransmittance": null,
+    "IsExternal": null,
+    "Roughness": null,
+    "SurfaceColor": null
+  },
+  "Pset_ShadingDevicePHistory": {
+    "TiltAngle": null,
+    "Azimuth": null
+  },
+  "Pset_SiteCommon": {
+    "Reference": null,
+    "BuildableArea": null,
+    "SiteCoverageRatio": null,
+    "FloorAreaRatio": null,
+    "BuildingHeightLimit": null,
+    "TotalArea": null
+  },
+  "Pset_SlabCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "FireRating": null,
+    "PitchAngle": null,
+    "Combustible": null,
+    "SurfaceSpreadOfFlame": null,
+    "Compartmentation": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null
+  },
+  "Pset_SolarDeviceTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_SoundAttenuation": {
+    "SoundScale": null,
+    "SoundFrequency": null,
+    "SoundPressure": null
+  },
+  "Pset_SoundGeneration": {
+    "SoundCurve": null
+  },
+  "Pset_SpaceCommon": {
+    "Reference": null,
+    "IsExternal": null,
+    "GrossPlannedArea": null,
+    "NetPlannedArea": null,
+    "PubliclyAccessible": null,
+    "HandicapAccessible": null
+  },
+  "Pset_SpaceCoveringRequirements": {
+    "FloorCovering": null,
+    "FloorCoveringThickness": null,
+    "WallCovering": null,
+    "WallCoveringThickness": null,
+    "CeilingCovering": null,
+    "CeilingCoveringThickness": null,
+    "SkirtingBoard": null,
+    "SkirtingBoardHeight": null,
+    "Molding": null,
+    "MoldingHeight": null,
+    "ConcealedFlooring": null,
+    "ConcealedFlooringOffset": null,
+    "ConcealedCeiling": null,
+    "ConcealedCeilingOffset": null
+  },
+  "Pset_SpaceFireSafetyRequirements": {
+    "FireRiskFactor": null,
+    "FlammableStorage": null,
+    "FireExit": null,
+    "SprinklerProtection": null,
+    "SprinklerProtectionAutomatic": null,
+    "AirPressurization": null
+  },
+  "Pset_SpaceHeaterPHistory": {
+    "FractionRadiantHeatTransfer": null,
+    "FractionConvectiveHeatTransfer": null,
+    "Effectiveness": null,
+    "SurfaceTemperature": null,
+    "SpaceAirTemperature": null,
+    "SpaceMeanRadiantTemperature": null,
+    "AuxiliaryEnergySourceConsumption": null,
+    "UACurve": null,
+    "OutputCapacityCurve": null,
+    "AirResistanceCurve": null,
+    "CharacteristicExponent": null,
+    "HeatOutputRate": null
+  },
+  "Pset_SpaceHeaterTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "SpaceHeaterPlacement": null,
+    "TemperatureClassification": null,
+    "HeatTransferDimension": null,
+    "HeatTransferMedium": null,
+    "EnergySource": null,
+    "BodyMass": null,
+    "ThermalMassHeatCapacity": null,
+    "OutputCapacity": null,
+    "ThermalEfficiency": null,
+    "NumberOfPanels": null,
+    "NumberOfSections": null
+  },
+  "Pset_SpaceHeaterTypeConvector": {
+    "ConvectorType": null
+  },
+  "Pset_SpaceHeaterTypeRadiator": {
+    "RadiatorType": null,
+    "TubingLength": null,
+    "WaterContent": null
+  },
+  "Pset_SpaceLightingRequirements": {
+    "ArtificialLighting": null,
+    "Illuminance": null
+  },
+  "Pset_SpaceOccupancyRequirements": {
+    "OccupancyType": null,
+    "OccupancyNumber": null,
+    "OccupancyNumberPeak": null,
+    "OccupancyTimePerDay": null,
+    "AreaPerOccupant": null,
+    "MinimumHeadroom": null,
+    "IsOutlookDesirable": null
+  },
+  "Pset_SpaceParking": {
+    "ParkingUse": null,
+    "ParkingUnits": null,
+    "IsAisle": null,
+    "IsOneWay": null
+  },
+  "Pset_SpaceThermalDesign": {
+    "CoolingDesignAirflow": null,
+    "HeatingDesignAirflow": null,
+    "TotalSensibleHeatGain": null,
+    "TotalHeatGain": null,
+    "TotalHeatLoss": null,
+    "CoolingDryBulb": null,
+    "CoolingRelativeHumidity": null,
+    "HeatingDryBulb": null,
+    "HeatingRelativeHumidity": null,
+    "VentilationAirFlowrate": null,
+    "ExhaustAirFlowrate": null,
+    "CeilingRAPlenum": null,
+    "BoundaryAreaHeatLoss": null
+  },
+  "Pset_SpaceThermalLoad": {
+    "People": null,
+    "Lighting": null,
+    "EquipmentSensible": null,
+    "VentilationIndoorAir": null,
+    "VentilationOutdoorAir": null,
+    "RecirculatedAir": null,
+    "ExhaustAir": null,
+    "AirExchangeRate": null,
+    "DryBulbTemperature": null,
+    "RelativeHumidity": null,
+    "InfiltrationSensible": null,
+    "TotalSensibleLoad": null,
+    "TotalLatentLoad": null,
+    "TotalRadiantLoad": null
+  },
+  "Pset_SpaceThermalLoadPHistory": {
+    "PeopleHistory": null,
+    "LightingHistory": null,
+    "EquipmentSensibleHistory": null,
+    "VentilationIndoorAirHistory": null,
+    "VentilationOutdoorAirHistory": null,
+    "RecirculatedAirHistory": null,
+    "ExhaustAirHistory": null,
+    "AirExchangeRateTimeHistory": null,
+    "DryBulbTemperatureHistory": null,
+    "RelativeHumidityHistory": null,
+    "InfiltrationSensibleHistory": null,
+    "TotalSensibleLoadHistory": null,
+    "TotalLatentLoadHistory": null,
+    "TotalRadiantLoadHistory": null
+  },
+  "Pset_SpaceThermalPHistory": {
+    "CoolingAirFlowRate": null,
+    "HeatingAirFlowRate": null,
+    "VentilationAirFlowRateHistory": null,
+    "ExhaustAirFlowRate": null,
+    "SpaceTemperatureHistory": null,
+    "SpaceRelativeHumidity": null
+  },
+  "Pset_SpaceThermalRequirements": {
+    "SpaceTemperature": null,
+    "SpaceTemperatureMax": null,
+    "SpaceTemperatureMin": null,
+    "SpaceTemperatureSummerMax": null,
+    "SpaceTemperatureSummerMin": null,
+    "SpaceTemperatureWinterMax": null,
+    "SpaceTemperatureWinterMin": null,
+    "SpaceHumidity": null,
+    "SpaceHumidityMax": null,
+    "SpaceHumidityMin": null,
+    "SpaceHumiditySummer": null,
+    "SpaceHumidityWinter": null,
+    "DiscontinuedHeating": null,
+    "NaturalVentilation": null,
+    "NaturalVentilationRate": null,
+    "MechanicalVentilationRate": null,
+    "AirConditioning": null,
+    "AirConditioningCentral": null
+  },
+  "Pset_SpatialZoneCommon": {
+    "Reference": null,
+    "IsExternal": null
+  },
+  "Pset_StackTerminalTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_StairCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfRiser": null,
+    "NumberOfTreads": null,
+    "RiserHeight": null,
+    "TreadLength": null,
+    "NosingLength": null,
+    "WalkingLineOffset": null,
+    "TreadLengthAtOffset": null,
+    "TreadLengthAtInnerSide": null,
+    "WaistThickness": null,
+    "RequiredHeadroom": null,
+    "HandicapAccessible": null,
+    "HasNonSkidSurface": null,
+    "IsExternal": null,
+    "ThermalTransmittance": null,
+    "LoadBearing": null,
+    "FireRating": null,
+    "FireExit": null
+  },
+  "Pset_StairFlightCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfRiser": null,
+    "NumberOfTreads": null,
+    "RiserHeight": null,
+    "TreadLength": null,
+    "NosingLength": null,
+    "WalkingLineOffset": null,
+    "TreadLengthAtOffset": null,
+    "TreadLengthAtInnerSide": null,
+    "Headroom": null,
+    "WaistThickness": null
+  },
+  "Pset_StructuralSurfaceMemberVaryingThickness": {
+    "Thickness1": null,
+    "Location1Local": null,
+    "Location1Global": null,
+    "Thickness2": null,
+    "Location2Local": null,
+    "Location2Global": null,
+    "Thickness3": null,
+    "Location3Local": null,
+    "Location3Global": null
+  },
+  "Pset_SwitchingDeviceTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfGangs": null,
+    "SwitchFunction": null,
+    "HasLock": null,
+    "IsIlluminated": null,
+    "Legend": null,
+    "SetPoint": null
+  },
+  "Pset_SwitchingDeviceTypeContactor": {
+    "ContactorType": null
+  },
+  "Pset_SwitchingDeviceTypeDimmerSwitch": {
+    "DimmerType": null
+  },
+  "Pset_SwitchingDeviceTypeEmergencyStop": {
+    "SwitchOperation": null,
+    "NumberOfPhases": null,
+    "ReferenceEnvironmentTemperature": null,
+    "BreakingCapacity": null,
+    "NumberOfEarthFaultRelays": null,
+    "NumberOfEmergencyButtons": null,
+    "NumberOfRelays": null,
+    "NumberOfOverCurrentRelays": null,
+    "NumberOfAffectedPoles": null,
+    "NominalCurrent": null,
+    "RatedFrequency": null,
+    "RatedVoltage": null,
+    "TransformationRatio": null
+  },
+  "Pset_SwitchingDeviceTypeKeypad": {
+    "KeypadType": null
+  },
+  "Pset_SwitchingDeviceTypeMomentarySwitch": {
+    "MomentaryType": null
+  },
+  "Pset_SwitchingDeviceTypePHistory": {
+    "SetPointHistory": null
+  },
+  "Pset_SwitchingDeviceTypeSelectorSwitch": {
+    "SelectorType": null,
+    "SwitchUsage": null,
+    "SwitchActivation": null,
+    "NominalCurrent": null,
+    "ReferenceEnvironmentTemperature": null,
+    "RatedFrequency": null,
+    "NumberOfPhases": null,
+    "NominalPower": null
+  },
+  "Pset_SwitchingDeviceTypeStarter": {
+    "StarterType": null
+  },
+  "Pset_SwitchingDeviceTypeSwitchDisconnector": {
+    "SwitchDisconnectorType": null,
+    "LoadDisconnectionType": null
+  },
+  "Pset_SwitchingDeviceTypeToggleSwitch": {
+    "ToggleSwitchType": null,
+    "SwitchUsage": null,
+    "SwitchActivation": null
+  },
+  "Pset_SystemFurnitureElementTypeCommon": {
+    "IsUsed": null,
+    "GroupCode": null,
+    "NominalWidth": null,
+    "NominalHeight": null,
+    "Finishing": null
+  },
+  "Pset_SystemFurnitureElementTypePanel": {
+    "HasOpening": null,
+    "FurniturePanelType": null,
+    "NominalThickness": null
+  },
+  "Pset_SystemFurnitureElementTypeWorkSurface": {
+    "UsePurpose": null,
+    "SupportType": null,
+    "HangingHeight": null,
+    "NominalThickness": null,
+    "ShapeDescription": null
+  },
+  "Pset_TankOccurrence": {
+    "TankComposition": null,
+    "HasLadder": null,
+    "HasVisualIndicator": null
+  },
+  "Pset_TankTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "AccessType": null,
+    "StorageType": null,
+    "NominalLengthOrDiameter": null,
+    "NominalWidthOrDiameter": null,
+    "NominalDepth": null,
+    "TankNominalCapacity": null,
+    "EffectiveCapacity": null,
+    "OperatingWeight": null,
+    "PatternType": null,
+    "EndShapeType": null,
+    "FirstCurvatureRadius": null,
+    "SecondCurvatureRadius": null,
+    "NumberOfSections": null
+  },
+  "Pset_TankTypeExpansion": {
+    "ChargePressure": null,
+    "PressureRegulatorSetting": null,
+    "ReliefValveSetting": null
+  },
+  "Pset_TankTypePreformed": {
+    "PatternType": null,
+    "EndShapeType": null,
+    "FirstCurvatureRadius": null,
+    "SecondCurvatureRadius": null
+  },
+  "Pset_TankTypePressureVessel": {
+    "ChargePressure": null,
+    "PressureRegulatorSetting": null,
+    "ReliefValveSetting": null
+  },
+  "Pset_TankTypeSectional": {
+    "NumberOfSections": null,
+    "SectionLength": null,
+    "SectionWidth": null
+  },
+  "Pset_ThermalLoadAggregate": {
+    "TotalCoolingLoad": null,
+    "TotalHeatingLoad": null,
+    "LightingDiversity": null,
+    "InfiltrationDiversitySummer": null,
+    "InfiltrationDiversityWinter": null,
+    "ApplianceDiversity": null,
+    "LoadSafetyFactor": null
+  },
+  "Pset_ThermalLoadDesignCriteria": {
+    "OccupancyDiversity": null,
+    "OutsideAirPerPerson": null,
+    "ReceptacleLoadIntensity": null,
+    "AppliancePercentLoadToRadiant": null,
+    "LightingLoadIntensity": null,
+    "LightingPercentLoadToReturnAir": null
+  },
+  "Pset_TransformerTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "PrimaryVoltage": null,
+    "SecondaryVoltage": null,
+    "PrimaryCurrent": null,
+    "SecondaryCurrent": null,
+    "PrimaryFrequency": null,
+    "SecondaryFrequency": null,
+    "PrimaryApparentPower": null,
+    "SecondaryApparentPower": null,
+    "MaximumApparentPower": null,
+    "SecondaryCurrentType": null,
+    "ShortCircuitVoltage": null,
+    "RealImpedanceRatio": null,
+    "ImaginaryImpedanceRatio": null,
+    "TransformerVectorGroup": null,
+    "IsNeutralPrimaryTerminalAvailable": null,
+    "IsNeutralSecondaryTerminalAvailable": null
+  },
+  "Pset_TransportElementCommon": {
+    "Reference": null,
+    "Status": null,
+    "CapacityPeople": null,
+    "CapacityWeight": null,
+    "FireExit": null
+  },
+  "Pset_TransportElementElevator": {
+    "Reference": null,
+    "Status": null,
+    "CapacityPeople": null,
+    "CapacityWeight": null,
+    "FireExit": null,
+    "FireFightingLift": null,
+    "ClearWidth": null,
+    "ClearDepth": null,
+    "ClearHeight": null
+  },
+  "Pset_TubeBundleTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "NumberOfRows": null,
+    "StaggeredRowSpacing": null,
+    "InLineRowSpacing": null,
+    "NumberOfCircuits": null,
+    "FoulingFactor": null,
+    "ThermalConductivity": null,
+    "Length": null,
+    "Volume": null,
+    "NominalDiameter": null,
+    "OutsideDiameter": null,
+    "InsideDiameter": null,
+    "HorizontalSpacing": null,
+    "VerticalSpacing": null,
+    "HasTurbulator": null
+  },
+  "Pset_TubeBundleTypeFinned": {
+    "Spacing": null,
+    "Thickness": null,
+    "ThermalConductivity": null,
+    "Length": null,
+    "Height": null,
+    "Diameter": null,
+    "FinCorrugatedType": null,
+    "HasCoating": null
+  },
+  "Pset_UnitaryControlElementPHistory": {
+    "Temperature": null,
+    "Mode": null,
+    "Fan": null,
+    "SetPoint": null
+  },
+  "Pset_UnitaryControlElementTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "OperationMode": null
+  },
+  "Pset_UnitaryControlElementTypeIndicatorPanel": {
+    "Application": null
+  },
+  "Pset_UnitaryControlElementTypeThermostat": {
+    "TemperatureSetPoint": null
+  },
+  "Pset_UnitaryEquipmentTypeAirConditioningUnit": {
+    "SensibleCoolingCapacity": null,
+    "LatentCoolingCapacity": null,
+    "CoolingEfficiency": null,
+    "HeatingCapacity": null,
+    "HeatingEfficiency": null,
+    "CondenserFlowrate": null,
+    "CondenserEnteringTemperature": null,
+    "CondenserLeavingTemperature": null,
+    "OutsideAirFlowrate": null
+  },
+  "Pset_UnitaryEquipmentTypeAirHandler": {
+    "AirHandlerConstruction": null,
+    "AirHandlerFanCoilArrangement": null,
+    "DualDeck": null
+  },
+  "Pset_UnitaryEquipmentTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_UtilityConsumptionPHistory": {
+    "Heat": null,
+    "Electricity": null,
+    "Water": null,
+    "Fuel": null,
+    "Steam": null
+  },
+  "Pset_ValvePHistory": {
+    "PercentageOpen": null,
+    "MeasuredFlowRate": null,
+    "MeasuredPressureDrop": null
+  },
+  "Pset_ValveTypeAirRelease": {
+    "IsAutomatic": null
+  },
+  "Pset_ValveTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "ValvePattern": null,
+    "ValveOperation": null,
+    "ValveMechanism": null,
+    "Size": null,
+    "TestPressure": null,
+    "WorkingPressure": null,
+    "FlowCoefficient": null,
+    "CloseOffRating": null
+  },
+  "Pset_ValveTypeDrawOffCock": {
+    "HasHoseUnion": null
+  },
+  "Pset_ValveTypeFaucet": {
+    "FaucetType": null,
+    "FaucetOperation": null,
+    "FaucetFunction": null,
+    "Finish": null,
+    "FaucetTopDescription": null
+  },
+  "Pset_ValveTypeFlushing": {
+    "FlushingRate": null,
+    "HasIntegralShutOffDevice": null,
+    "IsHighPressure": null
+  },
+  "Pset_ValveTypeGasTap": {
+    "HasHoseUnion": null
+  },
+  "Pset_ValveTypeIsolating": {
+    "IsNormallyOpen": null,
+    "IsolatingPurpose": null
+  },
+  "Pset_ValveTypeMixing": {
+    "MixerControl": null,
+    "OutletConnectionSize": null
+  },
+  "Pset_ValveTypePressureReducing": {
+    "UpstreamPressure": null,
+    "DownstreamPressure": null
+  },
+  "Pset_ValveTypePressureRelief": {
+    "ReliefPressure": null
+  },
+  "Pset_VibrationIsolatorTypeCommon": {
+    "Reference": null,
+    "Status": null,
+    "VibrationTransmissibility": null,
+    "IsolatorStaticDeflection": null,
+    "IsolatorCompressibility": null,
+    "MaximumSupportedWeight": null,
+    "NominalHeight": null
+  },
+  "Pset_WallCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "FireRating": null,
+    "Combustible": null,
+    "SurfaceSpreadOfFlame": null,
+    "ThermalTransmittance": null,
+    "IsExternal": null,
+    "LoadBearing": null,
+    "ExtendToStructure": null,
+    "Compartmentation": null
+  },
+  "Pset_Warranty": {
+    "Reference": null,
+    "Status": null,
+    "WarrantyIdentifier": null,
+    "WarrantyStartDate": null,
+    "WarrantyEndDate": null,
+    "IsExtendedWarranty": null,
+    "WarrantyPeriod": null,
+    "WarrantyContent": null,
+    "PointOfContact": null,
+    "Exclusions": null
+  },
+  "Pset_WasteTerminalTypeCommon": {
+    "Reference": null,
+    "Status": null
+  },
+  "Pset_WasteTerminalTypeFloorTrap": {
+    "Reference": null,
+    "Status": null,
+    "NominalBodyLength": null,
+    "NominalBodyWidth": null,
+    "NominalBodyDepth": null,
+    "IsForSullageWater": null,
+    "SpilloverLevel": null,
+    "TrapType": null,
+    "HasStrainer": null,
+    "OutletConnectionSize": null,
+    "InletPatternType": null,
+    "InletConnectionSize": null,
+    "CoverLength": null,
+    "CoverWidth": null,
+    "CoverMaterial": null
+  },
+  "Pset_WasteTerminalTypeFloorWaste": {
+    "NominalBodyLength": null,
+    "NominalBodyWidth": null,
+    "NominalBodyDepth": null,
+    "OutletConnectionSize": null,
+    "CoverLength": null,
+    "CoverWidth": null
+  },
+  "Pset_WasteTerminalTypeGullySump": {
+    "NominalSumpLength": null,
+    "NominalSumpWidth": null,
+    "NominalSumpDepth": null,
+    "GullyType": null,
+    "TrapType": null,
+    "OutletConnectionSize": null,
+    "BackInletPatternType": null,
+    "InletConnectionSize": null,
+    "CoverLength": null,
+    "CoverWidth": null
+  },
+  "Pset_WasteTerminalTypeGullyTrap": {
+    "NominalBodyLength": null,
+    "NominalBodyWidth": null,
+    "NominalBodyDepth": null,
+    "GullyType": null,
+    "HasStrainer": null,
+    "TrapType": null,
+    "OutletConnectionSize": null,
+    "BackInletPatternType": null,
+    "InletConnectionSize": null,
+    "CoverLength": null,
+    "CoverWidth": null
+  },
+  "Pset_WasteTerminalTypeRoofDrain": {
+    "NominalBodyLength": null,
+    "NominalBodyWidth": null,
+    "NominalBodyDepth": null,
+    "OutletConnectionSize": null,
+    "CoverLength": null,
+    "CoverWidth": null
+  },
+  "Pset_WasteTerminalTypeWasteDisposalUnit": {
+    "DrainConnectionSize": null,
+    "OutletConnectionSize": null,
+    "NominalDepth": null
+  },
+  "Pset_WasteTerminalTypeWasteTrap": {
+    "WasteTrapType": null,
+    "OutletConnectionSize": null,
+    "InletConnectionSize": null
+  },
+  "Pset_WindowCommon": {
+    "Reference": null,
+    "Status": null,
+    "AcousticRating": null,
+    "FireRating": null,
+    "SecurityRating": null,
+    "IsExternal": null,
+    "Infiltration": null,
+    "ThermalTransmittance": null,
+    "GlazingAreaFraction": null,
+    "HasSillExternal": null,
+    "HasSillInternal": null,
+    "HasDrive": null,
+    "SmokeStop": null,
+    "FireExit": null,
+    "WaterTightnessRating": null,
+    "MechanicalLoadRating": null,
+    "WindLoadRating": null
+  },
+  "Pset_WorkControlCommon": {
+    "WorkStartTime": null,
+    "WorkFinishTime": null,
+    "WorkDayDuration": null,
+    "WorkWeekDuration": null,
+    "WorkMonthDuration": null
+  },
+  "Pset_ZoneCommon": {
+    "Reference": null,
+    "IsExternal": null,
+    "GrossPlannedArea": null,
+    "NetPlannedArea": null,
+    "PubliclyAccessible": null,
+    "HandicapAccessible": null
+  }
+}

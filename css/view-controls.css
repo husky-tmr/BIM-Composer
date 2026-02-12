@@ -1,0 +1,27 @@
+/* css/view-controls.css */
+.view-controls {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.view-controls button {
+  padding: 6px 12px;
+  background: #2e2e2e;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.view-controls button:hover {
+  background: #3e3e3e;
+}
+
+.view-controls button.active {
+  background: #007aff;
+  color: #ffffff;
+}

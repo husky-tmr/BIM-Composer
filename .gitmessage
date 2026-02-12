@@ -1,0 +1,21 @@
+# <type>(<scope>): <subject>
+#
+# Type must be one of:
+#   feat:     New feature
+#   fix:      Bug fix
+#   docs:     Documentation only
+#   style:    Code style (formatting, etc)
+#   refactor: Code refactoring
+#   test:     Adding/updating tests
+#   chore:    Maintenance tasks
+#   perf:     Performance improvements
+#   ci:       CI/CD changes
+#   build:    Build system changes
+#   revert:   Revert previous commit
+#
+# Scope is optional but recommended (e.g., viewer, parser, core)
+# Subject should be concise (max 100 characters)
+#
+# Example: feat(viewer): add zoom controls
+# Example: fix(parser): handle malformed USDA files
+# Example: docs: update README with setup instructions

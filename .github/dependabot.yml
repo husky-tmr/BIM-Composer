@@ -1,0 +1,45 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "tricott"
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # Group updates
+    groups:
+      vitest:
+        patterns:
+          - "vitest*"
+          - "@vitest/*"
+      playwright:
+        patterns:
+          - "@playwright/*"
+          - "playwright*"
+      eslint:
+        patterns:
+          - "eslint*"
+          - "@eslint/*"
+      three:
+        patterns:
+          - "three"
+          - "@types/three"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "ci"
+    commit-message:
+      prefix: "ci"
