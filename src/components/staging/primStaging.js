@@ -2,7 +2,10 @@
 import { store } from "../../core/index.js";
 import { actions } from "../../state/actions.js";
 import { USDA_PARSER } from "../../viewer/usda/usdaParser.js";
-import { composeLogPrim, composePrimsFromHierarchy } from "../../viewer/usda/usdaComposer.js";
+import {
+  composeLogPrim,
+  composePrimsFromHierarchy,
+} from "../../viewer/usda/usdaComposer.js";
 import { sha256 } from "js-sha256";
 
 function logToStatement(details) {
@@ -431,7 +434,11 @@ export function stagePrims(primInput, options = {}) {
   // Generate serialized USDA for the log
   // This ensures the history view can reconstruct the EXACT state of these prims (including Entity placeholders)
   // without relying on the current live state.
-  const serializedPrims = composePrimsFromHierarchy(allNewlyStagedPrims, 2, layerStatusAtEvent);
+  const serializedPrims = composePrimsFromHierarchy(
+    allNewlyStagedPrims,
+    2,
+    layerStatusAtEvent
+  );
 
   logToStatement({
     primPath: primsToProcess[0].path, // Representative path

@@ -5,8 +5,10 @@
 import { store, errorHandler, ValidationError } from "../../core/index.js";
 import { actions } from "../../state/actions.js";
 import { updatePropertyInFile } from "../../viewer/usda/usdaEditor.js";
-import { composeLogPrim, composePrimsFromHierarchy } from "../../viewer/usda/usdaComposer.js";
-
+import {
+  composeLogPrim,
+  composePrimsFromHierarchy,
+} from "../../viewer/usda/usdaComposer.js";
 
 import { USDA_PARSER } from "../../viewer/usda/usdaParser.js";
 import {

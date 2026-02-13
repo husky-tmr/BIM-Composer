@@ -11,7 +11,7 @@ export function initTimelineController(historyThreeScene) {
 
   // Clean out the old slider UI logic
   timelineControlsContainer.innerHTML = "";
-  
+
   // NEW UI Elements
   const historyOverlay = document.getElementById("history-overlay");
   const historyList = document.getElementById("history-list");
@@ -19,8 +19,8 @@ export function initTimelineController(historyThreeScene) {
   const historyInfoBox = document.getElementById("history-info-box");
 
   closeHistoryBtn.addEventListener("click", () => {
-      store.dispatch(coreActions.toggleHistoryMode(false));
-      document.dispatchEvent(new CustomEvent("updateView"));
+    store.dispatch(coreActions.toggleHistoryMode(false));
+    document.dispatchEvent(new CustomEvent("updateView"));
   });
 
   // Create Graph UI Elements
@@ -202,43 +202,45 @@ export function initTimelineController(historyThreeScene) {
   }
 
   function renderStatementList(commits) {
-      historyList.innerHTML = "";
-      
-      commits.forEach(commit => {
-          const li = document.createElement("li");
-          li.className = "history-item";
-          li.dataset.id = commit.id;
-          
-          // Format date
-          const date = new Date(commit.timestamp);
-          const timeStr = date.toLocaleTimeString();
-          const dateStr = date.toLocaleDateString();
+    historyList.innerHTML = "";
 
-          li.innerHTML = `
+    commits.forEach((commit) => {
+      const li = document.createElement("li");
+      li.className = "history-item";
+      li.dataset.id = commit.id;
+
+      // Format date
+      const date = new Date(commit.timestamp);
+      const timeStr = date.toLocaleTimeString();
+      const dateStr = date.toLocaleDateString();
+
+      li.innerHTML = `
             <div class="history-item-header">
                 <span>${dateStr} ${timeStr}</span>
-                <span>${commit.user || 'Unknown'}</span>
+                <span>${commit.user || "Unknown"}</span>
             </div>
             <div class="history-item-title">${commit.type}</div>
             <div class="history-item-details">Ref: ${commit.id.substring(0, 8)}...</div>
           `;
-          
-          li.addEventListener("click", () => {
-              // Highlight selection
-              document.querySelectorAll(".history-item").forEach(item => item.classList.remove("active"));
-              li.classList.add("active");
-              
-              // Update scene and info box
-              updateSceneFromHistory(commit.id);
-          });
-          
-          historyList.appendChild(li);
+
+      li.addEventListener("click", () => {
+        // Highlight selection
+        document
+          .querySelectorAll(".history-item")
+          .forEach((item) => item.classList.remove("active"));
+        li.classList.add("active");
+
+        // Update scene and info box
+        updateSceneFromHistory(commit.id);
       });
+
+      historyList.appendChild(li);
+    });
   }
 
   function updateInfoBox(commit) {
-      historyInfoBox.style.display = "block";
-      historyInfoBox.innerHTML = `
+    historyInfoBox.style.display = "block";
+    historyInfoBox.innerHTML = `
         <div class="info-box-title">Statement Trace</div>
         <div class="info-box-row">
             <span class="info-box-label">Entry ID</span>
@@ -250,7 +252,7 @@ export function initTimelineController(historyThreeScene) {
         </div>
         <div class="info-box-row">
             <span class="info-box-label">User</span>
-            <span class="info-box-value">${commit.user || 'System'}</span>
+            <span class="info-box-value">${commit.user || "System"}</span>
         </div>
         <div class="info-box-row">
             <span class="info-box-label">Action</span>
@@ -288,7 +290,7 @@ export function initTimelineController(historyThreeScene) {
     );
 
     label.textContent = `Entry ${commit.entry} - ${commit.type} (${commit.stagedPrims?.length || 0} prims)`;
-    
+
     // Update Info Box
     updateInfoBox(commit);
 
@@ -329,7 +331,7 @@ export function initTimelineController(historyThreeScene) {
 
     // ISOLATION VIEW: Only show the objects attached to this specific entry.
     // Instead of building the full state from root, we only process the target commit.
-    
+
     const history = store.getState().history;
     const curr = history.commits.get(targetCommitId);
 
@@ -339,47 +341,49 @@ export function initTimelineController(historyThreeScene) {
     }
 
     const commitPath = [curr]; // Only the target commit
-    
+
     console.log(`[HISTORY] Isolating commit: ${curr.id} (Entry ${curr.entry})`);
 
     const primsToReconstruct = new Map();
 
     commitPath.forEach((logEntry, index) => {
-      console.log(
-        `[HISTORY] Processing isolated commit: ${logEntry.id}`
-      );
-      
+      console.log(`[HISTORY] Processing isolated commit: ${logEntry.id}`);
+
       // NEW LOGIC: Use serialized prims directly from the log
       if (logEntry.serializedPrims && logEntry.serializedPrims.length > 0) {
-          console.log(`[HISTORY]   Found ${logEntry.serializedPrims.length} serialized prims`);
-          logEntry.serializedPrims.forEach(prim => {
-             // In logs, we might have stored "status" in properties.
-             // We need to ensure it's applied correctly.
-             // The serialized prim ALREADY contains the properties as they were at that time.
-             // We just need to put it into the map, overwriting previous states.
-             
-             // Ensure _sourceFile is preserved if possible? 
-             // History view doesn't necessarily need to know source file for rendering, 
-             // but stage renderer might look for it.
-             // We can infer it from logEntry['File Name'] if missing?
-             if (!prim._sourceFile) prim._sourceFile = logEntry['File Name'];
-             
-             // Force status from log metadata if present, or trust the prim properties?
-             // Trust serialized prim properties first.
-             
-             primsToReconstruct.set(prim.path, prim);
-          });
+        console.log(
+          `[HISTORY]   Found ${logEntry.serializedPrims.length} serialized prims`
+        );
+        logEntry.serializedPrims.forEach((prim) => {
+          // In logs, we might have stored "status" in properties.
+          // We need to ensure it's applied correctly.
+          // The serialized prim ALREADY contains the properties as they were at that time.
+          // We just need to put it into the map, overwriting previous states.
+
+          // Ensure _sourceFile is preserved if possible?
+          // History view doesn't necessarily need to know source file for rendering,
+          // but stage renderer might look for it.
+          // We can infer it from logEntry['File Name'] if missing?
+          if (!prim._sourceFile) prim._sourceFile = logEntry["File Name"];
+
+          // Force status from log metadata if present, or trust the prim properties?
+          // Trust serialized prim properties first.
+
+          primsToReconstruct.set(prim.path, prim);
+        });
       } else if (logEntry.stagedPrims && logEntry.stagedPrims.length > 0) {
         // FALLBACK for legacy logs or incomplete data: Try to find in current state (Warning: this is "Live" state leaking into history)
-        console.warn(`[HISTORY]   No serialized prims found, falling back to live state lookup (Legacy behavior)`);
+        console.warn(
+          `[HISTORY]   No serialized prims found, falling back to live state lookup (Legacy behavior)`
+        );
         logEntry.stagedPrims.forEach((path) => {
-            const primAndAncestors = getPrimWithAncestors(path);
-            primAndAncestors.forEach((p) => {
-              // Create a localized copy to avoid mutating the live state cache
-              const pClone = JSON.parse(JSON.stringify(p));
-              pClone._historicalStatus = logEntry.sourceStatus || "History";
-              primsToReconstruct.set(pClone.path, pClone);
-            });
+          const primAndAncestors = getPrimWithAncestors(path);
+          primAndAncestors.forEach((p) => {
+            // Create a localized copy to avoid mutating the live state cache
+            const pClone = JSON.parse(JSON.stringify(p));
+            pClone._historicalStatus = logEntry.sourceStatus || "History";
+            primsToReconstruct.set(pClone.path, pClone);
+          });
         });
       }
     });
@@ -396,37 +400,39 @@ export function initTimelineController(historyThreeScene) {
         const parentPath = "/" + pathSegments.slice(0, -1).join("/");
         const parent = primsToReconstruct.get(parentPath);
         if (parent) {
-            if (!parent.children) parent.children = [];
-            if (!parent.children.some((c) => c.path === prim.path)) {
-                parent.children.push(prim);
-            }
+          if (!parent.children) parent.children = [];
+          if (!parent.children.some((c) => c.path === prim.path)) {
+            parent.children.push(prim);
+          }
         } else {
-            // Parent missing in history? 
-            // This can happen if only the child was modified and logged, and parent wasn't included in the serialized set?
-            // Ideally we should serialize ancestors too, or have a base state.
-            // For now, if parent is missing, treat as root? Or try to fetch ancestor from live state?
-            // FETCH ANCESTOR FROM LIVE STATE is safer for structure.
-            console.warn(`[HISTORY] Parent ${parentPath} missing for ${prim.path}. Fetching from live...`);
-            const liveParent = store.getState().allPrimsByPath.get(parentPath);
-            if (liveParent) {
-                const liveParentClone = JSON.parse(JSON.stringify(liveParent));
-                liveParentClone.children = [prim];
-                primsToReconstruct.set(parentPath, liveParentClone);
-                // We'll process this parent in the loop? No, map iteration order is fixed? 
-                // We might need to restart or ensure parents are processed.
-                // Map iteration handles insertion? Yes in JS Maps.
-                // But better to just push to finalHierarchy if we can't find parent, 
-                // OR ensuring all ancestors are in primsToReconstruct.
-                
-                // Let's rely on getPrimWithAncestors logic if we are missing parents?
-                // But that uses live state properties.
-                
-                // If we treat it as root for now, it renders.
-                // But hierarchy indentation will be wrong.
-                finalHierarchy.push(prim);
-            } else {
-                 finalHierarchy.push(prim);
-            }
+          // Parent missing in history?
+          // This can happen if only the child was modified and logged, and parent wasn't included in the serialized set?
+          // Ideally we should serialize ancestors too, or have a base state.
+          // For now, if parent is missing, treat as root? Or try to fetch ancestor from live state?
+          // FETCH ANCESTOR FROM LIVE STATE is safer for structure.
+          console.warn(
+            `[HISTORY] Parent ${parentPath} missing for ${prim.path}. Fetching from live...`
+          );
+          const liveParent = store.getState().allPrimsByPath.get(parentPath);
+          if (liveParent) {
+            const liveParentClone = JSON.parse(JSON.stringify(liveParent));
+            liveParentClone.children = [prim];
+            primsToReconstruct.set(parentPath, liveParentClone);
+            // We'll process this parent in the loop? No, map iteration order is fixed?
+            // We might need to restart or ensure parents are processed.
+            // Map iteration handles insertion? Yes in JS Maps.
+            // But better to just push to finalHierarchy if we can't find parent,
+            // OR ensuring all ancestors are in primsToReconstruct.
+
+            // Let's rely on getPrimWithAncestors logic if we are missing parents?
+            // But that uses live state properties.
+
+            // If we treat it as root for now, it renders.
+            // But hierarchy indentation will be wrong.
+            finalHierarchy.push(prim);
+          } else {
+            finalHierarchy.push(prim);
+          }
         }
       } else {
         finalHierarchy.push(prim);
@@ -452,7 +458,7 @@ export function initTimelineController(historyThreeScene) {
       historyToggleButton.classList.add("active");
       timelineControlsContainer.style.display = "flex";
       // timelineControlsContainer.style.visibility = "visible";
-      
+
       // Show/Reset Overlay
       historyOverlay.style.display = "flex";
       historyInfoBox.style.display = "none"; // Hide initially until selection
@@ -484,7 +490,7 @@ export function initTimelineController(historyThreeScene) {
       historyToggleButton.classList.remove("active");
       timelineControlsContainer.style.display = "none";
       // timelineControlsContainer.style.visibility = "hidden";
-      
+
       // Hide Overlay
       historyOverlay.style.display = "none";
       historyInfoBox.style.display = "none";
