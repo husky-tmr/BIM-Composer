@@ -29,9 +29,27 @@ export function initPromotionController(updateView) {
   let promotionMode = "layer"; // "layer" or "object"
   let objectToPromote = null;
 
+  let promotionDirection = "promote"; // "promote" or "demote"
+
   document.addEventListener("openPromotionModal", (e) => {
     try {
-      const { initialSelection, mode, prim } = e.detail;
+      const { initialSelection, mode, prim, direction = "promote" } = e.detail;
+      promotionDirection = direction;
+
+      const actionText = direction === "demote" ? "Demote" : "Promote";
+      const actionTextPresent =
+        direction === "demote" ? "Demoting" : "Promoting";
+      const actionArrow = direction === "demote" ? "→" : "→"; // Arrow direction usually same logic (A -> B)
+
+      const modalTitle = modal.querySelector("h2");
+      if (modalTitle) {
+        modalTitle.textContent =
+          mode === "object"
+            ? `${actionText} Object`
+            : `Batch ${actionText} Layers`;
+      }
+
+      confirmButton.textContent = actionText;
 
       // RESET UI
       eligibleList.innerHTML = "";
@@ -59,18 +77,33 @@ export function initPromotionController(updateView) {
 
         currentSourceStatus = prim.properties.status || layerStatus; // Default to layer status if not set
 
-        if (currentSourceStatus === "WIP") currentTargetStatus = "Shared";
-        else if (currentSourceStatus === "Shared")
-          currentTargetStatus = "Published";
-        else {
-          throw new ValidationError(
-            `Object is already ${currentSourceStatus} and cannot be promoted further`,
-            "status",
-            currentSourceStatus
-          );
+        if (promotionDirection === "promote") {
+          if (currentSourceStatus === "WIP") currentTargetStatus = "Shared";
+          else if (currentSourceStatus === "Shared")
+            currentTargetStatus = "Published";
+          else {
+            throw new ValidationError(
+              `Object is already ${currentSourceStatus} and cannot be promoted further`,
+              "status",
+              currentSourceStatus
+            );
+          }
+        } else {
+          // Demote
+          if (currentSourceStatus === "Published")
+            currentTargetStatus = "Shared";
+          else if (currentSourceStatus === "Shared")
+            currentTargetStatus = "WIP";
+          else {
+            throw new ValidationError(
+              `Object is already ${currentSourceStatus} and cannot be demoted further`,
+              "status",
+              currentSourceStatus
+            );
+          }
         }
 
-        targetStatusLabel.textContent = `Promoting Object: ${prim.name} (${currentSourceStatus} → ${currentTargetStatus})`;
+        targetStatusLabel.textContent = `${actionTextPresent} Object: ${prim.name} (${currentSourceStatus} ${actionArrow} ${currentTargetStatus})`;
 
         // Disable list interactions for object mode
         addBtn.disabled = true;
@@ -112,18 +145,31 @@ export function initPromotionController(updateView) {
       }
 
       currentSourceStatus = firstStatus;
-      if (currentSourceStatus === "WIP") currentTargetStatus = "Shared";
-      else if (currentSourceStatus === "Shared")
-        currentTargetStatus = "Published";
-      else {
-        throw new ValidationError(
-          "Selected layers are already Published or Archived and cannot be promoted",
-          "status",
-          currentSourceStatus
-        );
+      if (promotionDirection === "promote") {
+        if (currentSourceStatus === "WIP") currentTargetStatus = "Shared";
+        else if (currentSourceStatus === "Shared")
+          currentTargetStatus = "Published";
+        else {
+          throw new ValidationError(
+            "Selected layers are already Published or Archived and cannot be promoted",
+            "status",
+            currentSourceStatus
+          );
+        }
+      } else {
+        // Demote
+        if (currentSourceStatus === "Published") currentTargetStatus = "Shared";
+        else if (currentSourceStatus === "Shared") currentTargetStatus = "WIP";
+        else {
+          throw new ValidationError(
+            "Selected layers are already WIP and cannot be demoted",
+            "status",
+            currentSourceStatus
+          );
+        }
       }
 
-      targetStatusLabel.textContent = `Promoting Layers (${currentSourceStatus} → ${currentTargetStatus})`;
+      targetStatusLabel.textContent = `${actionTextPresent} Layers (${currentSourceStatus} ${actionArrow} ${currentTargetStatus})`;
 
       // Find all layers of this status owned by current user
       const state = store.getState();
@@ -296,6 +342,11 @@ export function initPromotionController(updateView) {
 
   confirmButton.addEventListener("click", () => {
     try {
+      const actionText = promotionDirection === "demote" ? "Demote" : "Promote";
+      const actionTextPresent =
+        promotionDirection === "demote" ? "Demoting" : "Promoting";
+      const actionArrow = promotionDirection === "demote" ? "→" : "→";
+
       if (promotionMode === "object" && objectToPromote) {
         if (!objectToPromote.name) {
           throw new ValidationError(
@@ -315,7 +366,7 @@ export function initPromotionController(updateView) {
 
         if (
           confirm(
-            `Promote object '${objectToPromote.name}' to ${currentTargetStatus}?`
+            `${actionText} object '${objectToPromote.name}' to ${currentTargetStatus}?`
           )
         ) {
           // Update Prim Property: "status"
@@ -362,7 +413,11 @@ export function initPromotionController(updateView) {
               layerPath: file,
               sourceStatus: currentSourceStatus,
               targetStatus: currentTargetStatus,
-              objectPath: path, // Add this field to logging!
+              objectPath: path,
+              type:
+                promotionDirection === "demote"
+                  ? "Object Demotion"
+                  : "Object Promotion",
             });
           } catch (err) {
             console.warn("Failed to log object promotion to statement:", err);
@@ -380,12 +435,14 @@ export function initPromotionController(updateView) {
           updateView();
 
           console.log(
-            `✅ Successfully promoted object '${objectToPromote.name}' (${currentSourceStatus} → ${currentTargetStatus})`
+            `✅ Successfully ${actionTextPresent.toLowerCase()} object '${
+              objectToPromote.name
+            }' (${currentSourceStatus} ${actionArrow} ${currentTargetStatus})`
           );
 
           // Note: File persistence for single objects requires USDA roundtrip
           alert(
-            `Promoted object '${objectToPromote.name}' to ${currentTargetStatus}. (Note: File persistence for single objects is WIP, but scene is updated).`
+            `${actionText} object '${objectToPromote.name}' to ${currentTargetStatus}. (Note: File persistence for single objects is WIP, but scene is updated).`
           );
         }
         modal.style.display = "none";
@@ -409,7 +466,7 @@ export function initPromotionController(updateView) {
 
       if (
         confirm(
-          `Promote ${itemsToPromote.length} layers to ${currentTargetStatus}?`
+          `${actionText} ${itemsToPromote.length} layers to ${currentTargetStatus}?`
         )
       ) {
         const state = store.getState();
@@ -448,7 +505,9 @@ export function initPromotionController(updateView) {
             logPromotionToStatement({
               layerPath: layer.filePath,
               sourceStatus: currentSourceStatus,
+              sourceStatus: currentSourceStatus,
               targetStatus: currentTargetStatus,
+              type: promotionDirection === "demote" ? "Demotion" : "Promotion",
             });
 
             promotedCount++;
@@ -463,7 +522,9 @@ export function initPromotionController(updateView) {
         updateView();
 
         console.log(
-          `✅ Successfully promoted ${promotedCount}/${itemsToPromote.length} layers (${currentSourceStatus} → ${currentTargetStatus})`
+          `✅ Successfully ${actionTextPresent.toLowerCase()} ${promotedCount}/${
+            itemsToPromote.length
+          } layers (${currentSourceStatus} ${actionArrow} ${currentTargetStatus})`
         );
       }
       modal.style.display = "none";

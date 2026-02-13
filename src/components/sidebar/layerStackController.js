@@ -127,7 +127,7 @@ function handleLayerSelection(li, updateView) {
 }
 
 export function logPromotionToStatement(details) {
-  const { layerPath, sourceStatus, targetStatus, objectPath } = details;
+  const { layerPath, sourceStatus, targetStatus, objectPath, type } = details;
   const entryNumber = store.dispatch(coreActions.incrementLogEntryCounter());
   const state = store.getState();
   const fileContent = state.loadedFiles[layerPath];
@@ -154,7 +154,7 @@ export function logPromotionToStatement(details) {
     "File Name": layerPath,
     "Content Hash": contentHash,
     "File Size": fileSize,
-    Type: "Promotion",
+    Type: type || "Promotion",
     User: state.currentUser,
     Status: "New",
     SourceStatus: sourceStatus,
@@ -166,7 +166,9 @@ export function logPromotionToStatement(details) {
 
   if (objectPath) {
     logEntry["Object Path"] = objectPath;
-    logEntry.Type = "Object Promotion";
+    if (!type) {
+      logEntry.Type = "Object Promotion";
+    }
   }
   store.dispatch(coreActions.setHeadCommit(newId));
 
@@ -406,6 +408,7 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
   const deleteFileButton = document.getElementById("delete-file-button");
   const setStageButton = document.getElementById("set-stage-button");
   const promoteLayerButton = document.getElementById("promote-layer-button");
+  const demoteLayerButton = document.getElementById("demote-layer-button");
   const fileInput = document.getElementById("usdaFileInput");
   const layerFilterControls = document.getElementById("layer-filter-controls");
 
@@ -968,6 +971,7 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
             mode: "object",
             prim: objectToPromote,
             sourceFile: objectToPromote._sourceFile,
+            direction: "promote",
           },
         })
       );
@@ -1000,7 +1004,85 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
     // Dispatch event to open modal
     document.dispatchEvent(
       new CustomEvent("openPromotionModal", {
-        detail: { initialSelection: selectedLayers },
+        detail: { initialSelection: selectedLayers, direction: "promote" },
+      })
+    );
+  });
+
+  demoteLayerButton.addEventListener("click", () => {
+    // Collect all selected layers
+    const selectedLis = layerStackList.querySelectorAll("li.selected");
+
+    if (selectedLis.length === 0) {
+      alert("Please select one or more layers to demote.");
+      return;
+    }
+
+    let objectToDemote = null;
+    if (stageThreeScene && stageThreeScene.selectionController) {
+      const activeMesh = stageThreeScene.selectionController.activeMesh;
+      if (activeMesh && activeMesh.userData.primPath && activeMesh.visible) {
+        const primPath = activeMesh.userData.primPath;
+        const findPrim = (nodes) => {
+          for (const n of nodes) {
+            if (n.path === primPath) return n;
+            if (n.children) {
+              const found = findPrim(n.children);
+              if (found) return found;
+            }
+          }
+          return null;
+        };
+        const prim = findPrim(store.getState().stage.composedPrims || []);
+
+        if (prim) {
+          objectToDemote = prim;
+        }
+      }
+    }
+
+    if (objectToDemote) {
+      // Dispatch event for SINGLE OBJECT demotion
+      document.dispatchEvent(
+        new CustomEvent("openPromotionModal", {
+          detail: {
+            mode: "object",
+            prim: objectToDemote,
+            sourceFile: objectToDemote._sourceFile,
+            direction: "demote",
+          },
+        })
+      );
+      return;
+    }
+
+    // Default: Layer Demotion
+    const selectedLayers = Array.from(selectedLis)
+      .map((li) => {
+        const layerId = li.dataset.layerId;
+        return store.getState().stage.layerStack.find((l) => l.id === layerId);
+      })
+      .filter((l) => l);
+
+    if (selectedLayers.length === 0) return;
+
+    // Permission Check: All selected layers must be owned by current user (or user is PM)
+    if (store.getState().currentUser !== "Project Manager") {
+      const unauthorized = selectedLayers.filter(
+        (l) => l.owner && l.owner !== store.getState().currentUser
+      );
+      if (unauthorized.length > 0) {
+        alert(
+          `Permission Denied: You cannot demote layers owned by others. ${unauthorized.length} layer(s) belong to other users.`
+        );
+        return;
+      }
+    }
+
+    // Dispatch event to open modal
+    document.dispatchEvent(
+      new CustomEvent("openPromotionModal", {
+        detail: { initialSelection: selectedLayers, direction: "demote" },
       })
     );
   });

@@ -1091,4 +1091,87 @@ describe("PromotionController", () => {
       expect(modal.style.display).toBe("none");
     });
   });
+
+  describe("Demotion Logic", () => {
+    it("should open modal in demote mode", () => {
+      initPromotionController(mockUpdateView);
+      document.dispatchEvent(
+        new CustomEvent("openPromotionModal", {
+          detail: {
+            initialSelection: [{ id: "layer1", status: "Published" }],
+            direction: "demote",
+          },
+        })
+      );
+      expect(modal.style.display).toBe("flex");
+      expect(targetStatusLabel.textContent).toContain("Demoting Layers");
+      expect(targetStatusLabel.textContent).toContain("Published → Shared");
+      expect(confirmButton.textContent).toBe("Demote");
+    });
+
+    it("should handle Shared → WIP demotion", () => {
+      initPromotionController(mockUpdateView);
+      document.dispatchEvent(
+        new CustomEvent("openPromotionModal", {
+          detail: {
+            initialSelection: [{ id: "layer1", status: "Shared" }],
+            direction: "demote",
+          },
+        })
+      );
+      expect(targetStatusLabel.textContent).toContain("Shared → WIP");
+    });
+
+    it("should validate against demoting WIP", () => {
+      initPromotionController(mockUpdateView);
+      try {
+        document.dispatchEvent(
+          new CustomEvent("openPromotionModal", {
+            detail: {
+              initialSelection: [{ id: "layer1", status: "WIP" }],
+              direction: "demote",
+            },
+          })
+        );
+      } catch (e) {
+        expect(e).toBeInstanceOf(ValidationError);
+        expect(e.message).toContain("cannot be demoted");
+      }
+    });
+
+    it("should call logPromotionToStatement with Demotion type", () => {
+      initPromotionController(mockUpdateView);
+
+      store.getState.mockReturnValue({
+        currentUser: "testuser",
+        stage: {
+          layerStack: [
+            {
+              id: "layer99",
+              filePath: "published.usda",
+              status: "Published",
+              owner: "testuser",
+            },
+          ],
+        },
+      });
+
+      document.dispatchEvent(
+        new CustomEvent("openPromotionModal", {
+          detail: {
+            initialSelection: [{ id: "layer99", status: "Published" }],
+            direction: "demote",
+          },
+        })
+      );
+      confirmButton.click();
+      expect(logPromotionToStatement).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: "Demotion",
+          sourceStatus: "Published",
+          targetStatus: "Shared",
+        })
+      );
+    });
+  });
 });
