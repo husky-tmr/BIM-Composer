@@ -27,7 +27,7 @@ export function createLoggerMiddleware(options = {}) {
     const prevState = store.getState();
 
     // Apply updates
-    next(updates);
+    const result = next(updates);
 
     const nextState = store.getState();
     const endTime = performance.now();
@@ -90,6 +90,7 @@ export function createLoggerMiddleware(options = {}) {
     }
 
     console.groupEnd();
+    return result;
   };
 }
 

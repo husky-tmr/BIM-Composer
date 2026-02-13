@@ -285,21 +285,40 @@ export function initTimelineController(historyThreeScene) {
       console.log(
         `[HISTORY] Processing commit ${index + 1}/${commitPath.length}: ${logEntry.id}`
       );
-
-      if (!logEntry.stagedPrims) {
-        console.log(`[HISTORY]   No staged prims in this commit`);
-        return;
-      }
-
-      console.log(`[HISTORY]   Staged prims: ${logEntry.stagedPrims.length}`);
-
-      logEntry.stagedPrims.forEach((path) => {
-        const primAndAncestors = getPrimWithAncestors(path);
-        primAndAncestors.forEach((p) => {
-          p._historicalStatus = logEntry.sourceStatus || "History";
-          primsToReconstruct.set(p.path, p);
+      
+      // NEW LOGIC: Use serialized prims directly from the log
+      if (logEntry.serializedPrims && logEntry.serializedPrims.length > 0) {
+          console.log(`[HISTORY]   Found ${logEntry.serializedPrims.length} serialized prims`);
+          logEntry.serializedPrims.forEach(prim => {
+             // In logs, we might have stored "status" in properties.
+             // We need to ensure it's applied correctly.
+             // The serialized prim ALREADY contains the properties as they were at that time.
+             // We just need to put it into the map, overwriting previous states.
+             
+             // Ensure _sourceFile is preserved if possible? 
+             // History view doesn't necessarily need to know source file for rendering, 
+             // but stage renderer might look for it.
+             // We can infer it from logEntry['File Name'] if missing?
+             if (!prim._sourceFile) prim._sourceFile = logEntry['File Name'];
+             
+             // Force status from log metadata if present, or trust the prim properties?
+             // Trust serialized prim properties first.
+             
+             primsToReconstruct.set(prim.path, prim);
+          });
+      } else if (logEntry.stagedPrims && logEntry.stagedPrims.length > 0) {
+        // FALLBACK for legacy logs or incomplete data: Try to find in current state (Warning: this is "Live" state leaking into history)
+        console.warn(`[HISTORY]   No serialized prims found, falling back to live state lookup (Legacy behavior)`);
+        logEntry.stagedPrims.forEach((path) => {
+            const primAndAncestors = getPrimWithAncestors(path);
+            primAndAncestors.forEach((p) => {
+              // Create a localized copy to avoid mutating the live state cache
+              const pClone = JSON.parse(JSON.stringify(p));
+              pClone._historicalStatus = logEntry.sourceStatus || "History";
+              primsToReconstruct.set(pClone.path, pClone);
+            });
         });
-      });
+      }
     });
 
     console.log(
@@ -313,8 +332,38 @@ export function initTimelineController(historyThreeScene) {
       if (pathSegments.length > 1) {
         const parentPath = "/" + pathSegments.slice(0, -1).join("/");
         const parent = primsToReconstruct.get(parentPath);
-        if (parent && !parent.children.some((c) => c.path === prim.path)) {
-          parent.children.push(prim);
+        if (parent) {
+            if (!parent.children) parent.children = [];
+            if (!parent.children.some((c) => c.path === prim.path)) {
+                parent.children.push(prim);
+            }
+        } else {
+            // Parent missing in history? 
+            // This can happen if only the child was modified and logged, and parent wasn't included in the serialized set?
+            // Ideally we should serialize ancestors too, or have a base state.
+            // For now, if parent is missing, treat as root? Or try to fetch ancestor from live state?
+            // FETCH ANCESTOR FROM LIVE STATE is safer for structure.
+            console.warn(`[HISTORY] Parent ${parentPath} missing for ${prim.path}. Fetching from live...`);
+            const liveParent = store.getState().allPrimsByPath.get(parentPath);
+            if (liveParent) {
+                const liveParentClone = JSON.parse(JSON.stringify(liveParent));
+                liveParentClone.children = [prim];
+                primsToReconstruct.set(parentPath, liveParentClone);
+                // We'll process this parent in the loop? No, map iteration order is fixed? 
+                // We might need to restart or ensure parents are processed.
+                // Map iteration handles insertion? Yes in JS Maps.
+                // But better to just push to finalHierarchy if we can't find parent, 
+                // OR ensuring all ancestors are in primsToReconstruct.
+                
+                // Let's rely on getPrimWithAncestors logic if we are missing parents?
+                // But that uses live state properties.
+                
+                // If we treat it as root for now, it renders.
+                // But hierarchy indentation will be wrong.
+                finalHierarchy.push(prim);
+            } else {
+                 finalHierarchy.push(prim);
+            }
         }
       } else {
         finalHierarchy.push(prim);

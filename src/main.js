@@ -17,7 +17,6 @@ import { initTimelineController } from "./components/timelineController.js";
 import { initPropertiesController } from "./components/properties/index.js";
 import { initOutlinerEvents } from "./components/outlinerController.js";
 import { initDataInspector } from "./components/dataInspector.js";
-import { initCommitController } from "./components/commitController.js";
 import { initPromotionController } from "./components/promotionController.js";
 import { initUserController } from "./components/userController.js";
 import { initConflictModal } from "./components/conflictModal.js";
@@ -109,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initTimelineController(historyThreeScene, updateView);
   initPropertiesController(updateView);
   initDataInspector();
-  initCommitController(updateView);
   initConflictModal();
   initSidebarResizing();
 

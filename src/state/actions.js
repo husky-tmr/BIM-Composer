@@ -163,7 +163,7 @@ export const actions = {
   incrementLogEntryCounter() {
     console.log("[ACTION] incrementLogEntryCounter");
     const result = store.dispatch(coreActions.incrementLogEntryCounter());
-    return result;
+    return result._returnValue;
   },
 
   /**

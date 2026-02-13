@@ -25,7 +25,7 @@
  * //     }
  * // }
  */
-function composePrimsFromHierarchy(prims, indent, layerStatus) {
+export function composePrimsFromHierarchy(prims, indent, layerStatus) {
   const primStrings = [];
   const indentStr = "    ".repeat(indent);
 
@@ -234,6 +234,8 @@ export function composeLogPrim(logEntry) {
         custom string type = "${logEntry.Type}"
         custom string user = "${logEntry.User}"
         custom string status = "${logEntry.Status}"${extraFields}${stagedPrimsField}${entityTypeField}
+        
+${logEntry.serializedPrims || ""}
     }
 `;
 }
