@@ -910,12 +910,25 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
     // 1. Check for Object Selection in 3D View
     let objectsToPromote = [];
 
-    if (stageThreeScene && stageThreeScene.selectionController) {
-      const { selectedMeshes, activeMesh } = stageThreeScene.selectionController;
-      
+    console.log("[PROMOTE] Button clicked");
+    console.log("[PROMOTE] Current view:", store.getState().currentView);
+
+    // Check both file view and stage view scenes
+    const activeScene = store.getState().currentView === "stage" ? stageThreeScene : fileThreeScene;
+    console.log("[PROMOTE] Using scene:", store.getState().currentView === "stage" ? "stageThreeScene" : "fileThreeScene");
+    console.log("[PROMOTE] activeScene exists:", !!activeScene);
+    console.log("[PROMOTE] selectionController exists:", !!activeScene?.selectionController);
+
+    if (activeScene && activeScene.selectionController) {
+      const { selectedMeshes, activeMesh } = activeScene.selectionController;
+
+      console.log("[PROMOTE] selectedMeshes size:", selectedMeshes?.size);
+      console.log("[PROMOTE] activeMesh:", activeMesh?.name);
+
       const primPaths = new Set();
       if (selectedMeshes && selectedMeshes.size > 0) {
         selectedMeshes.forEach(m => {
+          console.log("[PROMOTE] Checking mesh:", m.name, "primPath:", m.userData.primPath, "visible:", m.visible);
           if (m.userData.primPath && m.visible) {
              primPaths.add(m.userData.primPath);
           }
@@ -923,6 +936,8 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
       } else if (activeMesh && activeMesh.userData.primPath && activeMesh.visible) {
          primPaths.add(activeMesh.userData.primPath);
       }
+
+      console.log("[PROMOTE] primPaths collected:", primPaths.size, Array.from(primPaths));
 
       if (primPaths.size > 0) {
           const findPrim = (nodes, path) => {
@@ -935,16 +950,21 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
             }
             return null;
           };
-          
-          const composedPrims = store.getState().stage.composedPrims || [];
+
+          const composedHierarchy = store.getState().composedHierarchy || [];
+          console.log("[PROMOTE] composedHierarchy length:", composedHierarchy.length);
+
           primPaths.forEach(path => {
-              const prim = findPrim(composedPrims, path);
+              const prim = findPrim(composedHierarchy, path);
+              console.log("[PROMOTE] Finding prim for path:", path, "found:", !!prim);
               if (prim) {
                   objectsToPromote.push(prim);
               }
           });
       }
     }
+
+    console.log("[PROMOTE] objectsToPromote length:", objectsToPromote.length);
 
     if (objectsToPromote.length > 0) {
       document.dispatchEvent(
@@ -1002,12 +1022,25 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
     // 1. Check for Object Selection in 3D View
     let objectsToDemote = [];
 
-    if (stageThreeScene && stageThreeScene.selectionController) {
-      const { selectedMeshes, activeMesh } = stageThreeScene.selectionController;
-      
+    console.log("[DEMOTE] Button clicked");
+    console.log("[DEMOTE] Current view:", store.getState().currentView);
+
+    // Check both file view and stage view scenes
+    const activeScene = store.getState().currentView === "stage" ? stageThreeScene : fileThreeScene;
+    console.log("[DEMOTE] Using scene:", store.getState().currentView === "stage" ? "stageThreeScene" : "fileThreeScene");
+    console.log("[DEMOTE] activeScene exists:", !!activeScene);
+    console.log("[DEMOTE] selectionController exists:", !!activeScene?.selectionController);
+
+    if (activeScene && activeScene.selectionController) {
+      const { selectedMeshes, activeMesh } = activeScene.selectionController;
+
+      console.log("[DEMOTE] selectedMeshes size:", selectedMeshes?.size);
+      console.log("[DEMOTE] activeMesh:", activeMesh?.name);
+
       const primPaths = new Set();
       if (selectedMeshes && selectedMeshes.size > 0) {
         selectedMeshes.forEach(m => {
+          console.log("[DEMOTE] Checking mesh:", m.name, "primPath:", m.userData.primPath, "visible:", m.visible);
           if (m.userData.primPath && m.visible) {
              primPaths.add(m.userData.primPath);
           }
@@ -1015,6 +1048,8 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
       } else if (activeMesh && activeMesh.userData.primPath && activeMesh.visible) {
          primPaths.add(activeMesh.userData.primPath);
       }
+
+      console.log("[DEMOTE] primPaths collected:", primPaths.size, Array.from(primPaths));
 
       if (primPaths.size > 0) {
           const findPrim = (nodes, path) => {
@@ -1027,16 +1062,21 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
             }
             return null;
           };
-          
-          const composedPrims = store.getState().stage.composedPrims || [];
+
+          const composedHierarchy = store.getState().composedHierarchy || [];
+          console.log("[DEMOTE] composedHierarchy length:", composedHierarchy.length);
+
           primPaths.forEach(path => {
-              const prim = findPrim(composedPrims, path);
+              const prim = findPrim(composedHierarchy, path);
+              console.log("[DEMOTE] Finding prim for path:", path, "found:", !!prim);
               if (prim) {
                   objectsToDemote.push(prim);
               }
           });
       }
     }
+
+    console.log("[DEMOTE] objectsToDemote length:", objectsToDemote.length);
 
     if (objectsToDemote.length > 0) {
       document.dispatchEvent(
