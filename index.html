@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/action-buttons.css" />
     <link rel="stylesheet" href="css/timeline.css" />
     <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/save-modal.css" />
     <link rel="stylesheet" href="css/data-inspector.css" />
     <link rel="stylesheet" href="css/user-switch.css" />
     <link rel="stylesheet" href="css/history-overlay.css" />
@@ -374,6 +375,47 @@
         <div class="modal-footer">
           <button id="conflict-cancel-button">Cancel</button>
           <button id="conflict-apply-button" class="primary">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Options Modal -->
+    <div id="save-options-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content save-options-modal">
+        <div class="modal-header">
+          <h2>Save Stage File Options</h2>
+        </div>
+        <div class="modal-body column-layout">
+          <p style="color: #ccc; margin-bottom: 16px;">
+            Select which status types to include in the saved file:
+          </p>
+          <div class="status-checkbox-group">
+            <label class="status-checkbox-label">
+              <input type="checkbox" id="save-filter-wip" value="WIP" checked />
+              <span class="status-checkbox-text">WIP</span>
+            </label>
+            <label class="status-checkbox-label">
+              <input type="checkbox" id="save-filter-shared" value="Shared" checked />
+              <span class="status-checkbox-text">Shared</span>
+            </label>
+            <label class="status-checkbox-label">
+              <input type="checkbox" id="save-filter-published" value="Published" checked />
+              <span class="status-checkbox-text">Published</span>
+            </label>
+            <label class="status-checkbox-label">
+              <input type="checkbox" id="save-filter-archived" value="Archived" />
+              <span class="status-checkbox-text">Archived</span>
+            </label>
+          </div>
+          <div style="margin-top: 16px; padding: 12px; background: rgba(0, 122, 255, 0.1); border-radius: 6px;">
+            <p style="color: #aaa; font-size: 12px; margin: 0;">
+              <strong>Note:</strong> Only prims with selected statuses will be included in the saved USDZ file.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="cancel-save-button">Cancel</button>
+          <button id="confirm-save-button" class="primary">Save</button>
         </div>
       </div>
     </div>

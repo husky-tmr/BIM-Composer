@@ -36,6 +36,7 @@ def "ChangeLog"
     composedPrims: null,
     activeFilter: "All",
     colorizeByStatus: true,
+    saveStatusFilter: ["WIP", "Shared", "Published"], // Default: exclude Archived
   },
 
   composedHierarchy: [],

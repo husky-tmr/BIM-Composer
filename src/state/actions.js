@@ -122,6 +122,15 @@ export const actions = {
   },
 
   /**
+   * Sets the save status filter
+   * @param {Array<string>} filters - Array of status values to include in save
+   */
+  setSaveStatusFilter(filters) {
+    console.log("[ACTION] setSaveStatusFilter:", filters);
+    store.dispatch(coreActions.setSaveStatusFilter(filters));
+  },
+
+  /**
    * Adds a staged change
    * @param {Object} change - The change object
    */

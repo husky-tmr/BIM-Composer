@@ -148,76 +148,172 @@ export function initViewControls(
   });
 
   if (saveButton) {
-    saveButton.addEventListener("click", async () => {
-      if (typeof window.JSZip === "undefined") {
-        alert("JSZip library is missing. Cannot save.");
+    // Open save options modal instead of immediate save
+    saveButton.addEventListener("click", () => {
+      const modal = document.getElementById("save-options-modal");
+      const state = store.getState();
+
+      // Restore previous filter selections
+      const savedFilters = state.stage.saveStatusFilter || [
+        "WIP",
+        "Shared",
+        "Published",
+      ];
+      document.getElementById("save-filter-wip").checked =
+        savedFilters.includes("WIP");
+      document.getElementById("save-filter-shared").checked =
+        savedFilters.includes("Shared");
+      document.getElementById("save-filter-published").checked =
+        savedFilters.includes("Published");
+      document.getElementById("save-filter-archived").checked =
+        savedFilters.includes("Archived");
+
+      modal.style.display = "flex";
+    });
+
+    // Handle modal actions
+    const modal = document.getElementById("save-options-modal");
+    const cancelButton = document.getElementById("cancel-save-button");
+    const confirmButton = document.getElementById("confirm-save-button");
+
+    cancelButton.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    confirmButton.addEventListener("click", async () => {
+      // Collect selected filters
+      const selectedFilters = [];
+      if (document.getElementById("save-filter-wip").checked)
+        selectedFilters.push("WIP");
+      if (document.getElementById("save-filter-shared").checked)
+        selectedFilters.push("Shared");
+      if (document.getElementById("save-filter-published").checked)
+        selectedFilters.push("Published");
+      if (document.getElementById("save-filter-archived").checked)
+        selectedFilters.push("Archived");
+
+      // Validate at least one filter is selected
+      if (selectedFilters.length === 0) {
+        alert("Please select at least one status to include in the save.");
         return;
       }
-      const zip = new window.JSZip();
-      const state = store.getState(); // Get fresh state
 
-      // 1. Generate the Root Stage Content first
-      // This is the source of truth for what is actually in the scene.
-      // We name it based on the scene name.
-      const rootFileName = `${state.sceneName.replace(/\s+/g, "_")}.usda`;
-      const stageContent = generateStageUsda(
-        state.sceneName,
-        state.stage.composedPrims || []
-      );
-      zip.file(rootFileName, stageContent);
+      // Save filter selection to state
+      actions.setSaveStatusFilter(selectedFilters);
 
-      // 2. Identify Dependencies via Reference Tracing
-      // We implicitly trust that the stageContent contains the necessary references.
-      // e.g. references = @cube.usda@
-      const allowedFiles = new Set();
-      const stack = [stageContent]; // Start scanning the root content
+      // Close modal
+      modal.style.display = "none";
 
-      while (stack.length > 0) {
-        const content = stack.pop();
-        // Reset regex state for each new content string if we were reusing the regex object,
-        // but valid locally created regex is safer or just loop.
-        // Since we use the same regex object in a loop, we must be careful or just re-create it/reset lastIndex.
-        // Using strict new regex or matchAll is safer.
-        const matches = content.matchAll(/@([^@]+)@/g);
+      // Perform the actual save with filtering
+      await performFilteredSave(selectedFilters);
+    });
+  }
 
-        for (const m of matches) {
-          const referencedRef = m[1];
-          // The reference string might be "base.usda" or "base.usda@</Prim>"
-          // We need to extract the filename part.
-          // Regex to split filename from internal path if present:
-          // Matches: file.usda OR file.usda<...>
-          // However, the outer regex @...@ usually captures the whole reference string.
-          // If the USD reference is @file.usda@</Prim>, our outer regex captures "file.usda".
-          // Wait, standard USD syntax is references = @file.usda@</Prim>
-          // OR references = @file.usda@
-          // So the @...@ delimiters enclose the Asset Path (filename).
+  /**
+   * Performs a filtered save operation based on status filters
+   * @param {Array<string>} statusFilters - Array of status values to include
+   */
+  async function performFilteredSave(statusFilters) {
+    if (typeof window.JSZip === "undefined") {
+      alert("JSZip library is missing. Cannot save.");
+      return;
+    }
 
-          const filename = referencedRef; // The part inside the @s is the asset path.
+    const zip = new window.JSZip();
+    const state = store.getState();
 
-          if (state.loadedFiles[filename] && !allowedFiles.has(filename)) {
-            allowedFiles.add(filename);
-            stack.push(state.loadedFiles[filename]);
-          }
+    // 1. Filter composed prims by status
+    const filteredPrims = filterPrimsByStatus(
+      state.stage.composedPrims || [],
+      statusFilters
+    );
+
+    if (filteredPrims.length === 0) {
+      alert("No prims match the selected status filters. Nothing to save.");
+      return;
+    }
+
+    // 2. Generate the Root Stage Content with filtered prims
+    const rootFileName = `${state.sceneName.replace(/\s+/g, "_")}.usda`;
+    const stageContent = generateStageUsda(state.sceneName, filteredPrims);
+    zip.file(rootFileName, stageContent);
+
+    // 3. Identify Dependencies via Reference Tracing
+    const allowedFiles = new Set();
+    const stack = [stageContent];
+
+    while (stack.length > 0) {
+      const content = stack.pop();
+      const matches = content.matchAll(/@([^@]+)@/g);
+
+      for (const m of matches) {
+        const filename = m[1];
+        if (state.loadedFiles[filename] && !allowedFiles.has(filename)) {
+          allowedFiles.add(filename);
+          stack.push(state.loadedFiles[filename]);
         }
       }
+    }
 
-      // 3. Add Discovered Files to Zip
-      allowedFiles.forEach((fileName) => {
-        zip.file(fileName, state.loadedFiles[fileName]);
-      });
-
-      // 4. Generate and Download USDZ
-      const blob = await zip.generateAsync({ type: "blob" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `Project_${state.sceneName.replace(
-        /\s+/g,
-        "_"
-      )}_${Date.now()}.usdz`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    // 4. Add Discovered Files to Zip
+    allowedFiles.forEach((fileName) => {
+      zip.file(fileName, state.loadedFiles[fileName]);
     });
+
+    // 5. Generate and Download USDZ
+    const blob = await zip.generateAsync({ type: "blob" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+
+    // Include filter info in filename for clarity
+    const filterSuffix =
+      statusFilters.length === 4 ? "All" : statusFilters.join("-");
+    link.download = `Project_${state.sceneName.replace(
+      /\s+/g,
+      "_"
+    )}_${filterSuffix}_${Date.now()}.usdz`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    console.log(`[SAVE] Saved with filters: ${statusFilters.join(", ")}`);
+  }
+
+  /**
+   * Recursively filters prims by status
+   * @param {Array} prims - Array of prim objects
+   * @param {Array<string>} statusFilters - Array of status values to include
+   * @returns {Array} Filtered prims with children also filtered
+   */
+  function filterPrimsByStatus(prims, statusFilters) {
+    if (!prims || prims.length === 0) return [];
+
+    return prims
+      .map((prim) => {
+        // Determine prim status (check both locations)
+        const primStatus =
+          prim.properties?.status || prim._sourceLayerStatus || "Published";
+
+        // Check if prim matches filter
+        const matches = statusFilters.includes(primStatus);
+
+        // Recursively filter children
+        const filteredChildren = prim.children
+          ? filterPrimsByStatus(prim.children, statusFilters)
+          : [];
+
+        // Include prim if it matches OR has matching children
+        if (matches || filteredChildren.length > 0) {
+          return {
+            ...prim,
+            children: filteredChildren,
+          };
+        }
+
+        return null;
+      })
+      .filter((prim) => prim !== null);
   }
 
   document.addEventListener("updateView", updateView);

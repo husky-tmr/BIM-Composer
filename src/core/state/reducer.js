@@ -132,6 +132,14 @@ export function reducer(state, action) {
       };
     }
 
+    case "SET_SAVE_STATUS_FILTER":
+      return {
+        stage: {
+          ...state.stage,
+          saveStatusFilter: payload.saveStatusFilter,
+        },
+      };
+
     // ==================== Prim Actions ====================
     case "SET_COMPOSED_HIERARCHY":
       return {

@@ -101,6 +101,14 @@ export const layerActions = {
   toggleStatusColor: () => ({
     type: "TOGGLE_STATUS_COLOR",
   }),
+
+  /**
+   * Set save status filter
+   */
+  setSaveStatusFilter: (filters) => ({
+    type: "SET_SAVE_STATUS_FILTER",
+    payload: { saveStatusFilter: filters },
+  }),
 };
 
 // ==================== Prim Actions ====================
@@ -327,6 +335,7 @@ export const ActionTypes = {
   UPDATE_LAYER_STACK: "UPDATE_LAYER_STACK",
   SET_LAYER_FILTER: "SET_LAYER_FILTER",
   TOGGLE_STATUS_COLOR: "TOGGLE_STATUS_COLOR",
+  SET_SAVE_STATUS_FILTER: "SET_SAVE_STATUS_FILTER",
 
   // Prims
   SET_COMPOSED_HIERARCHY: "SET_COMPOSED_HIERARCHY",
