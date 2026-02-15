@@ -289,7 +289,10 @@ function updateComposedPrimsAfterRename(prims, oldPath, newName, newPath) {
     }
 
     // Recursively check children
-    if (p.children && updateComposedPrimsAfterRename(p.children, oldPath, newName, newPath)) {
+    if (
+      p.children &&
+      updateComposedPrimsAfterRename(p.children, oldPath, newName, newPath)
+    ) {
       found = true;
     }
   }
@@ -314,10 +317,18 @@ function updateChildPaths(children, oldParentPath, newParentPath) {
     }
 
     // Update _sourcePath
-    if (child._sourcePath && child._sourcePath.startsWith(oldParentPath + "/")) {
-      const relativeSourcePath = child._sourcePath.substring(oldParentPath.length);
+    if (
+      child._sourcePath &&
+      child._sourcePath.startsWith(oldParentPath + "/")
+    ) {
+      const relativeSourcePath = child._sourcePath.substring(
+        oldParentPath.length
+      );
       child._sourcePath = newParentPath + relativeSourcePath;
-      console.log("[PRIM RENAME] Updated child _sourcePath to:", child._sourcePath);
+      console.log(
+        "[PRIM RENAME] Updated child _sourcePath to:",
+        child._sourcePath
+      );
     }
 
     // Update references
@@ -327,7 +338,10 @@ function updateChildPaths(children, oldParentPath, newParentPath) {
         "g"
       );
       if (typeof child.references === "string") {
-        child.references = child.references.replace(oldPathRegex, newParentPath);
+        child.references = child.references.replace(
+          oldPathRegex,
+          newParentPath
+        );
       } else if (Array.isArray(child.references)) {
         child.references = child.references.map((ref) =>
           ref.replace(oldPathRegex, newParentPath)

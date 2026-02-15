@@ -55,30 +55,46 @@ describe("Prim Staging (History Integration)", () => {
       logEntryCounter: 0,
       currentFile: "test.usda",
       loadedFiles: {
-        "test.usda": "def Scope \"TestPrim\" {}",
-        "statement.usda": "def \"ChangeLog\" {}"
-      }
+        "test.usda": 'def Scope "TestPrim" {}',
+        "statement.usda": 'def "ChangeLog" {}',
+      },
     });
 
     // Default mocks
     USDA_PARSER.parseUSDA.mockReturnValue([]);
     // Return hierarchy that matches the paths used in tests
     USDA_PARSER.getPrimHierarchy.mockReturnValue([
-        { path: "/TestPrim", type: "Scope", properties: {}, name: "TestPrim", children: [] },
-        { path: "/Placeholder", type: "Cube", properties: {}, name: "Placeholder", children: [] }
+      {
+        path: "/TestPrim",
+        type: "Scope",
+        properties: {},
+        name: "TestPrim",
+        children: [],
+      },
+      {
+        path: "/Placeholder",
+        type: "Cube",
+        properties: {},
+        name: "Placeholder",
+        children: [],
+      },
     ]);
 
-    usdaComposer.composePrimsFromHierarchy.mockReturnValue("def Scope \"Serialized\" {}");
-    usdaComposer.composeLogPrim.mockReturnValue("def \"Log_1\" {}");
+    usdaComposer.composePrimsFromHierarchy.mockReturnValue(
+      'def Scope "Serialized" {}'
+    );
+    usdaComposer.composeLogPrim.mockReturnValue('def "Log_1" {}');
   });
 
   it("should generate serialized prims for history log", async () => {
-    const inputPrims = [{
+    const inputPrims = [
+      {
         path: "/TestPrim",
         sourceFile: "test.usda",
         type: "Scope",
-        properties: {}
-    }];
+        properties: {},
+      },
+    ];
 
     await stagePrims(inputPrims);
 
@@ -91,21 +107,23 @@ describe("Prim Staging (History Integration)", () => {
     // Specifically, logToStatement constructs an object with { serializedPrims: ... }
     // and passes it to composeLogPrim.
     expect(usdaComposer.composeLogPrim).toHaveBeenCalledWith(
-        expect.objectContaining({
-            serializedPrims: "def Scope \"Serialized\" {}",
-            entityType: "Real Element" // Default
-        })
+      expect.objectContaining({
+        serializedPrims: 'def Scope "Serialized" {}',
+        entityType: "Real Element", // Default
+      })
     );
   });
 
   it("should correctly identify Entity Placeholders in log", async () => {
-    const inputEntity = [{
+    const inputEntity = [
+      {
         path: "/Placeholder",
         sourceFile: "test.usda",
         type: "Cube", // Entity usually has type
         customData: { isWireframe: true }, // Markers of placeholder
-        properties: {}
-    }];
+        properties: {},
+      },
+    ];
 
     // stagePrims logic for 'isEntity' depends on valid input detection.
     // Let's force proper detection by mocking input structure if needed.
@@ -121,11 +139,11 @@ describe("Prim Staging (History Integration)", () => {
     await stagePrims(inputEntity, { isEntity: true });
 
     expect(usdaComposer.composeLogPrim).toHaveBeenCalledWith(
-        expect.objectContaining({
-            Type: "Entity Placeholder",
-            entityType: "placeholder",
-            serializedPrims: expect.any(String)
-        })
+      expect.objectContaining({
+        Type: "Entity Placeholder",
+        entityType: "placeholder",
+        serializedPrims: expect.any(String),
+      })
     );
   });
 });

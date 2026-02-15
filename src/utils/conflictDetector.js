@@ -142,7 +142,7 @@ export function checkPermission(prim) {
   if (state.isHistoryMode) {
     return {
       allowed: false,
-      reason: "History mode is read-only"
+      reason: "History mode is read-only",
     };
   }
 
@@ -160,7 +160,7 @@ export function checkPermission(prim) {
   if (state.currentUser === "Field Person") {
     return {
       allowed: false,
-      reason: "Field Person role has read-only access"
+      reason: "Field Person role has read-only access",
     };
   }
 

@@ -9,7 +9,14 @@ import {
 import { sha256 } from "js-sha256";
 
 function logToStatement(details) {
-  const { primPath, type, allStagedPaths, sourceStatus, entityType, serializedPrims } = details;
+  const {
+    primPath,
+    type,
+    allStagedPaths,
+    sourceStatus,
+    entityType,
+    serializedPrims,
+  } = details;
 
   console.log("[PRIM_STAGING] Logging to statement.usda");
   console.log("[PRIM_STAGING] Type:", type);

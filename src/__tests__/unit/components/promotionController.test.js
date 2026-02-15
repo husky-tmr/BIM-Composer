@@ -37,7 +37,10 @@ import {
   logPromotionToStatement,
   syncPrimStatusFromLayer,
 } from "../../../components/sidebar/layerStackController.js";
-import { updateParentStatus, updateChildrenStatus } from "../../../components/properties/AttributeUpdater.js";
+import {
+  updateParentStatus,
+  updateChildrenStatus,
+} from "../../../components/properties/AttributeUpdater.js";
 
 vi.mock("../../../state/actions.js", () => ({
   actions: {
@@ -885,7 +888,10 @@ describe("PromotionController", () => {
 
       confirmButton.click();
 
-      expect(updateParentStatus).toHaveBeenCalledWith("/Root/Parent/Mesh_Test", "Shared");
+      expect(updateParentStatus).toHaveBeenCalledWith(
+        "/Root/Parent/Mesh_Test",
+        "Shared"
+      );
     });
 
     it("should update children status when promoting object", () => {
@@ -904,7 +910,10 @@ describe("PromotionController", () => {
 
       confirmButton.click();
 
-      expect(updateChildrenStatus).toHaveBeenCalledWith("/Root/Parent_Test", "Shared");
+      expect(updateChildrenStatus).toHaveBeenCalledWith(
+        "/Root/Parent_Test",
+        "Shared"
+      );
     });
   });
 
@@ -1219,43 +1228,59 @@ describe("PromotionController", () => {
     });
 
     it("should handle multi-object demotion", () => {
-       initPromotionController(mockUpdateView);
-       const prims = [
-          { name: "Obj1", path: "/Obj1", properties: { status: "Published" }, _sourceFile: "file1" },
-          { name: "Obj2", path: "/Obj2", properties: { status: "Published" }, _sourceFile: "file1" }
-       ];
-       document.dispatchEvent(
-          new CustomEvent("openPromotionModal", {
-             detail: {
-                mode: "object",
-                prims: prims,
-                direction: "demote"
-             }
-          })
-       );
-       expect(targetStatusLabel.textContent).toContain("2 Objects");
-       expect(targetStatusLabel.textContent).toContain("Published → Shared");
-       expect(promoteList.children.length).toBe(2);
+      initPromotionController(mockUpdateView);
+      const prims = [
+        {
+          name: "Obj1",
+          path: "/Obj1",
+          properties: { status: "Published" },
+          _sourceFile: "file1",
+        },
+        {
+          name: "Obj2",
+          path: "/Obj2",
+          properties: { status: "Published" },
+          _sourceFile: "file1",
+        },
+      ];
+      document.dispatchEvent(
+        new CustomEvent("openPromotionModal", {
+          detail: {
+            mode: "object",
+            prims: prims,
+            direction: "demote",
+          },
+        })
+      );
+      expect(targetStatusLabel.textContent).toContain("2 Objects");
+      expect(targetStatusLabel.textContent).toContain("Published → Shared");
+      expect(promoteList.children.length).toBe(2);
     });
 
     it("should validate mixed status in multi-object demotion", () => {
-       initPromotionController(mockUpdateView);
-       const prims = [
-          { name: "Obj1", properties: { status: "Published" }, _sourceFile: "file1" },
-          { name: "Obj2", properties: { status: "WIP" }, _sourceFile: "file1" }
-       ];
+      initPromotionController(mockUpdateView);
+      const prims = [
+        {
+          name: "Obj1",
+          properties: { status: "Published" },
+          _sourceFile: "file1",
+        },
+        { name: "Obj2", properties: { status: "WIP" }, _sourceFile: "file1" },
+      ];
 
-       document.dispatchEvent(
-          new CustomEvent("openPromotionModal", {
-             detail: {
-                mode: "object",
-                prims: prims,
-                direction: "demote"
-             }
-          })
-       );
+      document.dispatchEvent(
+        new CustomEvent("openPromotionModal", {
+          detail: {
+            mode: "object",
+            prims: prims,
+            direction: "demote",
+          },
+        })
+      );
 
-       expect(errorHandler.handleError).toHaveBeenCalledWith(expect.any(ValidationError));
+      expect(errorHandler.handleError).toHaveBeenCalledWith(
+        expect.any(ValidationError)
+      );
     });
 
     it("should update parent status when demoting object", () => {
@@ -1272,14 +1297,17 @@ describe("PromotionController", () => {
           detail: {
             mode: "object",
             prim: prim,
-            direction: "demote"
-          }
+            direction: "demote",
+          },
         })
       );
 
       confirmButton.click();
 
-      expect(updateParentStatus).toHaveBeenCalledWith("/Root/Parent/Mesh_Test", "Shared");
+      expect(updateParentStatus).toHaveBeenCalledWith(
+        "/Root/Parent/Mesh_Test",
+        "Shared"
+      );
     });
 
     it("should update children status when demoting object", () => {
@@ -1296,14 +1324,17 @@ describe("PromotionController", () => {
           detail: {
             mode: "object",
             prim: prim,
-            direction: "demote"
-          }
+            direction: "demote",
+          },
         })
       );
 
       confirmButton.click();
 
-      expect(updateChildrenStatus).toHaveBeenCalledWith("/Root/Parent_Test", "Shared");
+      expect(updateChildrenStatus).toHaveBeenCalledWith(
+        "/Root/Parent_Test",
+        "Shared"
+      );
     });
   });
 });

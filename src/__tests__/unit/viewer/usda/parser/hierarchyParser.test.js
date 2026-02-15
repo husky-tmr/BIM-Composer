@@ -29,7 +29,9 @@ def Scope "DeepRef" {
 }`;
     const prims = parsePrimTree(usda);
     expect(prims).toHaveLength(1);
-    expect(prims[0].references).toBe("@path/to/asset.usda@</Root/Child/Grandchild>");
+    expect(prims[0].references).toBe(
+      "@path/to/asset.usda@</Root/Child/Grandchild>"
+    );
   });
 
   it("should handle references in metadata vs inner content", () => {

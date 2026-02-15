@@ -57,8 +57,13 @@ export function renderStageView(threeScene, state) {
       if (!geomData) {
         console.log(`[RENDER] Geometry lookup failed for prim: ${prim.path}`);
         console.log(`[RENDER] Lookup path used: ${lookupPath}`);
-        console.log(`[RENDER] _sourcePath: ${prim._sourcePath}, path: ${prim.path}`);
-        console.log(`[RENDER] Available cache keys:`, Array.from(geometryCache.keys()));
+        console.log(
+          `[RENDER] _sourcePath: ${prim._sourcePath}, path: ${prim.path}`
+        );
+        console.log(
+          `[RENDER] Available cache keys:`,
+          Array.from(geometryCache.keys())
+        );
       }
 
       // Fallback: Check references

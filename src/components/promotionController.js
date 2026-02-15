@@ -7,7 +7,10 @@ import {
   logPromotionToStatement,
   syncPrimStatusFromLayer,
 } from "./sidebar/layerStackController.js";
-import { updateParentStatus, updateChildrenStatus } from "./properties/AttributeUpdater.js";
+import {
+  updateParentStatus,
+  updateChildrenStatus,
+} from "./properties/AttributeUpdater.js";
 
 export function initPromotionController(updateView) {
   const modal = document.getElementById("promotion-modal");
@@ -34,7 +37,13 @@ export function initPromotionController(updateView) {
 
   document.addEventListener("openPromotionModal", (e) => {
     try {
-      const { initialSelection, mode, prim, prims, direction = "promote" } = e.detail;
+      const {
+        initialSelection,
+        mode,
+        prim,
+        prims,
+        direction = "promote",
+      } = e.detail;
       promotionDirection = direction;
 
       const actionText = direction === "demote" ? "Demote" : "Promote";
@@ -77,22 +86,24 @@ export function initPromotionController(updateView) {
         currentSourceStatus = firstPrim.properties.status || layerStatus;
 
         // Validate all have same status?
-        const inconsistent = objectsToPromote.some(p => {
-             let pStatus = "Published"; // Default
-             if (p._sourceFile) {
-                const l = state.stage.layerStack.find(la => la.filePath === p._sourceFile);
-                if (l) pStatus = l.status;
-             }
-             const actualStatus = p.properties.status || pStatus;
-             return actualStatus !== currentSourceStatus;
+        const inconsistent = objectsToPromote.some((p) => {
+          let pStatus = "Published"; // Default
+          if (p._sourceFile) {
+            const l = state.stage.layerStack.find(
+              (la) => la.filePath === p._sourceFile
+            );
+            if (l) pStatus = l.status;
+          }
+          const actualStatus = p.properties.status || pStatus;
+          return actualStatus !== currentSourceStatus;
         });
 
         if (inconsistent) {
-             throw new ValidationError(
-              `All selected objects must have the same status to batch ${actionText.toLowerCase()}.`,
-              "status",
-              "Mixed"
-            );
+          throw new ValidationError(
+            `All selected objects must have the same status to batch ${actionText.toLowerCase()}.`,
+            "status",
+            "Mixed"
+          );
         }
 
         if (promotionDirection === "promote") {
@@ -121,7 +132,10 @@ export function initPromotionController(updateView) {
           }
         }
 
-        const objCountText = objectsToPromote.length > 1 ? `${objectsToPromote.length} Objects` : `Object: ${firstPrim.name}`;
+        const objCountText =
+          objectsToPromote.length > 1
+            ? `${objectsToPromote.length} Objects`
+            : `Object: ${firstPrim.name}`;
         targetStatusLabel.textContent = `${actionTextPresent} ${objCountText} (${currentSourceStatus} ${actionArrow} ${currentTargetStatus})`;
 
         // Disable list interactions for object mode
@@ -131,10 +145,10 @@ export function initPromotionController(updateView) {
         removeAllBtn.disabled = true;
 
         // Show the objects in the "Promote" list
-        objectsToPromote.forEach(p => {
-            const li = document.createElement("li");
-            li.innerHTML = `<span class="outliner-icon">📦</span> ${p.name} <span style="opacity:0.6">(${p.path})</span>`;
-            promoteList.appendChild(li);
+        objectsToPromote.forEach((p) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<span class="outliner-icon">📦</span> ${p.name} <span style="opacity:0.6">(${p.path})</span>`;
+          promoteList.appendChild(li);
         });
 
         return;
@@ -369,13 +383,12 @@ export function initPromotionController(updateView) {
       const actionArrow = promotionDirection === "demote" ? "→" : "→";
 
       if (promotionMode === "object" && objectsToPromote.length > 0) {
-        
         if (!currentTargetStatus) {
-            throw new ValidationError(
-              "Target status is not defined",
-              "targetStatus",
-              currentTargetStatus
-            );
+          throw new ValidationError(
+            "Target status is not defined",
+            "targetStatus",
+            currentTargetStatus
+          );
         }
 
         if (
@@ -383,49 +396,54 @@ export function initPromotionController(updateView) {
             `${actionText} ${objectsToPromote.length} object(s) to ${currentTargetStatus}?`
           )
         ) {
-           let successCount = 0;
-           objectsToPromote.forEach(obj => {
-              // ... per object logic ...
-              // Logic:
-              // 1. Validate info
-              // 2. Log
-              // 3. Update Status
-              
-              if (!obj.name || !obj._sourceFile || !obj.path) {
-                  console.warn("Skipping invalid object:", obj);
-                  return;
-              }
+          let successCount = 0;
+          objectsToPromote.forEach((obj) => {
+            // ... per object logic ...
+            // Logic:
+            // 1. Validate info
+            // 2. Log
+            // 3. Update Status
 
-              // Log
-              try {
-                logPromotionToStatement({
-                  layerPath: obj._sourceFile,
-                  sourceStatus: currentSourceStatus,
-                  targetStatus: currentTargetStatus,
-                  objectPath: obj.path,
-                  type: promotionDirection === "demote" ? "Object Demotion" : "Object Promotion",
-                });
-              } catch (err) {
-                 console.warn("Log failed for", obj.name, err);
-              }
+            if (!obj.name || !obj._sourceFile || !obj.path) {
+              console.warn("Skipping invalid object:", obj);
+              return;
+            }
 
-              // Update Runtime
-              if (!obj.properties) obj.properties = {};
-              obj.properties.status = currentTargetStatus;
+            // Log
+            try {
+              logPromotionToStatement({
+                layerPath: obj._sourceFile,
+                sourceStatus: currentSourceStatus,
+                targetStatus: currentTargetStatus,
+                objectPath: obj.path,
+                type:
+                  promotionDirection === "demote"
+                    ? "Object Demotion"
+                    : "Object Promotion",
+              });
+            } catch (err) {
+              console.warn("Log failed for", obj.name, err);
+            }
 
-              // Update parent status to match child
-              updateParentStatus(obj.path, currentTargetStatus);
+            // Update Runtime
+            if (!obj.properties) obj.properties = {};
+            obj.properties.status = currentTargetStatus;
 
-              // Update all children status to match parent
-              updateChildrenStatus(obj.path, currentTargetStatus);
+            // Update parent status to match child
+            updateParentStatus(obj.path, currentTargetStatus);
 
-              successCount++;
-           });
+            // Update all children status to match parent
+            updateChildrenStatus(obj.path, currentTargetStatus);
 
-           recomposeStage();
-           updateView();
-           
-           alert(`${actionText}d ${successCount} object(s) to ${currentTargetStatus}.`);
+            successCount++;
+          });
+
+          recomposeStage();
+          updateView();
+
+          alert(
+            `${actionText}d ${successCount} object(s) to ${currentTargetStatus}.`
+          );
         }
         modal.style.display = "none";
         return;

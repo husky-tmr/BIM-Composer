@@ -118,7 +118,10 @@ export function showConflictModal(conflictData, onResolve) {
       warningEl.style.display = "block";
       // Disable the "use new" option
       document.getElementById("conflict-use-new").disabled = true;
-    } else if (currentUser === "Project Manager" || currentUser === "Field Engineer") {
+    } else if (
+      currentUser === "Project Manager" ||
+      currentUser === "Field Engineer"
+    ) {
       // User has elevated permissions, show warning
       warningTextEl.textContent =
         "You are about to override a property owned by another user. This action will be logged.";

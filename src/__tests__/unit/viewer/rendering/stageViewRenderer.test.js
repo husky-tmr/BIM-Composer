@@ -11,7 +11,9 @@ vi.mock("../../../../viewer/spatialHash.js", () => ({
   SpatialHash: class {
     constructor() {}
     insert() {}
-    getDebugVisuals() { return new THREE.Group(); }
+    getDebugVisuals() {
+      return new THREE.Group();
+    }
   },
 }));
 
@@ -23,7 +25,7 @@ vi.mock("../../../../utils/statusUtils.js", () => ({
 describe("Stage View Renderer", () => {
   let mockScene;
   let mockState;
-  
+
   beforeEach(() => {
     mockScene = {
       meshesGroup: {
@@ -63,15 +65,17 @@ describe("Stage View Renderer", () => {
       properties: {},
     };
     mockState.composedHierarchy = [prim];
-    
+
     // Mock cache population
-    mockState.loadedFiles = { "test.usda": "def Mesh \"Cube\" {}" };
+    mockState.loadedFiles = { "test.usda": 'def Mesh "Cube" {}' };
     // Mocks return a list of geometries
-    mockScene.parser.parseUSDA.mockReturnValue([{
-      name: "Cube", // Cache key will be /Cube
-      geometry: new THREE.BoxGeometry(),
-      type: "Mesh"
-    }]);
+    mockScene.parser.parseUSDA.mockReturnValue([
+      {
+        name: "Cube", // Cache key will be /Cube
+        geometry: new THREE.BoxGeometry(),
+        type: "Mesh",
+      },
+    ]);
 
     renderStageView(mockScene, mockState);
 
@@ -88,19 +92,23 @@ describe("Stage View Renderer", () => {
       properties: {},
     };
     mockState.composedHierarchy = [prim];
-    mockState.loadedFiles = { "test.usda": "def Mesh \"OriginalCube\" {}" };
+    mockState.loadedFiles = { "test.usda": 'def Mesh "OriginalCube" {}' };
 
     // Mock cache with OriginalCube
-    mockScene.parser.parseUSDA.mockReturnValue([{
-      name: "OriginalCube", // Cache key /OriginalCube
-      geometry: new THREE.BoxGeometry(),
-      type: "Mesh"
-    }]);
+    mockScene.parser.parseUSDA.mockReturnValue([
+      {
+        name: "OriginalCube", // Cache key /OriginalCube
+        geometry: new THREE.BoxGeometry(),
+        type: "Mesh",
+      },
+    ]);
 
     renderStageView(mockScene, mockState);
 
     expect(mockScene.meshesGroup.children).toHaveLength(1);
-    expect(mockScene.meshesGroup.children[0].userData.primPath).toBe("/RenamedCube");
+    expect(mockScene.meshesGroup.children[0].userData.primPath).toBe(
+      "/RenamedCube"
+    );
     expect(mockScene.meshesGroup.children[0].name).toBe("OriginalCube");
   });
 
@@ -112,11 +120,11 @@ describe("Stage View Renderer", () => {
       customData: { isWireframe: true },
       properties: {
         entityType: "placeholder",
-        opacity: "0.1"
-      }
+        opacity: "0.1",
+      },
     };
     mockState.composedHierarchy = [prim];
-    
+
     // Empty cache
     mockScene.parser.parseUSDA.mockReturnValue([]);
 
@@ -124,7 +132,7 @@ describe("Stage View Renderer", () => {
 
     expect(mockScene.meshesGroup.children).toHaveLength(1);
     const mesh = mockScene.meshesGroup.children[0];
-    
+
     expect(mesh.material.transparent).toBe(true);
     expect(mesh.material.opacity).toBe(0.1);
     // Color should be green (0x8fff8f)

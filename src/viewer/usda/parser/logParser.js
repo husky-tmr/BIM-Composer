@@ -97,9 +97,9 @@ export function parseStatementLog(statementContent) {
 
     const timestampMatch = logBody.match(/custom string timestamp = "([^"]+)"/);
     if (timestampMatch) {
-        commit.timestamp = timestampMatch[1];
+      commit.timestamp = timestampMatch[1];
     } else {
-        commit.timestamp = new Date().toISOString();
+      commit.timestamp = new Date().toISOString();
     }
 
     const userMatch = logBody.match(/custom string user = "([^"]+)"/);
@@ -194,9 +194,15 @@ export function parseStatementLog(statementContent) {
 
         // Fallback for legacy entries: reconstruct paths from oldName/newName
         if (!commit.oldPath || !commit.newPath) {
-          const oldNameMatch = logBody.match(/custom string oldName = "([^"]+)"/);
-          const newNameMatch = logBody.match(/custom string newName = "([^"]+)"/);
-          const refPathMatch = logBody.match(/custom string primPath = "([^"]+)"/);
+          const oldNameMatch = logBody.match(
+            /custom string oldName = "([^"]+)"/
+          );
+          const newNameMatch = logBody.match(
+            /custom string newName = "([^"]+)"/
+          );
+          const refPathMatch = logBody.match(
+            /custom string primPath = "([^"]+)"/
+          );
 
           if (oldNameMatch && commit["USD Reference Path"]) {
             // The USD Reference Path is the old path

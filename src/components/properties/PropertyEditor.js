@@ -301,7 +301,10 @@ function attachPrimNameListener(
   primNameInput.addEventListener("change", (e) => {
     try {
       // Check if element is still in the DOM before processing
-      if (!e.target.isConnected || !document.getElementById("prim-name-input")) {
+      if (
+        !e.target.isConnected ||
+        !document.getElementById("prim-name-input")
+      ) {
         return; // Element has been removed, ignore the event
       }
 
@@ -360,7 +363,10 @@ function attachStatusChangeListener(
   statusSelect.addEventListener("change", (e) => {
     try {
       // Check if element is still in the DOM before processing
-      if (!e.target.isConnected || !document.getElementById("prim-status-select")) {
+      if (
+        !e.target.isConnected ||
+        !document.getElementById("prim-status-select")
+      ) {
         return; // Element has been removed, ignore the event
       }
 

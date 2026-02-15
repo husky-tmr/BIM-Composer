@@ -41,7 +41,9 @@ export function buildPathTranslationRegistry(commits) {
       if (primPath) {
         // Remove old name from end of path
         const parentPath = primPath.substring(0, primPath.lastIndexOf("/"));
-        oldPath = parentPath ? `${parentPath}/${commit.oldName}` : `/${commit.oldName}`;
+        oldPath = parentPath
+          ? `${parentPath}/${commit.oldName}`
+          : `/${commit.oldName}`;
         newPath = primPath; // The primPath is the new path after rename
       }
     }
@@ -67,13 +69,18 @@ export function buildPathTranslationRegistry(commits) {
       timestamp: commit.timestamp,
       oldPath: finalOldPath,
       newPath: newPath,
-      commitId: commit.id
+      commitId: commit.id,
     });
 
     // Handle parent rename cascading to children
     // When /World/Foo -> /World/Bar, all /World/Foo/* paths need updating
-    for (const [existingOldPath, existingNewPath] of Array.from(pathMap.entries())) {
-      if (existingOldPath !== oldPath && existingOldPath.startsWith(oldPath + "/")) {
+    for (const [existingOldPath, existingNewPath] of Array.from(
+      pathMap.entries()
+    )) {
+      if (
+        existingOldPath !== oldPath &&
+        existingOldPath.startsWith(oldPath + "/")
+      ) {
         // This is a child path that needs updating
         const relativePath = existingOldPath.substring(oldPath.length);
         const updatedNewPath = newPath + relativePath;
@@ -81,7 +88,10 @@ export function buildPathTranslationRegistry(commits) {
       }
 
       // Also update if the existing new path is affected by this rename
-      if (existingNewPath !== oldPath && existingNewPath.startsWith(oldPath + "/")) {
+      if (
+        existingNewPath !== oldPath &&
+        existingNewPath.startsWith(oldPath + "/")
+      ) {
         const relativePath = existingNewPath.substring(oldPath.length);
         const updatedNewPath = newPath + relativePath;
         pathMap.set(existingOldPath, updatedNewPath);
@@ -89,7 +99,9 @@ export function buildPathTranslationRegistry(commits) {
     }
   }
 
-  console.log(`[Path Registry] Built registry with ${pathMap.size} path translations from ${renameChain.length} rename operations`);
+  console.log(
+    `[Path Registry] Built registry with ${pathMap.size} path translations from ${renameChain.length} rename operations`
+  );
 
   return { pathMap, renameChain };
 }
@@ -142,7 +154,9 @@ export function translatePrimPaths(prim, registry) {
   if (translatedPrim.path) {
     const newPath = translatePath(translatedPrim.path, registry);
     if (newPath !== translatedPrim.path) {
-      console.log(`[Path Registry] Translated path: ${translatedPrim.path} -> ${newPath}`);
+      console.log(
+        `[Path Registry] Translated path: ${translatedPrim.path} -> ${newPath}`
+      );
       translatedPrim.path = newPath;
     }
   }
@@ -151,14 +165,16 @@ export function translatePrimPaths(prim, registry) {
   if (translatedPrim._sourcePath) {
     const newSourcePath = translatePath(translatedPrim._sourcePath, registry);
     if (newSourcePath !== translatedPrim._sourcePath) {
-      console.log(`[Path Registry] Translated _sourcePath: ${translatedPrim._sourcePath} -> ${newSourcePath}`);
+      console.log(
+        `[Path Registry] Translated _sourcePath: ${translatedPrim._sourcePath} -> ${newSourcePath}`
+      );
       translatedPrim._sourcePath = newSourcePath;
     }
   }
 
   // Recursively translate children
   if (translatedPrim.children && Array.isArray(translatedPrim.children)) {
-    translatedPrim.children = translatedPrim.children.map(child =>
+    translatedPrim.children = translatedPrim.children.map((child) =>
       translatePrimPaths(child, registry)
     );
   }
@@ -176,15 +192,17 @@ export function getRegistryDebugInfo(registry) {
     return { totalMappings: 0, totalRenames: 0, mappings: [] };
   }
 
-  const mappings = Array.from(registry.pathMap.entries()).map(([oldPath, newPath]) => ({
-    oldPath,
-    newPath
-  }));
+  const mappings = Array.from(registry.pathMap.entries()).map(
+    ([oldPath, newPath]) => ({
+      oldPath,
+      newPath,
+    })
+  );
 
   return {
     totalMappings: registry.pathMap.size,
     totalRenames: registry.renameChain.length,
     mappings,
-    renameChain: registry.renameChain
+    renameChain: registry.renameChain,
   };
 }
