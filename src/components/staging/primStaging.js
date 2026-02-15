@@ -9,7 +9,7 @@ import {
 import { sha256 } from "js-sha256";
 
 function logToStatement(details) {
-  const { primPath, type, allStagedPaths, sourceStatus, entityType } = details;
+  const { primPath, type, allStagedPaths, sourceStatus, entityType, serializedPrims } = details;
 
   console.log("[PRIM_STAGING] Logging to statement.usda");
   console.log("[PRIM_STAGING] Type:", type);
@@ -53,6 +53,7 @@ function logToStatement(details) {
     sourceStatus: sourceStatus,
     targetStatus: sourceStatus, // For prim selection, target = source
     entityType: entityType,
+    serializedPrims: serializedPrims, // Include serialized prims for history
     parent: state.headCommitId, // Link to current HEAD
   };
 
@@ -430,11 +431,15 @@ export function stagePrims(primInput, options = {}) {
   actions.setComposedPrims(mergedHierarchy);
   actions.setComposedHierarchy(mergedHierarchy); // Un-commented to ensure render tree update
 
+  // Generate serialized prims for history log
+  const serializedPrims = composePrimsFromHierarchy(allNewlyStagedPrims);
+
   logToStatement({
     primPath: primsToProcess[0].path, // Representative path
     type: isEntity ? "Entity Placeholder" : "Prim Selection",
     allStagedPaths: allStagedPathsComplete,
     sourceStatus: layerStatusAtEvent,
     entityType: isEntity ? "placeholder" : "Real Element",
+    serializedPrims: serializedPrims,
   });
 }

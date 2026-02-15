@@ -925,7 +925,7 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
 
   promoteLayerButton.addEventListener("click", () => {
     // 1. Check for Object Selection in 3D View
-    let objectsToPromote = [];
+    const objectsToPromote = [];
 
     console.log("[PROMOTE] Button clicked");
     console.log("[PROMOTE] Current view:", store.getState().currentView);
@@ -1037,7 +1037,7 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
 
   demoteLayerButton.addEventListener("click", () => {
     // 1. Check for Object Selection in 3D View
-    let objectsToDemote = [];
+    const objectsToDemote = [];
 
     console.log("[DEMOTE] Button clicked");
     console.log("[DEMOTE] Current view:", store.getState().currentView);

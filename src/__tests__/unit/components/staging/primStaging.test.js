@@ -1,10 +1,3 @@
-import { vi, describe, it, expect, beforeEach } from "vitest";
-import { stagePrims } from "../../../../components/staging/primStaging.js";
-import { store } from "../../../../core/index.js";
-import { actions } from "../../../../state/actions.js";
-import { USDA_PARSER } from "../../../../viewer/usda/usdaParser.js";
-import * as usdaComposer from "../../../../viewer/usda/usdaComposer.js";
-
 // Mock dependencies
 vi.mock("../../../../core/index.js", () => ({
   store: {
@@ -20,7 +13,7 @@ vi.mock("../../../../state/actions.js", () => ({
   actions: {
     setComposedPrims: vi.fn(),
     setComposedHierarchy: vi.fn(),
-    incrementLogEntryCounter: vi.fn(() => ({ type: "INCREMENT_COUNTER", _returnValue: 1 })),
+    incrementLogEntryCounter: vi.fn(() => 1),
     updateLoadedFile: vi.fn(),
   },
 }));
@@ -39,12 +32,24 @@ vi.mock("../../../../viewer/usda/usdaComposer.js", () => ({
   composePrimsFromHierarchy: vi.fn(),
 }));
 
+// Mock js-sha256
+vi.mock("js-sha256", () => ({
+  sha256: vi.fn(() => "mockedHash"),
+}));
+
+import { stagePrims } from "../../../../components/staging/primStaging.js";
+import { store } from "../../../../core/index.js";
+import { actions } from "../../../../state/actions.js";
+import { USDA_PARSER } from "../../../../viewer/usda/usdaParser.js";
+import * as usdaComposer from "../../../../viewer/usda/usdaComposer.js";
+
 describe("Prim Staging (History Integration)", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     store.getState.mockReturnValue({
       stage: {
         layerStack: [{ filePath: "test.usda", status: "WIP" }],
+        composedPrims: [],
       },
       headCommitId: "HEAD",
       logEntryCounter: 0,
@@ -54,15 +59,15 @@ describe("Prim Staging (History Integration)", () => {
         "statement.usda": "def \"ChangeLog\" {}"
       }
     });
-    
+
     // Default mocks
     USDA_PARSER.parseUSDA.mockReturnValue([]);
     // Return hierarchy that matches the paths used in tests
     USDA_PARSER.getPrimHierarchy.mockReturnValue([
-        { path: "/TestPrim", type: "Scope", properties: {} },
-        { path: "/Placeholder", type: "Cube", properties: {} }
+        { path: "/TestPrim", type: "Scope", properties: {}, name: "TestPrim", children: [] },
+        { path: "/Placeholder", type: "Cube", properties: {}, name: "Placeholder", children: [] }
     ]);
-    
+
     usdaComposer.composePrimsFromHierarchy.mockReturnValue("def Scope \"Serialized\" {}");
     usdaComposer.composeLogPrim.mockReturnValue("def \"Log_1\" {}");
   });
@@ -79,10 +84,10 @@ describe("Prim Staging (History Integration)", () => {
 
     // Verify composePrimsFromHierarchy was called to serialize the new state
     expect(usdaComposer.composePrimsFromHierarchy).toHaveBeenCalled();
-    
+
     // Verify that the serialized content is passed to composeLogPrim/logToStatement
     // We can inspect the calls to composeLogPrim or appendToUsdaFile
-    
+
     // Specifically, logToStatement constructs an object with { serializedPrims: ... }
     // and passes it to composeLogPrim.
     expect(usdaComposer.composeLogPrim).toHaveBeenCalledWith(
@@ -109,10 +114,10 @@ describe("Prim Staging (History Integration)", () => {
     // No, it's passed or inferred?
     // Looking at source: `const isEntity = options?.isEntity || ...`
     // (Assuming stagePrims has options arg or checks properties)
-    
+
     // Let's pass options as 3rd arg if supported, or rely on properties.
     // Based on code: function stagePrims(sourcePrims, actionType, clearSelection = true, options = {})
-    
+
     await stagePrims(inputEntity, { isEntity: true });
 
     expect(usdaComposer.composeLogPrim).toHaveBeenCalledWith(
