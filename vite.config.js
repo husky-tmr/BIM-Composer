@@ -4,8 +4,9 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig({
-  base: "/USDA-Composer/",
+export default defineConfig(({ command }) => ({
+  // Use root path in dev, custom path in production
+  base: command === "serve" ? "/" : "/USDA-Composer/",
   root: ".",
   resolve: {
     alias: {
@@ -32,6 +33,7 @@ export default defineConfig({
           // Vendor chunks
           "vendor-three": ["three"],
           "vendor-utils": ["js-sha256"],
+          "vendor-ifc": ["web-ifc"],
 
           // Core chunks
           "core-state": [
@@ -85,7 +87,10 @@ export default defineConfig({
   // Optimizations
   optimizeDeps: {
     include: ["three", "js-sha256"],
+    exclude: ["web-ifc"],
   },
+  // Handle WASM files for web-ifc
+  assetsInclude: ["**/*.wasm"],
   // Test configuration
   test: {
     globals: true,
@@ -119,4 +124,4 @@ export default defineConfig({
     },
     setupFiles: ["./src/__tests__/setup.js"],
   },
-});
+}));

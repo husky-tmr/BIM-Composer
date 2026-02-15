@@ -11,6 +11,7 @@ import { USDA_PARSER } from "../../viewer/usda/usdaParser.js";
 import { composeLogPrim } from "../../viewer/usda/usdaComposer.js";
 import { sha256 } from "js-sha256";
 import { explodeUsda } from "../../utils/atomicFileHandler.js";
+import { ifcToUsdConverter } from "../../viewer/ifc/ifcToUsdConverter.js";
 
 const STATUS_ORDER = ["WIP", "Shared", "Published", "Archived"];
 
@@ -444,21 +445,68 @@ export function initLayerStack(updateView, fileThreeScene, stageThreeScene) {
   renderLayerStack();
 
   // ==================== File Input Change Handler ====================
-  const handleFileInput = errorHandler.wrap((event) => {
+  const handleFileInput = errorHandler.wrap(async (event) => {
     const file = event.target.files[0];
 
     if (!file) {
       return; // No file selected, no error
     }
 
+    // Detect file type
+    const isIFC = file.name.toLowerCase().endsWith(".ifc");
+    const isUSD = file.name.endsWith(".usda") || file.name.endsWith(".usd");
+
     // Validate file extension
-    if (!file.name.endsWith(".usda") && !file.name.endsWith(".usd")) {
+    if (!isIFC && !isUSD) {
       throw new FileError(
-        "Invalid file type. Please select a .usda or .usd file",
+        "Invalid file type. Please select a .usda, .usd, or .ifc file",
         file.name
       );
     }
 
+    // Handle IFC files
+    if (isIFC) {
+      console.log(`🔄 Converting IFC file: ${file.name}`);
+
+      try {
+        // Convert IFC to USD
+        const usdContent = await ifcToUsdConverter.convert(file);
+
+        // Create USD filename
+        const usdFileName = file.name.replace(/\.ifc$/i, ".usda");
+
+        // Process as single USD file
+        store.dispatch(coreActions.loadFile(usdFileName, usdContent));
+
+        // Create layer with current user as owner
+        const newLayer = {
+          id: `layer-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
+          filePath: usdFileName,
+          status: "WIP",
+          visible: true,
+          owner: store.getState().currentUser,
+          groupName: null,
+        };
+        store.dispatch(coreActions.addLayer(newLayer));
+
+        renderLayerStack();
+        console.log(
+          `✅ Successfully converted and loaded IFC file: ${file.name} → ${usdFileName}`
+        );
+      } catch (error) {
+        console.error("IFC conversion failed:", error);
+        throw new FileError(
+          `Failed to convert IFC file: ${error.message}`,
+          file.name,
+          error
+        );
+      }
+
+      fileInput.value = ""; // Reset to allow re-importing
+      return;
+    }
+
+    // Handle USD files (existing logic)
     const reader = new FileReader();
 
     reader.onerror = () => {
